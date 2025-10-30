@@ -1,0 +1,95 @@
+.addUserMainContainer {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addUserContainer {
+    height: auto;
+    width: 80%;
+    border: 54px solid brown;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.addUserHeadSection {
+    width: 100%;
+    padding: 0.5% 1.5%;
+    background-color: #111;
+    color: #fff;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.addUserHeadSection h1 {
+    background-color: #111;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    color: #fff;
+    font-size: 1.3em;
+    cursor: default;
+}
+
+.addUserHeadSection .xMark {
+    color: #fff;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.addUserHeadSection .xMark:hover {
+    color: #ff4d4d;
+    transform: scale(1.2, 1.2);
+}
+
+.addUserContainer .formContainer {
+    width: 80%;
+    margin: 2.5% 10%;
+}
+
+.addUserContainer .data {
+    width: 98%;
+    margin: 2%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.addUserContainer input {
+    width: 50%;
+    margin-bottom: 0.4%;
+    font-size: 0.9em;
+    padding: 0.2% 0.4%;
+}
+
+.addUserContainer input::placeholder {
+    font-weight: 100;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.addUserContainer label {
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.addUserContainer select {
+    width: 50%;
+    font-size: 0.85em;
+    font-weight: 400;
+}
+
+.addUserContainer .buttonContainer {
+    margin-top: 4%;
+    display: flex;
+    justify-content: center;
+}
+
+.addUserContainer .buttonContainer button {
+    margin: 0.5%;
+    padding: 0.3% 0.5%;
+}

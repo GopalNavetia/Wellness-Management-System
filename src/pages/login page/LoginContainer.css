@@ -1,0 +1,8 @@
+.loginContainer {
+    width: 40%;
+    height: 42%;
+    color: black;
+    /* border: 2px solid black; */
+    border-radius: 12px;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.188);
+}

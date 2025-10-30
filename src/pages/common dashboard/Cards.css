@@ -1,0 +1,32 @@
+.card {
+    width: 44%;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+    width: 100%;
+    display: block;
+}
+
+.desc h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 0.5em 1em 0.2em 1em;
+}
+
+.desc ul li {
+    font-size: 1em;
+    padding: 0 1em 0.5em 1.2em;
+    color: #555;
+}
