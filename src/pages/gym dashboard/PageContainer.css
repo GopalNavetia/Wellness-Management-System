@@ -1,4 +1,6 @@
 .PageContainer {
-    min-height: 95vh;
+    height: 89.7vh;
     width: 100%;
+    overflow-y: auto;
+    /* border: 1px solid red; */
 }

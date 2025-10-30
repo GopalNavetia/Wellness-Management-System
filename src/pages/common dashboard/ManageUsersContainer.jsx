@@ -47,15 +47,19 @@ export default function ManageUsersConatiner() {
 
             <div className='userListContainer'>
                 <table>
-                    <tr>
-                        <th>Username</th>
-                        <th>Password</th>
-                        <th>Role</th>
-                        <th>Email</th>
-                        <th>Action</th>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Password</th>
+                            <th>Role</th>
+                            <th>Email</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
 
-                    {generateUserData()}
+                    <tbody>
+                        {generateUserData()}
+                    </tbody>
                 </table>
             </div>
         </div>

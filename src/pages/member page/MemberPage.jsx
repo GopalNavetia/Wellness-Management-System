@@ -1,5 +1,6 @@
 import './MemberPage.css'
 import Card from './Card';
+import MemberTable from './MemberTable'
 
 export default function MemberPage() {
     return (
@@ -9,6 +10,8 @@ export default function MemberPage() {
                 <Card title='Active Members' data='64' />
                 <Card title='Expired Members' data='16' />
             </div>
+
+            <MemberTable />
         </div>
     );
 }
