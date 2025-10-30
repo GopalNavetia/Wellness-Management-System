@@ -1,0 +1,11 @@
+.SystemMainContainer {
+    height: 81%;
+    width: 96%;
+    margin: 2% auto;
+    border-radius: 10px;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 20px;
+}

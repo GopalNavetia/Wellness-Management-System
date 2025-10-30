@@ -1,0 +1,69 @@
+.menubar {
+    height: 100%;
+    padding-top: 0.1em;
+    border-right: 2px solid #222;
+    background: linear-gradient(180deg, #111 80%, #222 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.3);
+    transition: width 0.5s ease;
+}
+
+.menuItems {
+    width: 100%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.menuItems .barIcon {
+    width: 100%;
+    margin: 0 0.1em 0.4em 0.25em;
+    height: 1.2em;
+    font-size: 1.5em;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+hr {
+    border: 1px solid #909090;
+}
+
+.menuItems .container {
+    margin-top: 0.9%;
+}
+
+.menuItems .items {
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+    padding: 0.3em 0 0.3em 0.5em;
+    transition: all 0.4s ease;
+}
+
+.menubar .items .icons {
+    margin-left: 1%;
+    font-size: 1.2em;
+}
+
+.menuItems h3 {
+    margin-left: 0.62em;
+    border-radius: 6px;
+    font-size: 1.3em;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.menuItems .barIcon:hover {
+    color: #ff4d4d;
+    font-size: 1.7em;
+}
+
+.menuItems .items:hover {
+    background-color: rgba(255, 255, 255, 0.16);
+    font-size: 1.1em;
+    color: #ff4d4d;
+}

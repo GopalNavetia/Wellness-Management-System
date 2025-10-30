@@ -1,0 +1,123 @@
+.mainContainer {
+    height: 84%;
+    width: 96%;
+    margin: 2% auto;
+    border-radius: 10px;
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profileSection {
+    height: 80%;
+    width: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.profileSection .myProfileHeadSection {
+    width: 100%;
+    padding: 0.5% 1.5%;
+    background-color: #111;
+    color: #fff;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profileSection .myProfileHeadSection h1 {
+    margin-left: 1%;
+    background-color: #111;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    color: #fff;
+    font-size: 1.3em;
+    font-weight: 700;
+    cursor: default;
+}
+
+.profileSection .myProfileHeadSection .xMark {
+    color: #fff;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.profileSection .myProfileHeadSection .xMark:hover {
+    color: #ff4d4d;
+    transform: scale(1.2, 1.2);
+}
+
+.profileSection .detailSection {
+    height: 50%;
+    /* border: 1px solid green; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+}
+
+.profileSection img {
+    width: 12%;
+    margin-top: 1%;
+    border-radius: 50%;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+.profileSection h1 {
+    font-weight: 400;
+}
+
+.profileSection p {
+    color: #555;
+    font-size: 0.9em;
+}
+
+.profileSection button {
+    width: 20%;
+    height: 12%;
+    border: 1px solid rgba(79, 79, 79);
+    border-radius: 5px;
+    background-color: #ebe9e9cd;
+    color: black;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.profileSection button:hover {
+    background-color: #d8d7d7;
+}
+
+.adminData {
+    width: 90%;
+    height: 40%;
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.adminData .data {
+    width: 80%;
+    height: 30%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.adminData .lable {
+    font-size: 1.2em;
+}
+
+.adminData .content {
+    font-size: 1em;
+    font-weight: 200;
+    color: #868686;
+}

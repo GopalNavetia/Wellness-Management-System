@@ -1,0 +1,20 @@
+.cardContainer {
+    display: inline-block;
+    margin: 1.5%;
+    height: 90%;
+    width: 30%;
+    border: 1px solid rgba(0, 0, 0, .6);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    background: #fafafa;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.cardContainer p {
+    font-size: larger;
+    font-weight: 400;
+}
