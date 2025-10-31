@@ -2,14 +2,40 @@ import './MemberTable.css'
 import MembersData from '../../mocks/MembersData'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { useState } from 'react';
 
 export default function MemberTable() {
 
-    function generateMembersData() {
-        // Stored Data For Validation
-        let storedUser = MembersData;
+    // Stored Data For Validation
+    let storedMembers = MembersData;
+    // Index for Member Data
+    let [pageNo, setPageNo] = useState(1);
+    let membersPerPage = 10;
+    let startIdx = (pageNo - 1) * membersPerPage;
+    let endIdx = startIdx + membersPerPage;
+    let totalPages = Math.ceil(storedMembers.length / membersPerPage);
 
-        return storedUser.map(member => (
+    let membersDataPrint = storedMembers.slice(startIdx, endIdx);
+    console.log(membersDataPrint);
+
+    // Handle Right Angle Button
+    let handleRightButton = () => {
+        if (pageNo < totalPages) {
+            setPageNo(pageNo + 1);
+            console.log("Change Page no Right: " + (pageNo + 1));
+        }
+    }
+
+    // Handle Left Angle Button
+    let handleLeftButton = () => {
+        if (pageNo > 1) {
+            setPageNo(pageNo - 1);
+            console.log("Change Page no Left: " + (pageNo - 1));
+        }
+    }
+
+    function generateMembersData() {
+        return membersDataPrint.map(member => (
             <tr key={member.id}>
                 <td>{member.name}</td>
                 <td>{member.type}</td>
@@ -53,7 +79,7 @@ export default function MemberTable() {
             </table>
 
             <div className="pagination">
-                <p><span className='leftIcon'><FontAwesomeIcon icon={faAngleLeft} /></span> Showing 1-10 of 100 Members<span className='rightIcon'><FontAwesomeIcon icon={faAngleRight} /></span></p>
+                <p><span className='leftIcon' onClick={handleLeftButton}><FontAwesomeIcon icon={faAngleLeft} /></span> Showing 1-10 of 100 Members<span className='rightIcon' onClick={handleRightButton}><FontAwesomeIcon icon={faAngleRight} /></span></p>
             </div>
         </div>
     );
