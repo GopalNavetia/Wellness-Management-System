@@ -16,13 +16,11 @@ export default function MemberTable() {
     let totalPages = Math.ceil(storedMembers.length / membersPerPage);
 
     let membersDataPrint = storedMembers.slice(startIdx, endIdx);
-    console.log(membersDataPrint);
 
     // Handle Right Angle Button
     let handleRightButton = () => {
         if (pageNo < totalPages) {
             setPageNo(pageNo + 1);
-            console.log("Change Page no Right: " + (pageNo + 1));
         }
     }
 
@@ -30,7 +28,6 @@ export default function MemberTable() {
     let handleLeftButton = () => {
         if (pageNo > 1) {
             setPageNo(pageNo - 1);
-            console.log("Change Page no Left: " + (pageNo - 1));
         }
     }
 
@@ -79,7 +76,7 @@ export default function MemberTable() {
             </table>
 
             <div className="pagination">
-                <p><span className='leftIcon' onClick={handleLeftButton}><FontAwesomeIcon icon={faAngleLeft} /></span> Showing 1-10 of 100 Members<span className='rightIcon' onClick={handleRightButton}><FontAwesomeIcon icon={faAngleRight} /></span></p>
+                <p><span className='leftIcon' onClick={handleLeftButton}><FontAwesomeIcon icon={faAngleLeft} /></span> Showing Page {pageNo} out of {totalPages} <span className='rightIcon' onClick={handleRightButton}><FontAwesomeIcon icon={faAngleRight} /></span></p>
             </div>
         </div>
     );
