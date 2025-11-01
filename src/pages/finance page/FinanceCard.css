@@ -1,0 +1,54 @@
+.summary-card {
+  flex: 1 1 22%;
+  background: #fafafa;
+  border-radius: 10px;
+  width: 90%;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  padding: 2%;
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.summary-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.summary-icon {
+  font-size: 2.5em;
+  margin-right: 1em;
+}
+
+.summary-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-title {
+  font-size: 1.1em;
+  color: #666;
+}
+
+.summary-value {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #333;
+}
+
+.income .summary-icon {
+  color: #2ecc71;
+}
+
+.expenses .summary-icon {
+  color: #e74c3c;
+}
+
+.revenue .summary-icon {
+  color: #3498db;
+}
+
+.pending .summary-icon {
+  color: #f39c12;
+}
