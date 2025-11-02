@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./FinanceCard.css";
+import "./Card.css";
 
 export default function FinanceCard(props) {
   const { title, value, icon, type } = props;

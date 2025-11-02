@@ -9,7 +9,7 @@ export default function AddUser() {
 
     const navigate = useNavigate();
     let handleClose = () => {
-        navigate('/dashboard/manageuser')
+        navigate(-1)
     };
 
     let [formData, setFormData] = useState({
@@ -36,7 +36,6 @@ export default function AddUser() {
 
     let handleSubmit = (e) => {
         e.preventDefault();
-        console.log("In add user");
 
         setFormData({
             username: "",

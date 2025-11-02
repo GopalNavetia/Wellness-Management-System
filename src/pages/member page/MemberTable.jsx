@@ -3,6 +3,7 @@ import MembersData from '../../mocks/MembersData'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function MemberTable() {
 
@@ -56,6 +57,12 @@ export default function MemberTable() {
         }
     }
 
+    const navigate = useNavigate();
+    // Add Member Button
+    function handelAddMemberButton() {
+        navigate('/gymdashboard/addmember');
+    }
+
     function generateMembersData() {
         return membersDataPrint.map(member => (
             <tr key={member.id}>
@@ -78,7 +85,7 @@ export default function MemberTable() {
                 <div className="searchContainer">
                     <input type="text" name="membername" value={formData.name} id="name" placeholder="Search by Name" onChange={handleInputChange} />
                     <input type="text" name="phone" value={formData.phone} id="phone" placeholder="Search by Phone " onChange={handleInputChange} />
-                    <button>Add</button>
+                    <button onClick={handelAddMemberButton}>Add</button>
                 </div>
             </div>
 

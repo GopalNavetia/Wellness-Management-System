@@ -1,4 +1,4 @@
-import FinanceCard from "./FinanceCard";
+import Card from "./Card";
 import "./FinancePage.css";
 
 // Importing FontAwesome icons
@@ -8,10 +8,10 @@ export default function FinancePage() {
   return (
     <div className="finance-page">
       <div className="summary-container">
-        <FinanceCard title="Total Income" value="₹100,000" icon={faMoneyBillWave} type="income" />
-        <FinanceCard title="Total Expenses" value="₹70,000" icon={faArrowDown} type="expenses" />
-        <FinanceCard title="Net Revenue" value="₹30,000" icon={faChartLine} type="revenue" />
-        <FinanceCard title="Pending Payments" value="₹5,000" icon={faClock} type="pending" />
+        <Card title="Total Income" value="₹100,000" icon={faMoneyBillWave} type="income" />
+        <Card title="Total Expenses" value="₹70,000" icon={faArrowDown} type="expenses" />
+        <Card title="Net Revenue" value="₹30,000" icon={faChartLine} type="revenue" />
+        <Card title="Pending Payments" value="₹5,000" icon={faClock} type="pending" />
       </div>
     </div>
   );
