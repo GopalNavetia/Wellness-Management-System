@@ -58,6 +58,11 @@ nav .icon {
     cursor: pointer;
 }
 
+.navContainer .settings a {
+    text-decoration: none;
+}
+
+.navContainer .settings a>p,
 .navContainer .settings p {
     width: 100%;
     padding-top: 1%;
@@ -68,28 +73,10 @@ nav .icon {
     font-size: 0.9em;
 }
 
-.navContainer .settings p:last-child {
+.navContainer .settings>p {
     border-bottom: none;
 }
 
 .navContainer .settings p:hover {
     background-color: #f0f0f0;
 }
-
-
-/* .navContainer .settings button {
-    padding: 6px 12px;
-    border-radius: 5px;
-    background-color: #f0f2f5;
-    border: none;
-    color: black;
-    font-size: 14px;
-    font-weight: bold;
-    transition: all 0.3s;
-    cursor: pointer;
-} */
-
-/* nav button:hover {
-    background-color: #ff4d4d;
-    color: white;
-} */

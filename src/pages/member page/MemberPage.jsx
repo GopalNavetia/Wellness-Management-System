@@ -1,6 +1,7 @@
 import './MemberPage.css'
 import Card from './Card';
 import MemberTable from './MemberTable'
+import MemberProfile from './MemberProfile'
 
 export default function MemberPage() {
     return (
@@ -12,6 +13,7 @@ export default function MemberPage() {
             </div>
 
             <MemberTable />
+            <MemberProfile />
         </div>
     );
 }

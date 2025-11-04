@@ -1,0 +1,102 @@
+.memberProfileContainer {
+    margin: 0 1.5% 1.5% 1.5%;
+    width: 97%;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.memberProfileHeadSection {
+    width: 100%;
+    padding: 0.5% 1.5%;
+    background-color: #111;
+    color: #fff;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.memberProfileHeadSection h1 {
+    margin-left: 0%;
+    background-color: #111;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    color: #fff;
+    font-size: 1.5em;
+    cursor: default;
+}
+
+.memberProfileHeadSection .xMark {
+    color: #fff;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.memberProfileHeadSection .xMark:hover {
+    color: #ff4d4d;
+    transform: scale(1.2, 1.2);
+}
+
+.memberProfileContainer .profile {
+    width: 96%;
+    margin: 0.35% auto 0.5% auto;
+    padding-bottom: 0.5%;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.5);
+    display: flex;
+    cursor: default;
+}
+
+.memberProfileContainer .profile .data {
+    font-size: 1.1em;
+}
+
+.memberProfileContainer .profile .buttons {
+    margin-top: 5%;
+    display: flex;
+    gap: 5%;
+}
+
+.memberProfileContainer .profile button {
+    padding: 1.5% 1.5%;
+    cursor: pointer;
+}
+
+.memberProfileContainer .imgSection {
+    width: 14%;
+    height: 10.5em;
+    margin: 1% 0% 1% 66%;
+    border: 2px solid black;
+    background-image: url("");
+    background-size: cover;
+}
+
+.memberNavigationButtons {
+    width: 96%;
+    margin: 0.5% auto 0.5% auto;
+    display: flex;
+    justify-content: flex-start;
+    gap: 1%;
+}
+
+.memberNavigationButtons button {
+    padding: 0.5% 1%;
+    font-size: 1em;
+    border: 1px solid black;
+    border-radius: 9px;
+    background-color: #E5E5E5;
+    transition: all 0.3s;
+}
+
+.memberNavigationButtons button:hover {
+    padding: 0.5% 1%;
+    font-size: 1em;
+    background-color: #111;
+    color: #fff;
+}

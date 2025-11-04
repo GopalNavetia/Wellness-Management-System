@@ -2,7 +2,7 @@ import './NavbarContainer.css'
 import navLogo from '../../assets/images/wellnessLogo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserTie } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 export default function NavbarContainer() {
@@ -25,16 +25,6 @@ export default function NavbarContainer() {
         navigate('/', { replace: true });
     }
 
-    // My Profile Button
-    function handleMyProfileClick() {
-        navigate('/dashboard/myprofile');
-    }
-
-    // Manage User Button
-    function handleManageUserClick() {
-        navigate('/dashboard/manageuser');
-    }
-
     return (
         <div className='navContainer'>
             <nav>
@@ -49,8 +39,14 @@ export default function NavbarContainer() {
             </nav >
 
             <div className='settings' style={{ display: isDropVisible ? 'block' : 'none' }} onMouseEnter={handleMouseEnterProfile} onMouseLeave={handleMouseLeaveProfile} >
-                <p onClick={handleMyProfileClick}>My Profile</p>
-                <p onClick={handleManageUserClick}>Manage Users</p>
+                <Link to='/dashboard/myprofile'>
+                    <p>My Profile</p>
+                </Link>
+
+                <Link to='/dashboard/manageuser'>
+                    <p>Manage Users</p>
+                </Link>
+
                 <p className='logoutBttn' style={{ color: '#ff4d4d' }} onClick={handelLogoutButtonClick}>Logout</p>
             </div>
 
