@@ -1,5 +1,6 @@
 import './MemberProfile.css'
 import MembersData from '../../mocks/MembersData'
+import MemberActionContainer from './MemberActionContainer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
@@ -29,10 +30,10 @@ export default function MemberProfile({ memberID }) {
             <div className="profile">
                 <div className="data">
                     <h2>{member.name}</h2>
-                    <p><b>Membership:</b> {member.type}</p>
-                    <p><b>Duration:</b> {member.start_date} - {member.end_date}</p>
-                    <p><b>Trainer:</b> {member.assigned_trainer}</p>
-                    <p><b>Payment Status:</b> {member.payment_status}</p>
+                    <p><b>Gender:</b> {member.gender}</p>
+                    <p><b>Date of Birth:</b> {member.dob}</p>
+                    <p><b>Phone No:</b> {member.phone}</p>
+                    <p><b>Address:</b> {member.address}</p>
                     <div className="buttons">
                         <button>Edit</button>
                         <button>Delete</button>
@@ -43,12 +44,7 @@ export default function MemberProfile({ memberID }) {
                 </div>
             </div>
 
-            <div className="memberNavigationButtons">
-                <button>Membership</button>
-                <button>Health Record</button>
-                <button>Workout Plan</button>
-                <button>Progress</button>
-            </div>
+            <MemberActionContainer />
         </div>
     );
 }

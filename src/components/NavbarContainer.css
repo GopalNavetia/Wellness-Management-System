@@ -1,0 +1,85 @@
+.navContainer {
+    height: 9%;
+}
+
+nav {
+    height: 100%;
+    width: 100%;
+    padding: 0 20px;
+    background-color: #111;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav img {
+    width: 4%;
+    /* max-height: 10px; */
+    border-radius: 15%;
+}
+
+.navTitle {
+    cursor: pointer;
+}
+
+nav>div {
+    gap: 5px;
+    display: flex;
+    align-items: center;
+}
+
+nav h1 {
+    margin-left: 1%;
+    font-size: 1.8em;
+    transition: color 0.3s;
+}
+
+nav .profileContainer {
+    cursor: pointer;
+}
+
+nav .icon {
+    font-size: 1.3em;
+}
+
+.navContainer .settings {
+    width: 11.8%;
+    height: 13%;
+    background-color: #fff;
+    border: 2px solid rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+    position: fixed;
+    top: 6.8%;
+    right: 1.3%;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.navContainer .settings a {
+    text-decoration: none;
+}
+
+.navContainer .settings a>p,
+.navContainer .settings p {
+    width: 100%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 5%;
+    border-bottom: 1px solid #e0e0e0;
+    color: #555;
+    font-size: 0.9em;
+}
+
+.navContainer .settings>p {
+    border-bottom: none;
+}
+
+.navContainer .settings p:hover {
+    background-color: #f0f0f0;
+}

@@ -1,11 +1,12 @@
 import './CommonDashboardPage.css'
-import { useRoutes } from 'react-router-dom';
-import NavbarContainer from './NavbarContainer';
+import navLogo from '../../assets/images/wellnessLogo.png'
+import NavbarContainer from '../../components/NavbarContainer';
 import SystemContainer from './SystemContainer';
 import MyProfileContainer from './MyProfileContainer';
 import ManageUsersContainer from './ManageUsersContainer'
 import AddUser from './AddUser'
 import EditUser from './EditUser';
+import { useRoutes } from 'react-router-dom';
 
 const DashboardRoutes = () => {
     return useRoutes([
@@ -20,7 +21,7 @@ const DashboardRoutes = () => {
 export default function CommonDashboardPage() {
     return (
         <div className='CommonDashboard'>
-            <NavbarContainer />
+            <NavbarContainer title='Main Dashboard' logo={navLogo} />
             <DashboardRoutes />
         </div>
     );

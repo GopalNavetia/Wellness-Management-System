@@ -1,55 +1,35 @@
 .summary-card {
   flex: 1 1 22%;
-  background: #fafafa;
-  border-radius: 10px;
-  width: 90%;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  padding: 2%;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.15);
   display: flex;
   align-items: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  justify-content: space-between;
+  padding: 1.5% 2%;
+  transition: all 0.3s ease;
   cursor: pointer;
+  min-width: 180px;
 }
 
 .summary-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3%);
+  box-shadow: 0 0.6rem 1.2rem rgba(0, 0, 0, 0.2);
 }
 
 .summary-icon {
-  font-size: 2.5em;
-  margin-right: 1em;
+  font-size: 2.2rem;
+  color: #007bff;
 }
 
-.summary-details {
-  display: flex;
-  flex-direction: column;
-}
+.summary-details { text-align: right; }
 
-.summary-title {
-  font-size: 1.1em;
-  color: #666;
-}
+.summary-title { font-size: 0.95rem; color: #555; margin: 0; }
+.summary-value { font-size: 1.4rem; font-weight: bold; margin: 0.2em 0 0 0; }
 
-.summary-value {
-  font-size: 1.4em;
-  font-weight: bold;
-  color: #333;
-}
+.summary-card.income .summary-icon { color: #28a745; }
+.summary-card.expense .summary-icon { color: #dc3545; }
+.summary-card.profit .summary-icon { color: #ffc107; }
+.summary-card.pending .summary-icon { color: #17a2b8; }
 
-.income .summary-icon {
-  color: #2ecc71;
-}
-
-.expenses .summary-icon {
-  color: #e74c3c;
-}
-
-.revenue .summary-icon {
-  color: #3498db;
-}
-
-.pending .summary-icon {
-  color: #f39c12;
-}
+@media (max-width: 768px) { .summary-card { flex: 1 1 48%; margin-bottom: 10px; } }

@@ -32,10 +32,6 @@ export default function MyProfileContainer() {
                         <span className='content'>admin</span>
                     </div>
                     <div className='data'>
-                        <span className='lable'>Password:</span>
-                        <span className='content'>123</span>
-                    </div>
-                    <div className='data'>
                         <span className='lable'>Role:</span>
                         <span className='content'>admin</span>
                     </div>

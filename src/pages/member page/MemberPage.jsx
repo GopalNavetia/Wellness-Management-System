@@ -10,7 +10,17 @@ export default function MemberPage() {
 
     const MemberPageRoutes = () => {
         return useRoutes([
-            { path: '/', element: <MemberTable onViewMember={setSelectedMemberId} /> },
+            {
+                path: '/',
+                element: <>
+                    <div className="infoCardContainer">
+                        <Card title='Total Members' data='80' />
+                        <Card title='Active Members' data='64' />
+                        <Card title='Expired Members' data='16' />
+                    </div>
+                    <MemberTable onViewMember={setSelectedMemberId} />
+                </>
+            },
             { path: '/addmember', element: <><AddMember /> <MemberTable /></> },
             { path: '/memberprofile', element: <MemberProfile memberID={selectedMemberId} /> },
         ]);
@@ -21,11 +31,6 @@ export default function MemberPage() {
 
     return (
         <div className="memberPageContainer">
-            <div className="infoCardContainer">
-                <Card title='Total Members' data='80' />
-                <Card title='Active Members' data='64' />
-                <Card title='Expired Members' data='16' />
-            </div>
             <MemberPageRoutes />
         </div>
     );

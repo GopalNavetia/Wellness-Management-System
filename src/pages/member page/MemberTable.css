@@ -81,6 +81,11 @@
     cursor: pointer;
 }
 
+.tableContainer .pagination {
+    margin-bottom: 0.5%;
+    /* border: 1px solid blue */
+}
+
 .tableContainer .pagination p {
     display: flex;
     justify-content: center;

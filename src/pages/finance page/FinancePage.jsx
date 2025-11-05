@@ -1,18 +1,26 @@
-import Card from "./Card";
-import "./FinancePage.css";
-
-// Importing FontAwesome icons
 import { faMoneyBillWave, faArrowDown, faChartLine, faClock } from "@fortawesome/free-solid-svg-icons";
+import Card from "./Card";
+import FinanceIncome from "./FinanceIncome";
+import incomeMockData from "../../mocks/IncomeMockData";
+import "./FinancePage.css";
 
 export default function FinancePage() {
   return (
     <div className="finance-page">
       <div className="summary-container">
         <Card title="Total Income" value="₹100,000" icon={faMoneyBillWave} type="income" />
-        <Card title="Total Expenses" value="₹70,000" icon={faArrowDown} type="expenses" />
-        <Card title="Net Revenue" value="₹30,000" icon={faChartLine} type="revenue" />
+        <Card title="Total Expenses" value="₹70,000" icon={faArrowDown} type="expense" />
+        <Card title="Net Revenue" value="₹30,000" icon={faChartLine} type="profit" />
         <Card title="Pending Payments" value="₹5,000" icon={faClock} type="pending" />
       </div>
-    </div>
-  );
+      </div>
+       );
 }
+
+   {/* <div className="income-main-header">
+  <h2>Income (Payments)</h2>
+</div>
+
+      <FinanceIncome data={incomeMockData} title="Monthly Income" />
+     */}
+ 

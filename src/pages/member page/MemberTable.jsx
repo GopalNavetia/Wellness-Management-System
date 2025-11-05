@@ -11,7 +11,7 @@ export default function MemberTable({ onViewMember }) {
     let storedMembers = MembersData;
     // Pagination state
     let [pageNo, setPageNo] = useState(1);
-    let membersPerPage = 10;
+    let membersPerPage = 8;
 
     // Search form state
     let [formData, setFormData] = useState({ membername: "", phone: "" });
