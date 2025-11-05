@@ -45,33 +45,38 @@
 }
 
 .memberProfileContainer .profile {
-    width: 96%;
     margin: 0.35% auto 0.5% auto;
-    padding-bottom: 0.5%;
+    width: 96%;
+    /* border: 1px solid red; */
+    padding-bottom: 1%;
     border-bottom: 1px solid rgba(17, 17, 17, 0.5);
     display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: default;
 }
 
 .memberProfileContainer .profile .data {
     font-size: 1.1em;
+    width: 86%;
+    /* border: 1px solid blue; */
 }
 
 .memberProfileContainer .profile .buttons {
     margin-top: 5%;
     display: flex;
-    gap: 5%;
+    gap: 1%;
 }
 
 .memberProfileContainer .profile button {
-    padding: 1.5% 1.5%;
+    padding: 0.3% 1.5%;
     cursor: pointer;
 }
 
 .memberProfileContainer .imgSection {
     width: 14%;
     height: 10.5em;
-    margin: 1% 0% 1% 66%;
+    /* margin: 1% 0% 1% 66%; */
     border: 2px solid black;
     background-image: url("");
     background-size: cover;

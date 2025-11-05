@@ -5,7 +5,7 @@ import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function MemberTable() {
+export default function MemberTable({ onViewMember }) {
 
     // Stored Data For Validation
     let storedMembers = MembersData;
@@ -63,16 +63,20 @@ export default function MemberTable() {
         navigate('/gymdashboard/addmember');
     }
 
+    // View Button
+    function handleViewButton() {
+        navigate('/gymdashboard/memberprofile');
+    }
+
     function generateMembersData() {
         return membersDataPrint.map(member => (
             <tr key={member.id}>
                 <td>{member.name}</td>
                 <td>{member.type}</td>
-                <td>{member.start_date}</td>
-                <td>{member.end_date}</td>
-                <td>{member.assigned_trainer}</td>
                 <td>{member.payment_status}</td>
-                <td><button>View</button></td>
+                <td>{new Date(member.end_date) >= new Date() ? 'Active' : 'Expired'}</td>
+                <td>{member.phone}</td>
+                <td><button onClick={() => { onViewMember(member.id); handleViewButton() }}>View</button></td>
             </tr>
         ));
     }
@@ -94,10 +98,9 @@ export default function MemberTable() {
                     <tr>
                         <th>Name</th>
                         <th>Type</th>
-                        <th>Start Date</th>
-                        <th>End Date</th>
-                        <th>Trainer</th>
                         <th>Payment</th>
+                        <th>Membership</th>
+                        <th>Contact</th>
                         <th>Action</th>
                     </tr>
                 </thead>

@@ -6,9 +6,8 @@ import { useRoutes } from 'react-router-dom';
 
 const GymDashboardPageRoutes = () => {
     return useRoutes([
-        { path: '/', element: <MemberPage /> },
-        { path: '/addmember', element: <AddMember /> },
-        { path: '/financepage', element: <FinancePage /> },
+        { path: '/*', element: <MemberPage /> },
+        { path: '/financepage', element: <FinancePage /> }
     ]);
 };
 

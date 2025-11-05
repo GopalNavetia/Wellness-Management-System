@@ -1,9 +1,24 @@
 import './MemberPage.css'
 import Card from './Card';
 import MemberTable from './MemberTable'
+import AddMember from '../member page/AddMember'
 import MemberProfile from './MemberProfile'
+import { useRoutes } from 'react-router-dom';
+import { useState } from 'react';
 
 export default function MemberPage() {
+
+    const MemberPageRoutes = () => {
+        return useRoutes([
+            { path: '/', element: <MemberTable onViewMember={setSelectedMemberId} /> },
+            { path: '/addmember', element: <><AddMember /> <MemberTable /></> },
+            { path: '/memberprofile', element: <MemberProfile memberID={selectedMemberId} /> },
+        ]);
+    };
+
+    // Get ID of Selected Member
+    let [selectedMemberId, setSelectedMemberId] = useState(null);
+
     return (
         <div className="memberPageContainer">
             <div className="infoCardContainer">
@@ -11,9 +26,7 @@ export default function MemberPage() {
                 <Card title='Active Members' data='64' />
                 <Card title='Expired Members' data='16' />
             </div>
-
-            <MemberTable />
-            <MemberProfile />
+            <MemberPageRoutes />
         </div>
     );
 }
