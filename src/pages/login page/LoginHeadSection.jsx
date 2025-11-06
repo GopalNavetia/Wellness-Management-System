@@ -1,5 +1,5 @@
 import './LoginHeadSection.css'
-import logo from '../../assets/images/logo.png'
+import logo from '../../assets/images/Favicon.png'
 
 export default function LoginHeadSection() {
     return (
