@@ -1,6 +1,7 @@
 import './MemberActionContainer.css'
+import MembershipRecord from './Action Components/Membership/MembershipRecord'
 
-export default function MemberActionContainer() {
+export default function MemberActionContainer({ memberID }) {
     return (
         <>
             <div className="memberNavigationButtons">
@@ -11,7 +12,7 @@ export default function MemberActionContainer() {
             </div>
 
             <div className="actionContainer">
-
+                <MembershipRecord memberID={memberID} />
             </div>
         </>
     );

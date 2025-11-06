@@ -40,7 +40,7 @@ export default function MemberProfile({ memberID }) {
                 <div className="imgSection"></div>
             </div>
 
-            <MemberActionContainer />
+            <MemberActionContainer memberID={memberID} />
         </div>
     );
 

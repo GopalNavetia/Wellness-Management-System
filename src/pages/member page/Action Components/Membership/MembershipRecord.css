@@ -1,0 +1,84 @@
+.membershipRecordContainer {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.membershipRecordContainer .membershipRecordHeadSection {
+    width: 100%;
+    padding: 0.5% 1.5%;
+    background-color: #111;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.membershipRecordContainer .membershipRecordHeadSection h1 {
+    color: #fff;
+    margin: 0;
+    font-size: 1.5em;
+    cursor: default;
+}
+
+.membershipRecordContainer .membershipRecordHeadSection .buttonsContainer {
+    display: flex;
+    gap: 0.8em;
+    align-items: center;
+}
+
+.membershipRecordContainer .membershipRecordHeadSection button {
+    padding: 2% 7%;
+    font-size: 0.95em;
+    cursor: pointer;
+}
+
+.membershipRecordContainer .membershipRecordHeadSection .xMark {
+    color: #fff;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.membershipRecordContainer .membershipRecordHeadSection .xMark:hover {
+    color: #ff4d4d;
+    transform: scale(1.2, 1.2);
+}
+
+.membershipListContainer {
+    margin: 1% 0;
+    display: flex;
+    justify-content: center;
+}
+
+.membershipListContainer table {
+    width: 96%;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 1em;
+}
+
+.membershipListContainer th,
+.membershipListContainer td {
+    border: 1px solid #ccc;
+    padding: 0.5% 0.5%;
+}
+
+.membershipListContainer th {
+    background-color: #222;
+    color: #fff;
+    font-weight: 600;
+}
+
+.membershipListContainer td {
+    font-size: 0.9em;
+}
+
+.membershipListContainer table button {
+    padding: 1% 2%;
+    cursor: pointer;
+}
