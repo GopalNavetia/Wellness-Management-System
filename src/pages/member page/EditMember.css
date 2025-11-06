@@ -1,4 +1,4 @@
-.addMemberContainer {
+.editMemberContainer {
     width: 97%;
     /* border: 2px solid brown; */
     margin: 1.5% 1.5% 1.5% 1.5%;
@@ -9,7 +9,7 @@
     overflow: hidden;
 }
 
-.addMemberHeadSection {
+.editMemberHeadSection {
     width: 100%;
     padding: 0.5% 1.5%;
     background-color: #111;
@@ -21,7 +21,7 @@
     justify-content: space-between;
 }
 
-.addMemberHeadSection h1 {
+.editMemberHeadSection h1 {
     margin-left: 0%;
     background-color: #111;
     border-top-left-radius: 12px;
@@ -31,18 +31,18 @@
     cursor: default;
 }
 
-.addMemberHeadSection .xMark {
+.editMemberHeadSection .xMark {
     color: #fff;
     transition: all 0.3s ease;
     cursor: pointer;
 }
 
-.addMemberHeadSection .xMark:hover {
+.editMemberHeadSection .xMark:hover {
     color: #ff4d4d;
     transform: scale(1.2, 1.2);
 }
 
-.addMemberContainer .formContainer {
+.editMemberContainer .formContainer {
     margin: 2.5% 1.5%;
     width: 100%;
     padding-bottom: 1.4%;
@@ -53,7 +53,7 @@
     justify-content: center;
 }
 
-.addMemberContainer input {
+.editMemberContainer input {
     font-size: 0.9em;
     padding: 0.2% 0.4%;
     margin-bottom: 0.4%;
@@ -61,23 +61,23 @@
     font-size: 1em;
 }
 
-.addMemberContainer input::placeholder {
+.editMemberContainer input::placeholder {
     font-weight: 100;
     color: rgba(0, 0, 0, 0.5);
 }
 
-.addMemberContainer label {
+.editMemberContainer label {
     font-size: 1em;
     font-weight: 500;
 }
 
-.addMemberContainer select {
+.editMemberContainer select {
     margin-left: 1%;
     font-size: 0.9em;
     font-weight: 400;
 }
 
-.addMemberContainer .buttonContainer {
+.editMemberContainer .buttonContainer {
     width: 15%;
     margin-top: 1%;
     font-size: 0.5em;
@@ -92,7 +92,7 @@
     align-self: end;
 }
 
-.addMemberContainer .formContainer .buttonContainer button {
+.editMemberContainer .formContainer .buttonContainer button {
     padding: 2.5% 3.5%;
     cursor: pointer;
 }

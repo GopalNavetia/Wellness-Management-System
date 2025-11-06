@@ -15,12 +15,13 @@ nav {
 }
 
 nav img {
-    width: 4%;
+    width: 10%;
     /* max-height: 10px; */
     border-radius: 15%;
 }
 
 .navTitle {
+    width: 25%;
     cursor: pointer;
 }
 
@@ -31,7 +32,7 @@ nav>div {
 }
 
 nav h1 {
-    margin-left: 1%;
+    margin-left: 3%;
     font-size: 1.8em;
     transition: color 0.3s;
 }

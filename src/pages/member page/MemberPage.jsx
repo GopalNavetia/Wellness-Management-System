@@ -21,8 +21,12 @@ export default function MemberPage() {
                     <MemberTable onViewMember={setSelectedMemberId} />
                 </>
             },
-            { path: '/addmember', element: <><AddMember /> <MemberTable /></> },
-            { path: '/memberprofile', element: <MemberProfile memberID={selectedMemberId} /> },
+            {
+                path: '/addmember', element: <><AddMember /> <MemberTable /></>
+            },
+            {
+                path: '/memberprofile/*', element: <MemberProfile memberID={selectedMemberId} />,
+            },
         ]);
     };
 
