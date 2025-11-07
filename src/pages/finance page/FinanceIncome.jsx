@@ -83,9 +83,7 @@ export default function FinanceIncome() {
                     {item.status}
                   </td>
                   <td>
-                    <button className="view-btn">View</button>
-                    <button className="edit-btn">Edit</button>
-                    <button className="delete-btn">Delete</button>
+                    <button className="view-btn">View</button>     
                   </td>
                 </tr>
               ))}
