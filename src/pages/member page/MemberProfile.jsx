@@ -46,7 +46,7 @@ export default function MemberProfile({ memberID }) {
 
     const MemberProfileRoutes = () =>
         useRoutes([
-            { path: '/', element: renderProfileContent() },
+            { path: '/*', element: renderProfileContent() },
             {
                 path: '/editmember',
                 element: (
