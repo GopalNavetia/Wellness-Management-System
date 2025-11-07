@@ -1,46 +1,21 @@
+
+
 .finance-page {
-  width: 100%;
-  height: 100%;
-  border: 5px solid red;
-
+  width:100%;
+  height:100%;
+  border:2px solid red;
+  overflow-y: auto;
 }
-
-
-/* ===== Income Header Section ===== */
-.income-main-header {
-  background-color: #000;
-  color: #fff;
-  padding: 1rem 2%;
-  width: 100%;
-  max-width: 1100px;
-  margin: 2% auto;
-  border-radius: 10px 10px 0 0;
-  /* top corners rounded, bottom corners straight */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  text-align: left;
-}
-
-.income-main-header h2 {
-  margin: 0;
-  font-size: 2.0rem;
-  font-weight: 700;
-}
-
-
-
-
-
-
 .summary-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  margin: 2%;
   flex-wrap: wrap;
   gap: 2%;
+  padding:0,10%;
 }
 
 @media (max-width: 768px) {
-  .summary-container {
-    flex-direction: column;
-    gap: 15px;
-  }
+  .summary-container { flex-direction: column; gap: 15px; }
 }
