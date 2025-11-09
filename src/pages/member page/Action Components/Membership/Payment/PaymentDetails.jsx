@@ -2,7 +2,9 @@ import "./PaymentDetails.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate, useRoutes } from 'react-router-dom';
+import PaymentRecord from './PaymentRecord'
 import AddPayment from './AddPayment'
+import EditPayment from './EditPayment'
 
 export default function PaymentDetails() {
     const navigate = useNavigate();
@@ -10,6 +12,7 @@ export default function PaymentDetails() {
     let handleClose = () => navigate(-1);
 
     let renderPageContent = () => (
+        <>
             <div className="paymentDetails">
                 <div className="paymentDetailsHeadSection">
                     <h1>Payment Details</h1>
@@ -47,12 +50,15 @@ export default function PaymentDetails() {
 
                 </div>
             </div>
+            <PaymentRecord />
+        </>
     );
 
     let PaymentDetailsRoutes = () => {
         return useRoutes([
             { path: '/', element: renderPageContent() },
             { path: 'addpayment', element: <> <AddPayment /> {renderPageContent()}</> },
+            { path: 'editpayment', element: <> <EditPayment /> {renderPageContent()}</> },
         ])
     };
 

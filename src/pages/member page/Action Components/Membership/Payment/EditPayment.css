@@ -1,4 +1,4 @@
-.addPayment {
+.editPayment {
     width: 96%;
     /* border: 2px solid brown; */
     margin: 0.5% 1.5% 0.5% 1.5%;
@@ -9,7 +9,7 @@
     overflow: hidden;
 }
 
-.addPaymentHeadSection {
+.editPaymentHeadSection {
     width: 100%;
     padding: 0.5% 1.5%;
     background-color: #111;
@@ -21,7 +21,7 @@
     justify-content: space-between;
 }
 
-.addPaymentHeadSection h1 {
+.editPaymentHeadSection h1 {
     background-color: #111;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
@@ -30,18 +30,18 @@
     cursor: default;
 }
 
-.addPaymentHeadSection .xMark {
+.editPaymentHeadSection .xMark {
     color: #fff;
     transition: all 0.3s ease;
     cursor: pointer;
 }
 
-.addPaymentHeadSection .xMark:hover {
+.editPaymentHeadSection .xMark:hover {
     color: #ff4d4d;
     transform: scale(1.2, 1.2);
 }
 
-.addPayment .formContainer {
+.editPayment .formContainer {
     margin: 2.5% 1.5%;
     width: 100%;
     padding-bottom: 1.4%;
@@ -52,35 +52,35 @@
     justify-content: center;
 }
 
-.addPayment input {
+.editPayment input {
     padding: 0.2% 0.4%;
     margin-bottom: 0.4%;
     width: 95%;
     font-size: 1em;
 }
 
-.addPayment input::placeholder {
+.editPayment input::placeholder {
     font-weight: 100;
     color: rgba(0, 0, 0, 0.5);
 }
 
-.addPayment label {
+.editPayment label {
     font-size: 1em;
     font-weight: 500;
 }
 
-.addPayment select {
+.editPayment select {
     width: 40%;
     font-size: 1em;
     font-weight: 400;
 }
 
-.addPayment option {
+.editPayment option {
     font-size: 1em;
     font-weight: 400;
 }
 
-.addPayment .buttonContainer {
+.editPayment .buttonContainer {
     width: 15%;
     margin-top: 1%;
     font-size: 0.5em;
@@ -95,7 +95,7 @@
     align-self: end;
 }
 
-.addPayment .formContainer .buttonContainer button {
+.editPayment .formContainer .buttonContainer button {
     padding: 2.5% 3.5%;
     cursor: pointer;
 }

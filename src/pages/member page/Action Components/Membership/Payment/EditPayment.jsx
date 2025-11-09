@@ -1,10 +1,10 @@
-import './AddPayment.css'
+import './EditPayment.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-export default function AddPayment() {
+export default function EditPayment() {
 
     const navigate = useNavigate();
     let handleClose = () => {
@@ -53,9 +53,9 @@ export default function AddPayment() {
     }
 
     return (
-        <div className="addPayment">
-            <div className="addPaymentHeadSection">
-                <h1>Add Payment</h1>
+        <div className="editPayment">
+            <div className="editPaymentHeadSection">
+                <h1>Edit Payment</h1>
                 <span className='xMark' onClick={handleClose}><FontAwesomeIcon icon={faXmark} /></span>
             </div>
 

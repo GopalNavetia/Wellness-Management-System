@@ -1,0 +1,65 @@
+.paymentRecord {
+    width: 96%;
+    /* border: 2px solid brown; */
+    margin: 0.5% 1.5% 0.5% 1.5%;
+    border: 1px solid rgba(17, 17, 17, 0.5);
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.paymentRecordHeadSection {
+    width: 100%;
+    padding: 0.5% 1.5%;
+    background-color: #111;
+    color: #fff;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.paymentRecordHeadSection h1 {
+    background-color: #111;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    color: #fff;
+    font-size: 1.3em;
+    cursor: default;
+}
+
+.paymentRecordContainer {
+    margin: 1% 0;
+    display: flex;
+    justify-content: center;
+}
+
+.paymentRecordContainer table {
+    width: 96%;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 1em;
+}
+
+.paymentRecordContainer th,
+.paymentRecordContainer td {
+    border: 1px solid #ccc;
+    padding: 0.5% 0.5%;
+}
+
+.paymentRecordContainer th {
+    background-color: #222;
+    color: #fff;
+    font-weight: 600;
+}
+
+.paymentRecordContainer td {
+    font-size: 0.9em;
+}
+
+.paymentRecordContainer table button {
+    padding: 1% 2%;
+    cursor: pointer;
+}

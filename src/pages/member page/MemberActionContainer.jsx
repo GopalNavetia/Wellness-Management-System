@@ -7,10 +7,10 @@ export default function MemberActionContainer({ memberID }) {
     // Navigation
     const navigate = useNavigate();
 
-    let handleMembershipButton = () => navigate('membershiprecord')
-    let handleHealthRecordButton = () => navigate('healthrecord')
-    let handleWorkoutButton = () => navigate('workoutplan')
-    let handleProgressButton = () => navigate('progress')
+    let handleMembershipButton = () => navigate('/gymdashboard/memberprofile/membershiprecord')
+    let handleHealthRecordButton = () => navigate('/gymdashboard/memberprofile/healthrecord')
+    let handleWorkoutButton = () => navigate('/gymdashboard/memberprofile/workoutplan')
+    let handleProgressButton = () => navigate('/gymdashboard/memberprofile/progress')
 
     // Render Page Content
     const renderPageContent = () => (
