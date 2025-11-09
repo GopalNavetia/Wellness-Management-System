@@ -1,0 +1,76 @@
+.paymentDetails {
+    width: 96%;
+    height: 15em;
+    margin: 0.5% 1% 1% 1%;
+    border: 1px solid rgba(17, 17, 17, 0.5);
+    border-radius: 13px;
+}
+
+.paymentDetailsHeadSection {
+    width: 100%;
+    padding: 0.5% 1.5%;
+    background-color: #111;
+    color: #fff;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.paymentDetailsHeadSection h1 {
+    background-color: #111;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    color: #fff;
+    font-size: 1.3em;
+    cursor: default;
+}
+
+.paymentDetailsHeadSection .buttonsContainer {
+    display: flex;
+    gap: 0.8em;
+    align-items: center;
+}
+
+.paymentDetailsHeadSection button {
+    padding: 2% 7%;
+    font-size: 0.95em;
+    cursor: pointer;
+}
+
+.paymentDetailsHeadSection .xMark {
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.paymentDetailsHeadSection .xMark:hover {
+    color: #ff4d4d;
+    transform: scale(1.2, 1.2);
+}
+
+.paymentDetails .infoContainer {
+    width: 89.7%;
+    padding: 0.5% 1.5%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto auto auto;
+    gap: 10%;
+}
+
+.paymentDetails .infoContainer .title {
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.paymentDetails .infoContainer .data {
+    font-size: 0.9em;
+}
+
+.paymentDetails .infoContainer button {
+    padding: 0.5% 1.5%;
+    width: 25%;
+    height: 50%;
+    gap: 1%;
+}

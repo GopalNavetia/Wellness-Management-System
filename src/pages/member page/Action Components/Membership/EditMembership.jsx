@@ -1,10 +1,10 @@
-import './AddMembership.css'
+import './EditMembership.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-export default function AddMembership() {
+export default function EditMembership() {
 
     const navigate = useNavigate();
     let handleClose = () => {
@@ -53,9 +53,9 @@ export default function AddMembership() {
     }
 
     return (
-        <div className="addMembershipRecord">
-            <div className="addMembershipRecordHeadSection">
-                <h1>Add Membership Record</h1>
+        <div className="editMembershipRecord">
+            <div className="editMembershipRecordHeadSection">
+                <h1>Edit Membership Record</h1>
                 <span className='xMark' onClick={handleClose}><FontAwesomeIcon icon={faXmark} /></span>
             </div>
 
@@ -81,7 +81,7 @@ export default function AddMembership() {
 
                 <div>
                     <label htmlFor="fees">Fee Amount:</label>
-                    <input type="text" name="fees" value={formData.fees} id="fees" placeholder="Enter Amount" onChange={handleInputChange}/>
+                    <input type="text" name="fees" value={formData.fees} id="fees" placeholder="Enter Amount" />
                 </div>
 
                 <div className="buttonContainer">

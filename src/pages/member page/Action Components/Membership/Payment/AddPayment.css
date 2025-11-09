@@ -1,7 +1,7 @@
-.addMembershipRecord {
+.addPayment {
     width: 95%;
     /* border: 2px solid brown; */
-    margin: 1% 1.5% 0.5% 1.5%;
+    margin: 0.5% 1.5% 0.5% 1.5%;
     border: 1px solid rgba(17, 17, 17, 0.5);
     border-radius: 12px;
     background: #fff;
@@ -9,7 +9,7 @@
     overflow: hidden;
 }
 
-.addMembershipRecordHeadSection {
+.addPaymentHeadSection {
     width: 100%;
     padding: 0.5% 1.5%;
     background-color: #111;
@@ -21,7 +21,7 @@
     justify-content: space-between;
 }
 
-.addMembershipRecordHeadSection h1 {
+.addPaymentHeadSection h1 {
     background-color: #111;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
@@ -30,18 +30,18 @@
     cursor: default;
 }
 
-.addMembershipRecordHeadSection .xMark {
+.addPaymentHeadSection .xMark {
     color: #fff;
     transition: all 0.3s ease;
     cursor: pointer;
 }
 
-.addMembershipRecordHeadSection .xMark:hover {
+.addPaymentHeadSection .xMark:hover {
     color: #ff4d4d;
     transform: scale(1.2, 1.2);
 }
 
-.addMembershipRecord .formContainer {
+.addPayment .formContainer {
     margin: 2.5% 1.5%;
     width: 100%;
     padding-bottom: 1.4%;
@@ -52,31 +52,35 @@
     justify-content: center;
 }
 
-.addMembershipRecord input {
+.addPayment input {
     padding: 0.2% 0.4%;
     margin-bottom: 0.4%;
     width: 95%;
     font-size: 1em;
 }
 
-.addMembershipRecord input::placeholder {
+.addPayment input::placeholder {
     font-weight: 100;
     color: rgba(0, 0, 0, 0.5);
 }
 
-.addMembershipRecord label {
+.addPayment label {
     font-size: 1em;
     font-weight: 500;
 }
 
-.addMembershipRecord select {
+.addPayment select {
     width: 40%;
-    margin-left: 1%;
     font-size: 1em;
     font-weight: 400;
 }
 
-.addMembershipRecord .buttonContainer {
+.addPayment option {
+    font-size: 1em;
+    font-weight: 400;
+}
+
+.addPayment .buttonContainer {
     width: 15%;
     margin-top: 1%;
     font-size: 0.5em;
@@ -91,7 +95,7 @@
     align-self: end;
 }
 
-.addMembershipRecord .formContainer .buttonContainer button {
+.addPayment .formContainer .buttonContainer button {
     padding: 2.5% 3.5%;
     cursor: pointer;
 }

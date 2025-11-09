@@ -1,6 +1,5 @@
 import './MemberActionContainer.css'
 import MembershipRecord from './Action Components/Membership/MembershipRecord'
-import AddMembership from './Action Components/Membership/AddMembership'
 import { useNavigate, useRoutes } from 'react-router-dom';
 
 
@@ -27,7 +26,7 @@ export default function MemberActionContainer({ memberID }) {
     const MemberActionRoutes = () => {
         return useRoutes([
             { path: '/', element: renderPageContent() },
-            { path: 'membershiprecord', element: <>{renderPageContent()} < MembershipRecord memberID={memberID} /></> }
+            { path: 'membershiprecord/*', element: <>{renderPageContent()} < MembershipRecord memberID={memberID} /></> }
         ]);
     }
 
