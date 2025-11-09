@@ -1,4 +1,4 @@
-import './paymentRecord.css'
+import './PaymentRecord.css'
 import { useNavigate } from 'react-router-dom';
 
 export default function PaymentRecord() {
