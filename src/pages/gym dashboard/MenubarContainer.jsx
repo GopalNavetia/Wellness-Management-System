@@ -21,6 +21,11 @@ export default function MenubarContainer() {
         navigate('/gymdashboard');
     }
 
+    // Trainer Button
+    function handelTrainerButtonClick() {
+        navigate('/gymdashboard/trainerpage');
+    }
+
     // Finance Button
     function handelFinanceButtonClick() {
         navigate('/gymdashboard/financepage');
@@ -34,7 +39,7 @@ export default function MenubarContainer() {
                 <hr />
                 <div className='container'>
                     <div className='items' onClick={handelMemberButtonClick}><span className='icons'><FontAwesomeIcon icon={faUser} /></span><h3 style={{ display: isVisible ? "" : "none" }}>Members</h3></div>
-                    <div className='items'><span className='icons'><FontAwesomeIcon icon={faDumbbell} /></span><h3 style={{ display: isVisible ? "" : "none" }}>Trainers</h3></div>
+                    <div className='items' onClick={handelTrainerButtonClick}><span className='icons'><FontAwesomeIcon icon={faDumbbell} /></span><h3 style={{ display: isVisible ? "" : "none" }}>Trainers</h3></div>
                     <div className='items' onClick={handelFinanceButtonClick}><span className='icons'><FontAwesomeIcon icon={faCoins} /></span><h3 style={{ display: isVisible ? "" : "none" }}>Finance</h3></div>
                 </div>
             </div>
