@@ -1,35 +1,38 @@
-// ✅ src/mocks/IncomeMockData.js 
- const incomeMockData = 
- { chartData:
-  [
-   { month: "Jan", income: 30000 },
-   { month: "Feb", income: 40000 },
-   { month: "Mar", income: 35000 },
-   { month: "Apr", income: 45000 }, 
-   { month: "May", income: 60000 },
-    { month: "Jun", income: 50000 }, 
+// ✅ src/mocks/IncomeMockData.js
+const incomeMockData = {
+  chartData: [
+    { month: "Jan", income: 30000, date: "2025-01-10" },
+    { month: "Feb", income: 40000, date: "2025-02-15" },
+    { month: "Mar", income: 35000, date: "2025-03-12" },
+    { month: "Apr", income: 45000, date: "2025-04-18" },
+    { month: "May", income: 60000, date: "2025-05-20" },
+    { month: "Jun", income: 50000, date: "2025-06-25" },
   ],
-   tableData: [ { id: 1,
-     month: "Jan",
+
+  tableData: [
+    {
+      id: 1,
+      month: "Jan",
       income: 30000,
       memberName: "John Doe",
       amount: 2000,
       paid: 2000,
       pending: 0,
-      dueDate: "2025-10-10",
-      status: "Paid", 
+      dueDate: "2025-01-10",
+      status: "Paid",
     },
-     { id: 2,
-       month: "Feb",
-       income: 40000,
-       memberName: "Amit Sharma",
-        amount: 1500,
-        paid: 1000,
-        pending: 500, 
-        dueDate: "2025-11-05",
-        status: "Pending",
-        }, 
-     { 
+    {
+      id: 2,
+      month: "Feb",
+      income: 40000,
+      memberName: "Amit Sharma",
+      amount: 1500,
+      paid: 1000,
+      pending: 500,
+      dueDate: "2025-02-15",
+      status: "Pending",
+    },
+    {
       id: 3,
       month: "Mar",
       income: 35000,
@@ -37,28 +40,43 @@
       amount: 3000,
       paid: 3000,
       pending: 0,
-      dueDate: "2025-09-28",
-      status: "Paid", 
-    }, 
-     {
+      dueDate: "2025-03-12",
+      status: "Paid",
+    },
+    {
       id: 4,
       month: "Apr",
-      memberName: "Karan Patel", 
+      income: 45000,
+      memberName: "Karan Patel",
       amount: 2500,
-      paid: 1500, 
+      paid: 1500,
       pending: 1000,
-      dueDate: "2025-10-15",
+      dueDate: "2025-04-18",
       status: "Pending",
-     }, 
-     { id: 5,
+    },
+    {
+      id: 5,
       month: "May",
+      income: 60000,
       memberName: "Neha Verma",
       amount: 1800,
-      paid: 1800, 
+      paid: 1800,
       pending: 0,
-      dueDate: "2025-10-20",
+      dueDate: "2025-05-20",
       status: "Paid",
-      }
-      ],
-      };
- export default incomeMockData;
+    },
+    {
+      id: 6,
+      month: "Jun",
+      income: 50000,
+      memberName: "Ravi Kumar",
+      amount: 2200,
+      paid: 2200,
+      pending: 0,
+      dueDate: "2025-06-25",
+      status: "Paid",
+    },
+  ],
+};
+
+export default incomeMockData;
