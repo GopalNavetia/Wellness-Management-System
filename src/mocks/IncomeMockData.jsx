@@ -1,79 +1,64 @@
-// ✅ src/mocks/IncomeMockData.js
-const incomeMockData = {
-  chartData: [
-    { month: "Jan", income: 30000 },
-    { month: "Feb", income: 40000 },
-    { month: "Mar", income: 35000 },
-    { month: "Apr", income: 45000 },
-    { month: "May", income: 60000 },
-    { month: "Jun", income: 50000 },
+// ✅ src/mocks/IncomeMockData.js 
+ const incomeMockData = 
+ { chartData:
+  [
+   { month: "Jan", income: 30000 },
+   { month: "Feb", income: 40000 },
+   { month: "Mar", income: 35000 },
+   { month: "Apr", income: 45000 }, 
+   { month: "May", income: 60000 },
+    { month: "Jun", income: 50000 }, 
   ],
-
-  tableData: [
-    {
-      id: 1,
-      month: "Jan",
+   tableData: [ { id: 1,
+     month: "Jan",
       income: 30000,
       memberName: "John Doe",
-      plan: "Gold",
       amount: 2000,
       paid: 2000,
       pending: 0,
       dueDate: "2025-10-10",
-      mode: "Card",
-      status: "Paid",
+      status: "Paid", 
     },
-    {
-      id: 2,
-      month: "Feb",
-      income: 40000,
-      memberName: "Amit Sharma",
-      plan: "Silver",
-      amount: 1500,
-      paid: 1000,
-      pending: 500,
-      dueDate: "2025-11-05",
-      mode: "Cash",
-      status: "Pending",
-    },
-    {
+     { id: 2,
+       month: "Feb",
+       income: 40000,
+       memberName: "Amit Sharma",
+        amount: 1500,
+        paid: 1000,
+        pending: 500, 
+        dueDate: "2025-11-05",
+        status: "Pending",
+        }, 
+     { 
       id: 3,
       month: "Mar",
       income: 35000,
       memberName: "Priya Singh",
-      plan: "Platinum",
       amount: 3000,
       paid: 3000,
       pending: 0,
       dueDate: "2025-09-28",
-      mode: "UPI",
-      status: "Paid",
-    },
+      status: "Paid", 
+    }, 
      {
       id: 4,
       month: "Apr",
-      memberName: "Karan Patel",
-      plan: "Gold",
+      memberName: "Karan Patel", 
       amount: 2500,
-      paid: 1500,
+      paid: 1500, 
       pending: 1000,
       dueDate: "2025-10-15",
-      mode: "Card",
       status: "Pending",
-    },
-    {
-      id: 5,
+     }, 
+     { id: 5,
       month: "May",
       memberName: "Neha Verma",
-      plan: "Silver",
       amount: 1800,
-      paid: 1800,
+      paid: 1800, 
       pending: 0,
       dueDate: "2025-10-20",
-      mode: "Cash",
       status: "Paid",
-    }
-  ],
-};
-
-export default incomeMockData;
+      }
+      ],
+      };
+ export default incomeMockData;
