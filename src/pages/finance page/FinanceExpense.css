@@ -1,0 +1,164 @@
+.expense-container {
+  margin: 0 1.5% 1.5% 1.5%;
+  width: 97%;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.expense-title {
+  background-color: #111;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 10px 10px 0 0;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.expense-header {
+  width: 100%;
+  padding: 0.5% 1.5%;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add-expense-btn {
+  padding: 0.8%;
+  cursor: pointer;
+  margin: 1.5%;
+  border: 2px solid #000;
+}
+
+.chart-container {
+  width: 100%;
+  max-width: 600px;
+  height: 350px;
+  background: #fff;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+
+.expense-table {
+  width: 96%;
+  border-collapse: collapse;
+  margin: 0.3% 0%  1.5% 0% ;
+  
+}
+
+.expense-table th,
+.expense-table td {
+  border: 1px solid #ccc;
+  padding: 0.5% 1%;
+}
+
+.expense-table th {
+  background-color: black;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.delete-btn,
+.edit-btn {
+  padding: 2%;
+  cursor: pointer;
+  margin: 1.5%;
+}
+
+/* --- Modal (Fixed & Non-overlapping) --- */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* ensures it’s above everything */
+}
+
+.modal-content {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  width: 320px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  z-index: 10000;
+}
+
+.modal-header {
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin: -25px -25px 15px -25px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.xMark {
+  color: #fff;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.xMark:hover {
+  color: #ff4d4d;
+  transform: scale(1.2);
+}
+
+.modal-content label {
+  display: block;
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.modal-content input,
+.modal-content select,
+.modal-content textarea {
+  width: 100%;
+  margin-top: 4px;
+  padding: 6px;
+  border: 2px solid #000;
+  border-radius: 4px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.save-btn,
+.cancel-btn {
+  padding: 2%;
+  cursor: pointer;
+  margin: 1.5%;
+}

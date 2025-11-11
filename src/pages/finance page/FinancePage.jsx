@@ -2,6 +2,9 @@ import { faMoneyBillWave, faArrowDown, faChartLine, faClock } from "@fortawesome
 import Card from "./Card";
 import FinanceIncome from "./FinanceIncome";
 import "./FinancePage.css";
+import FinanceExpense from "./FinanceExpense";
+import FinanceRevenue from "./FinanceRevenue";
+
 
 export default function FinancePage() {
   return (
@@ -15,6 +18,10 @@ export default function FinancePage() {
       </div>
       {/* Income Section */}
       <FinanceIncome />
+      {/* Expense Section */}
+      <FinanceExpense/>
+      {/* Revenue Section */}
+      <FinanceRevenue />
       </div>
   )
 }
