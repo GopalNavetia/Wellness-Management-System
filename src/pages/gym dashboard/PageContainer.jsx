@@ -1,13 +1,14 @@
 import './PageContainer.css'
 import MemberPage from '../member page/MemberPage';
-import AddMember from '../member page/AddMember'
+import TrainerPage from '../trainer page/TrainerPage';
 import FinancePage from '../finance page/FinancePage';
 import { useRoutes } from 'react-router-dom';
 
 const GymDashboardPageRoutes = () => {
     return useRoutes([
         { path: '/*', element: <MemberPage /> },
-        { path: '/financepage', element: <FinancePage /> }
+        { path: '/financepage', element: <FinancePage /> },
+        { path: '/trainerpage', element: <TrainerPage /> }
     ]);
 };
 
