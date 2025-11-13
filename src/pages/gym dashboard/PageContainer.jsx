@@ -1,6 +1,6 @@
 import './PageContainer.css'
 import MemberPage from '../member page/MemberPage';
-import TrainerPage from '../trainer page/TrainerPage';
+import TrainerTable from '../trainer page/TrainerTable';
 import FinancePage from '../finance page/FinancePage';
 import { useRoutes } from 'react-router-dom';
 
@@ -8,7 +8,7 @@ const GymDashboardPageRoutes = () => {
     return useRoutes([
         { path: '/*', element: <MemberPage /> },
         { path: '/financepage', element: <FinancePage /> },
-        { path: '/trainerpage', element: <TrainerPage /> }
+        { path: '/trainerpage', element: <TrainerTable /> }
     ]);
 };
 

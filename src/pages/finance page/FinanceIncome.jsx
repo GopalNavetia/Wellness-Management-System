@@ -20,7 +20,7 @@ export default function FinanceIncome() {
   const [tempToDate, setTempToDate] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
 
-  // ✅ Local states for chart and table data
+  //  Local states for chart and table data
   const [chartData, setChartData] = useState(incomeMockData.chartData);
   const [tableData, setTableData] = useState(incomeMockData.tableData);
 
@@ -68,7 +68,7 @@ export default function FinanceIncome() {
     filter === "All" ? true : item.status.toLowerCase() === filter.toLowerCase()
   );
 
-  // ✅ Update chart based on filtered table
+  //  Update chart based on filtered table
   const filteredChartData = chartData.map((monthData) => {
     const total = filteredTableData
       .filter((item) => item.month === monthData.month)
@@ -95,9 +95,9 @@ export default function FinanceIncome() {
               {btn}
             </button>
           ))}
-
+          
           {/* ✅ Date Filters */}
-          <div className="date-filters">
+          <div className="date-Filters">
             <label>From:</label>
             <input
               type="date"
@@ -110,16 +110,18 @@ export default function FinanceIncome() {
               value={tempToDate}
               onChange={(e) => setTempToDate(e.target.value)}
             />
-
-            {/* ✅ Apply Button */}
-            <button className="apply-btn" onClick={handleApplyFilter}>
+             
+            {/*  Apply Button */}
+            <div className="button-Container">
+            <button  onClick={handleApplyFilter}>
               Apply
             </button>
 
             {/* ✅ Clear Button */}
-            <button className="clear-btn" onClick={handleClearFilter}>
+            <button  onClick={handleClearFilter}>
               Clear
             </button>
+           </div> 
           </div>
         </div>
 

@@ -1,10 +1,10 @@
 .income-section {
   margin: 0 1.5% 1.5% 1.5%;
   width: 97%;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border: 1px solid #00000026;
   border-radius: 12px;
   background: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 12px #0000000f;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,16 +28,16 @@
   margin: 0;
   font-size: 1.5em;
   cursor: default;
+  
 }
-
 /* Filters */
 .income-filters {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
-  margin: 10px 15px;
+  gap:10px;
+  margin: 4px 10px;
 }
 
 .income-filters button {
@@ -63,48 +63,41 @@
 }
 
 /* Date Filters */
-.date-filters {
+.date-Filters {
   display: flex;
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
-  margin-left: 20px;
+  margin-left: 2%;
+  
+ 
+  
+  
 }
 
-.date-filters label {
+.date-Filters label {
   font-weight: 500;
   color: #333;
+  
 }
 
+
 .date-filters input[type="date"] {
-  padding: 4px 8px;
+  padding: 3px 6px;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 0.9rem;
   outline: none;
   transition: all 0.2s ease;
+  
+}
+.button-Container{
+  margin:2%;
 }
 
-.date-filters input[type="date"]:focus {
-  border-color: #33ccff;
-  box-shadow: 0 0 4px rgba(51, 204, 255, 0.3);
-}
 
-.clear-btn {
-  background-color: #f5f5f5;
-  color: #333;
-  border: 1px solid #ccc;
-  padding: 6px 14px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 500;
-  margin-left: 8px;
-}
 
-.clear-btn:hover {
-  background-color: #d32f2f;
-}
-
+ 
 
 /* Unified container for Graph + Table */
 .income-container {

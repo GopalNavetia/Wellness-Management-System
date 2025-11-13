@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { PieChart, Pie, Cell, Legend, ResponsiveContainer } from "recharts";
 import mockExpenseData from "../../mocks/ExpenseMockData";
 import "./FinanceExpense.css";
@@ -9,10 +9,11 @@ const COLORS = ["#ff99aa", "#87cefa", "#ffe59a", "#9de0d4", "#c7a4ff"];
 
 export default function FinanceExpense() {
   const [expenses, setExpenses] = useState(mockExpenseData);
+  const [filteredExpenses, setFilteredExpenses] = useState(expenses);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [editId, setEditId] = useState(null);
-  const [inactiveCategories, setInactiveCategories] = useState([]); // Track hidden slices
+  const [inactiveCategories, setInactiveCategories] = useState([]);
 
   const [formData, setFormData] = useState({
     date: "",
@@ -21,14 +22,19 @@ export default function FinanceExpense() {
     notes: "",
   });
 
-  // Open modal for adding new expense
+  const [fromDate, setFromDate] = useState("");
+  const [toDate, setToDate] = useState("");
+
+  useEffect(() => {
+    setFilteredExpenses(expenses);
+  }, [expenses]);
+
   const handleAddClick = () => {
     setFormData({ date: "", category: "", amount: "", notes: "" });
     setIsEditing(false);
     setIsFormOpen(true);
   };
 
-  // Edit expense
   const handleEdit = (exp) => {
     setFormData(exp);
     setEditId(exp.id);
@@ -39,7 +45,6 @@ export default function FinanceExpense() {
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  // Save / Update expense
   const handleSave = (e) => {
     e.preventDefault();
     if (!formData.date || !formData.category || !formData.amount) {
@@ -71,16 +76,31 @@ export default function FinanceExpense() {
   const handleDelete = (id) =>
     setExpenses(expenses.filter((exp) => exp.id !== id));
 
-  // Prepare data for pie chart
+  // ✅ Date range filter logic
+  const handleApplyFilter = () => {
+    const filtered = expenses.filter((exp) => {
+      const expDate = new Date(exp.date);
+      const from = fromDate ? new Date(fromDate) : null;
+      const to = toDate ? new Date(toDate) : null;
+      return (!from || expDate >= from) && (!to || expDate <= to);
+    });
+    setFilteredExpenses(filtered);
+  };
+
+  const handleClearFilter = () => {
+    setFromDate("");
+    setToDate("");
+    setFilteredExpenses(expenses);
+  };
+
   const chartData = Object.values(
-    expenses.reduce((acc, exp) => {
+    filteredExpenses.reduce((acc, exp) => {
       acc[exp.category] = acc[exp.category] || { name: exp.category, value: 0 };
       acc[exp.category].value += exp.amount;
       return acc;
     }, {})
   );
 
-  // Toggle visibility
   const toggleCategory = (name) => {
     setInactiveCategories((prev) =>
       prev.includes(name)
@@ -89,14 +109,43 @@ export default function FinanceExpense() {
     );
   };
 
-  // Only hide slice (not label)
   const visibleData = chartData.filter(
     (d) => !inactiveCategories.includes(d.name)
   );
 
   return (
     <div className="expense-container">
-      <h1 className="expense-title">Expenses</h1>
+      {/* Header Section */}
+      <div className="expenseHeadSection">
+        <h1>Expenses</h1>
+
+        <div className="date-filters">
+          <label>
+            From:
+            <input
+              type="date"
+              value={fromDate}
+              onChange={(e) => setFromDate(e.target.value)}
+            />
+          </label>
+
+          <label>
+            To:
+            <input
+              type="date"
+              value={toDate}
+              onChange={(e) => setToDate(e.target.value)}
+            />
+          </label>
+
+          <button className="apply-btn" onClick={handleApplyFilter}>
+            Apply
+          </button>
+          <button className="clear-btn" onClick={handleClearFilter}>
+            Clear
+          </button>
+        </div>
+      </div>
 
       <div className="expense-header">
         <button className="add-expense-btn" onClick={handleAddClick}>
@@ -104,65 +153,60 @@ export default function FinanceExpense() {
         </button>
       </div>
 
-      {/* ✅ Pie Chart Section */}
-<div className="chart-container">
-  <ResponsiveContainer width="100%" height={350}>
-    <PieChart>
-      <Legend
-        verticalAlign="top"
-        align="center"
-        payload={chartData.map((item, index) => ({
-          id: item.name,
-          type: "square",
-          value: item.name,
-          color: COLORS[index % COLORS.length],
-        }))}
-        formatter={(value) => (
-          <span
-            onClick={() => toggleCategory(value)}
-            style={{
-              cursor: "pointer",
-              textDecoration: inactiveCategories.includes(value)
-                ? "line-through"
-                : "none",
-              color: inactiveCategories.includes(value)
-                ? "gray"
-                : "black",
-              fontWeight: "bold",
-            }}
-          >
-            {value}
-          </span>
-        )}
-      />
+      {/* Pie Chart */}
+      <div className="chart-container">
+        <ResponsiveContainer width="100%" height={350}>
+          <PieChart>
+            <Legend
+              verticalAlign="top"
+              align="center"
+              payload={chartData.map((item, index) => ({
+                id: item.name,
+                type: "square",
+                value: item.name,
+                color: COLORS[index % COLORS.length],
+              }))}
+              formatter={(value) => (
+                <span
+                  onClick={() => toggleCategory(value)}
+                  style={{
+                    cursor: "pointer",
+                    textDecoration: inactiveCategories.includes(value)
+                      ? "line-through"
+                      : "none",
+                    color: inactiveCategories.includes(value)
+                      ? "gray"
+                      : "black",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {value}
+                </span>
+              )}
+            />
 
-      <Pie
-        data={chartData.map((entry) =>
-          inactiveCategories.includes(entry.name)
-            ? { ...entry, value: 0 } // Hide slice but keep label
-            : entry
-        )}
-        dataKey="value"
-        nameKey="name"
-        cx="50%"
-        cy="50%"
-        outerRadius={100}
-        label
-      >
-        {chartData.map((entry, index) => (
-          <Cell
-            key={`cell-${index}`}
-            fill={COLORS[index % COLORS.length]}
-            fillOpacity={inactiveCategories.includes(entry.name) ? 0.3 : 1}
-          />
-        ))}
-      </Pie>
-    </PieChart>
-  </ResponsiveContainer>
-</div>
+            <Pie
+              data={visibleData}
+              dataKey="value"
+              nameKey="name"
+              cx="50%"
+              cy="50%"
+              outerRadius={100}
+              label
+            >
+              {visibleData.map((entry, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
+                  fillOpacity={inactiveCategories.includes(entry.name) ? 0.3 : 1}
+                />
+              ))}
+            </Pie>
+          </PieChart>
+        </ResponsiveContainer>
+      </div>
 
-
-      {/* ✅ Expense Table */}
+      {/* Expense Table */}
       <table className="expense-table">
         <thead>
           <tr>
@@ -174,7 +218,7 @@ export default function FinanceExpense() {
           </tr>
         </thead>
         <tbody>
-          {expenses.map((exp) => (
+          {filteredExpenses.map((exp) => (
             <tr key={exp.id}>
               <td>{exp.date}</td>
               <td>{exp.category}</td>
@@ -196,7 +240,7 @@ export default function FinanceExpense() {
         </tbody>
       </table>
 
-      {/* ✅ Modal */}
+      {/* Modal */}
       {isFormOpen && (
         <div className="modal">
           <div className="modal-content">
@@ -207,9 +251,7 @@ export default function FinanceExpense() {
               </span>
             </div>
             <form onSubmit={handleSave}>
-              <label>
-                <b>Date:</b>
-              </label>
+              <label><b>Date:</b></label>
               <input
                 type="date"
                 name="date"
@@ -217,9 +259,7 @@ export default function FinanceExpense() {
                 onChange={handleChange}
               />
 
-              <label>
-                <b>Category:</b>
-              </label>
+              <label><b>Category:</b></label>
               <select
                 name="category"
                 value={formData.category}
@@ -233,9 +273,7 @@ export default function FinanceExpense() {
                 <option value="Marketing">Marketing</option>
               </select>
 
-              <label>
-                <b>Amount (₹):</b>
-              </label>
+              <label><b>Amount (₹):</b></label>
               <input
                 type="number"
                 name="amount"
@@ -243,9 +281,7 @@ export default function FinanceExpense() {
                 onChange={handleChange}
               />
 
-              <label>
-                <b>Notes:</b>
-              </label>
+              <label><b>Notes:</b></label>
               <textarea
                 name="notes"
                 value={formData.notes}
