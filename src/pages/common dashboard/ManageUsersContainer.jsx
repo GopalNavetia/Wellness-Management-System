@@ -23,7 +23,7 @@ export default function ManageUsersConatiner() {
     // Data Fetch 
     const API_BASE_URL = 'https://admonitorial-cinderella-hungerly.ngrok-free.dev/MyProject/TransferDataUser';
     const [fetchData, setFetchData] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function fetchUsers() {

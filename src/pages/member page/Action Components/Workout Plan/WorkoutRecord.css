@@ -45,7 +45,11 @@
 
 .historySection .title {
     border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-    padding: 0.3%
+    padding: 0.3%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .historySection .title:last-child {
@@ -54,21 +58,78 @@
 
 .historySection .title .weekDate {
     /* border: 1px solid blue; */
-    padding: 0% 1.5%;
+    margin: 0.2% 0%;
+    /* padding: 0% 1%; */
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+.historySection .noData {
+    padding: 0.5%;
+}
+
+.historySection .data {
+    /* border: 1px solid red; */
+    width: 35%;
+}
+
 .historySection .title p {
-    width: 25%;
+    display: flex;
+    /* gap: 1%; */
+}
+
+.historySection .title span {
+    /* border: 1px solid green; */
+    width: 45%;
 }
 
 .historySection .title b {
-    margin-left: 1%;
+    margin-left: 5%;
+    /* border: 1px solid blue; */
 }
 
 .weekDate button {
     padding: 0.1% 0.5%;
+    margin-right: 2%;
     cursor: pointer;
+}
+
+.historySection .title table {
+    margin: 0.5% 0%;
+    width: 95%;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 1em;
+}
+
+.historySection .title th,
+.historySection .title td {
+    border: 1px solid #ccc;
+    padding: 0.5% 0.5%;
+}
+
+.historySection .title th {
+    background-color: #222;
+    color: #fff;
+    font-weight: 600;
+}
+
+.historySection .title td {
+    font-size: 0.9em;
+    text-align: left;
+}
+
+.historySection .title .buttonContainer {
+    /* border: 1px solid red; */
+    margin: 0.2% 0% 0.2% 2.5%;
+    width: 15%;
+    display: flex;
+    gap: 10%;
+    align-self: start;
+}
+
+.historySection .title .buttonContainer button {
+    padding: 1% 2.5%;
 }

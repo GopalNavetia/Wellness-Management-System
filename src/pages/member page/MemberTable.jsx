@@ -2,13 +2,40 @@ import './MemberTable.css'
 import MembersData from '../../mocks/MembersData'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 export default function MemberTable({ onViewMember }) {
+    // Members Table Data Fetch
+    // const API_BASE_URL = 'https://admonitorial-cinderella-hungerly.ngrok-free.dev/MyProject/MemberDashboard';
+    // const [fetchData, setFetchData] = useState(null);
+    // const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
+
+    // useEffect(() => {
+    //     async function fetchMemberTableData() {
+    //         try {
+    //             const result = await axios.get(API_BASE_URL, {
+    //                 headers: {
+    //                     "ngrok-skip-browser-warning": "true"
+    //                 }
+    //             });
+    //             setFetchData(result.data);
+    //         } catch (error) {
+    //             console.log(error);
+    //         }
+    //         finally {
+    //             setLoading(false);
+    //         }
+    //     }
+    //     fetchMemberTableData();
+    // }, []);
 
     // Stored Data For Validation
     let storedMembers = MembersData;
+    // let storedMembers = fetchData || [];
+
     // Pagination state
     let [pageNo, setPageNo] = useState(1);
     let membersPerPage = 8;
@@ -93,22 +120,26 @@ export default function MemberTable({ onViewMember }) {
                 </div>
             </div>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Type</th>
-                        <th>Payment</th>
-                        <th>Membership</th>
-                        <th>Contact</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
+            {loading ? (
+                <div>Loading users...</div> // Loading indicator/message
+            ) : (
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Payment</th>
+                            <th>Membership</th>
+                            <th>Contact</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
 
-                <tbody>
-                    {generateMembersData()}
-                </tbody>
-            </table>
+                    <tbody>
+                        {generateMembersData()}
+                    </tbody>
+                </table>
+            )}
 
             <div className="pagination">
                 <p><span className='leftIcon' onClick={handleLeftButton}><FontAwesomeIcon icon={faAngleLeft} /></span> Showing Page {pageNo} out of {totalPages} <span className='rightIcon' onClick={handleRightButton}><FontAwesomeIcon icon={faAngleRight} /></span></p>

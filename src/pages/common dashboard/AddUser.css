@@ -9,7 +9,6 @@
 .addUserContainer {
     height: auto;
     width: 80%;
-    border: 54px solid brown;
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 12px;
     background: #fff;
