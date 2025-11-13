@@ -1,5 +1,5 @@
 import './MemberTable.css'
-import MembersData from '../../mocks/TrainerData'
+import MembersData from '../../mocks/MembersData'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';

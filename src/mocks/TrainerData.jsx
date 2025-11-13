@@ -1,7 +1,3 @@
-
-
-
-    
 let mockData = [
   {
     name: 'Bob',

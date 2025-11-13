@@ -21,33 +21,33 @@ export default function ManageUsersConatiner() {
     };
 
     // Data Fetch 
-    const API_BASE_URL = 'https://admonitorial-cinderella-hungerly.ngrok-free.dev/MyProject/TransferDataUser';
-    const [fetchData, setFetchData] = useState(null);
-    const [loading, setLoading] = useState(true);
+    // const API_BASE_URL = 'https://admonitorial-cinderella-hungerly.ngrok-free.dev/MyProject/TransferDataUser';
+    // const [fetchData, setFetchData] = useState(null);
+    const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        async function fetchUsers() {
-            try {
-                const result = await axios.get(API_BASE_URL, {
-                    headers: {
-                        "ngrok-skip-browser-warning": "true"
-                    }
-                });
-                setFetchData(result.data);
-            } catch (error) {
-                console.log(error);
-            }
-            finally {
-                setLoading(false);
-            }
-        }
-        fetchUsers();
-    }, []);
+    // useEffect(() => {
+    //     async function fetchUsers() {
+    //         try {
+    //             const result = await axios.get(API_BASE_URL, {
+    //                 headers: {
+    //                     "ngrok-skip-browser-warning": "true"
+    //                 }
+    //             });
+    //             setFetchData(result.data);
+    //         } catch (error) {    
+    //             console.log(error);
+    //         }
+    //         finally {
+    //             setLoading(false);
+    //         }
+    //     }
+    //     fetchUsers();
+    // }, []);
 
     function generateUserData() {
         // Stored Data For Validation
         // let storedUser = UsersData;
-        let storedUser = fetchData || [];
+        let storedUser = UsersData || [];
 
         return storedUser.map(user => (
             <tr key={user.username}>
