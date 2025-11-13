@@ -1,5 +1,7 @@
 import './MemberActionContainer.css'
 import MembershipRecord from './Action Components/Membership/MembershipRecord'
+import WorkoutRecord from './Action Components/Workout Plan/WorkoutRecord'
+import AddWorkoutPlan from './Action Components/Workout Plan/AddWorkoutPlan'
 import { useNavigate, useRoutes } from 'react-router-dom';
 
 
@@ -26,7 +28,8 @@ export default function MemberActionContainer({ memberID }) {
     const MemberActionRoutes = () => {
         return useRoutes([
             { path: '/', element: renderPageContent() },
-            { path: 'membershiprecord/*', element: <>{renderPageContent()} < MembershipRecord memberID={memberID} /></> }
+            { path: 'membershiprecord/*', element: <>{renderPageContent()} < MembershipRecord memberID={memberID} /></> },
+            { path: 'workoutplan/*', element: <>{renderPageContent()} <WorkoutRecord /></> }
         ]);
     }
 

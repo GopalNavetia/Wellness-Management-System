@@ -1,0 +1,74 @@
+.workoutPlanRecord {
+    width: 96%;
+    /* border: 2px solid brown; */
+    margin: 0.5% 1.5% 0.5% 1.5%;
+    border: 1px solid rgba(17, 17, 17, 0.5);
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.workoutPlanRecordHeadSection {
+    padding: 0.5% 1.5%;
+    background-color: #111;
+    color: #fff;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.workoutPlanRecordHeadSection h1 {
+    background-color: #111;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    color: #fff;
+    font-size: 1.3em;
+    cursor: default;
+}
+
+.workoutPlanRecordHeadSection button {
+    padding: 0.1% 0.4%;
+    font-size: 0.95em;
+    cursor: pointer;
+}
+
+.workoutPlanRecord .historySection {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.historySection .title {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    padding: 0.3%
+}
+
+.historySection .title:last-child {
+    border-bottom: none;
+}
+
+.historySection .title .weekDate {
+    /* border: 1px solid blue; */
+    padding: 0% 1.5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.historySection .title p {
+    width: 25%;
+}
+
+.historySection .title b {
+    margin-left: 1%;
+}
+
+.weekDate button {
+    padding: 0.1% 0.5%;
+    cursor: pointer;
+}
