@@ -47,48 +47,48 @@
     transform: scale(1.2, 1.2);
 }
 
-.addUserContainer .formContainer {
+.addUserContainer .formContainer form {
     width: 80%;
     margin: 2.5% 10%;
 }
 
-.addUserContainer .data {
+.addUserContainer .formContainer form .data {
     width: 98%;
     margin: 2%;
     display: flex;
     justify-content: space-between;
 }
 
-.addUserContainer input {
+.addUserContainer .formContainer form input {
     width: 50%;
     margin-bottom: 0.4%;
     font-size: 0.9em;
     padding: 0.2% 0.4%;
 }
 
-.addUserContainer input::placeholder {
+.addUserContainer .formContainer form input::placeholder {
     font-weight: 100;
     color: rgba(0, 0, 0, 0.5);
 }
 
-.addUserContainer label {
+.addUserContainer .formContainer form label {
     font-size: 1.1em;
     font-weight: 500;
 }
 
-.addUserContainer select {
+.addUserContainer .formContainer select {
     width: 50%;
     font-size: 0.85em;
     font-weight: 400;
 }
 
-.addUserContainer .buttonContainer {
+.addUserContainer .formContainer .buttonContainer {
     margin-top: 4%;
     display: flex;
     justify-content: center;
 }
 
-.addUserContainer .buttonContainer button {
+.addUserContainer .formContainer .buttonContainer button {
     margin: 0.5%;
     padding: 0.3% 0.5%;
 }

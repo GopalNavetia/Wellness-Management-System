@@ -53,7 +53,7 @@ export default function FormContainer() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className='form' onSubmit={handleSubmit}>
             <input type="text" id="username" name='username' value={formData.username} placeholder="USERNAME" autoComplete="off" onChange={handleInputChange} /><br />
             <input type="password" id="pass" name='password' value={formData.password} placeholder="PASSWORD" autoComplete="off" onChange={handleInputChange} /> <br />
             <button className='loginButton'>Login</button>

@@ -16,19 +16,32 @@ export default function ManageUsersConatiner() {
         navigate('/dashboard/edituser');
     };
 
+    let handleDeleteButton = async (username) => {
+        // console.log("Delete Button click")
+        try {
+            await axios.delete(`${API_BASE_URL}/MyProject/DeleteMemberAPI?username=${username}`, {
+                headers: { "ngrok-skip-browser-warning": "true" }
+            });
+            // Update UI after Successfull deletion
+            setFetchData(prevData => prevData.filter(user => user.username !== username));
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     let handleCloseButton = () => {
         navigate('/dashboard');
     };
 
     // Data Fetch 
-    const API_BASE_URL = 'https://admonitorial-cinderella-hungerly.ngrok-free.dev/MyProject/TransferDataUser';
+    const API_BASE_URL = 'https://admonitorial-cinderella-hungerly.ngrok-free.dev';
     const [fetchData, setFetchData] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function fetchUsers() {
             try {
-                const result = await axios.get(API_BASE_URL, {
+                const result = await axios.get(`${API_BASE_URL}/MyProject/TransferDataUser`, {
                     headers: {
                         "ngrok-skip-browser-warning": "true"
                     }
@@ -55,7 +68,7 @@ export default function ManageUsersConatiner() {
                 <td>{user.password}</td>
                 <td>{user.role}</td>
                 <td>{user.email}</td>
-                <td><button onClick={handleEditButton}>Edit</button> <button>Delete</button></td>
+                <td><button onClick={handleEditButton}>Edit</button> <button onClick={() => { handleDeleteButton(user.username) }}>Delete</button></td>
             </tr>
         ));
     }

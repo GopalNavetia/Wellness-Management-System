@@ -8,33 +8,33 @@ import { useNavigate } from 'react-router-dom';
 
 export default function MemberTable({ onViewMember }) {
     // Members Table Data Fetch
-    // const API_BASE_URL = 'https://admonitorial-cinderella-hungerly.ngrok-free.dev/MyProject/MemberDashboard';
-    // const [fetchData, setFetchData] = useState(null);
-    // const [loading, setLoading] = useState(true);
-    const [loading, setLoading] = useState(false);
+    const API_BASE_URL = 'https://admonitorial-cinderella-hungerly.ngrok-free.dev/MyProject/MemberDashboard';
+    const [fetchData, setFetchData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(false);
 
-    // useEffect(() => {
-    //     async function fetchMemberTableData() {
-    //         try {
-    //             const result = await axios.get(API_BASE_URL, {
-    //                 headers: {
-    //                     "ngrok-skip-browser-warning": "true"
-    //                 }
-    //             });
-    //             setFetchData(result.data);
-    //         } catch (error) {
-    //             console.log(error);
-    //         }
-    //         finally {
-    //             setLoading(false);
-    //         }
-    //     }
-    //     fetchMemberTableData();
-    // }, []);
+    useEffect(() => {
+        async function fetchMemberTableData() {
+            try {
+                const result = await axios.get(API_BASE_URL, {
+                    headers: {
+                        "ngrok-skip-browser-warning": "true"
+                    }
+                });
+                setFetchData(result.data);
+            } catch (error) {
+                console.log(error);
+            }
+            finally {
+                setLoading(false);
+            }
+        }
+        fetchMemberTableData();
+    }, []);
 
     // Stored Data For Validation
-    let storedMembers = MembersData;
-    // let storedMembers = fetchData || [];
+    // let storedMembers = MembersData;
+    let storedMembers = fetchData || [];
 
     // Pagination state
     let [pageNo, setPageNo] = useState(1);

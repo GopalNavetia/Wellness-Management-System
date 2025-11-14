@@ -29,7 +29,7 @@ export default function MemberActionContainer({ memberID }) {
         return useRoutes([
             { path: '/', element: renderPageContent() },
             { path: 'membershiprecord/*', element: <>{renderPageContent()} < MembershipRecord memberID={memberID} /></> },
-            { path: 'workoutplan/*', element: <>{renderPageContent()} <WorkoutRecord /></> }
+            { path: 'workoutplan/*', element: <>{renderPageContent()} <WorkoutRecord memberID={memberID}/></> }
         ]);
     }
 

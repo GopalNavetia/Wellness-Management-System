@@ -1,11 +1,11 @@
-form {
+.form {
     height: 40%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-form input {
+.form input {
     width: 70%;
     height: 25%;
     border: 1px solid black;
@@ -16,7 +16,7 @@ form input {
     padding: 2%;
 }
 
-form .loginButton {
+.form .loginButton {
     width: 30%;
     height: 50%;
     padding: 1%;
