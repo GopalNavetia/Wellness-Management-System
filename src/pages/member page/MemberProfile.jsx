@@ -4,15 +4,15 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate, useRoutes } from 'react-router-dom';
-import axios from 'axios';
 import EditMember from './EditMember';
 import MemberActionContainer from './MemberActionContainer';
+import axios from 'axios';
+import BackendURL from '../../utils/BackendURL'
 
 export default function MemberProfile({ memberID }) {
     const navigate = useNavigate();
 
     // API base URL
-    const API_BASE_URL = 'https://admonitorial-cinderella-hungerly.ngrok-free.dev/MyProject/MemberDetail';
     const [fetchData, setFetchData] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -20,7 +20,7 @@ export default function MemberProfile({ memberID }) {
     useEffect(() => {
         async function fetchMemberData() {
             try {
-                const response = await axios.get(`${API_BASE_URL}/${memberID}`, {
+                const response = await axios.get(`${BackendURL}/MyProject/MemberDetail/${memberID}`, {
                     headers: {
                         "ngrok-skip-browser-warning": "true"
                     }

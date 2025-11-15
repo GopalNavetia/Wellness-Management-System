@@ -8,12 +8,12 @@ import PaymentDetails from './Payment/PaymentDetails';
 import { useNavigate, useRoutes } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import BackendURL from '../../../../utils/BackendURL'
 
 export default function MembershipRecord({ memberID }) {
     // Track selected membership
     const [selectedMembershipId, setSelectedMembershipId] = useState(null);
     // Backend data and UI loading state
-    const API_BASE_URL = 'https://admonitorial-cinderella-hungerly.ngrok-free.dev';
     const [fetchData, setFetchData] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -21,7 +21,7 @@ export default function MembershipRecord({ memberID }) {
     useEffect(() => {
         async function fetchMemberships() {
             try {
-                const result = await axios.get(`${API_BASE_URL}/MyProject/MembershipDetail?id=${memberID}`, {
+                const result = await axios.get(`${BackendURL}/MyProject/MembershipDetail?id=${memberID}`, {
                     headers: { "ngrok-skip-browser-warning": "true" }
                 });
                 setFetchData(result.data || []);

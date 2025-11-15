@@ -5,10 +5,10 @@ import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import BackendURL from '../../utils/BackendURL'
 
 export default function MemberTable({ onViewMember }) {
     // Members Table Data Fetch
-    const API_BASE_URL = 'https://admonitorial-cinderella-hungerly.ngrok-free.dev/MyProject/MemberDashboard';
     const [fetchData, setFetchData] = useState(null);
     const [loading, setLoading] = useState(true);
     // const [loading, setLoading] = useState(false);
@@ -16,7 +16,7 @@ export default function MemberTable({ onViewMember }) {
     useEffect(() => {
         async function fetchMemberTableData() {
             try {
-                const result = await axios.get(API_BASE_URL, {
+                const result = await axios.get(`${BackendURL}/MyProject/MemberDashboard`, {
                     headers: {
                         "ngrok-skip-browser-warning": "true"
                     }

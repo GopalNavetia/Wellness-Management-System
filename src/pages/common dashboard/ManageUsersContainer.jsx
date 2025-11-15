@@ -5,6 +5,7 @@ import UsersData from '../../mocks/UsersData'
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import BackendURL from '../../utils/BackendURL'
 
 export default function ManageUsersConatiner({ onEditUser }) {
     const navigate = useNavigate();
@@ -20,7 +21,7 @@ export default function ManageUsersConatiner({ onEditUser }) {
     let handleDeleteButton = async (username) => {
         // console.log("Delete Button click")
         try {
-            await axios.delete(`${API_BASE_URL}/MyProject/DeleteMemberAPI?username=${username}`, {
+            await axios.delete(`${BackendURL}/MyProject/DeleteMemberAPI?username=${username}`, {
                 headers: { "ngrok-skip-browser-warning": "true" }
             });
             // Update UI after Successfull deletion
@@ -35,14 +36,13 @@ export default function ManageUsersConatiner({ onEditUser }) {
     };
 
     // Data Fetch 
-    const API_BASE_URL = 'https://admonitorial-cinderella-hungerly.ngrok-free.dev';
     const [fetchData, setFetchData] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function fetchUsers() {
             try {
-                const result = await axios.get(`${API_BASE_URL}/MyProject/TransferDataUser`, {
+                const result = await axios.get(`${BackendURL}/MyProject/TransferDataUser`, {
                     headers: {
                         "ngrok-skip-browser-warning": "true"
                     }

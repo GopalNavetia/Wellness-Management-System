@@ -4,6 +4,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import BackendURL from '../../utils/BackendURL'
 
 export default function AddUser() {
     const navigate = useNavigate();
@@ -31,7 +32,7 @@ export default function AddUser() {
         e.preventDefault();
 
         try {
-            const response = await axios.post('https://admonitorial-cinderella-hungerly.ngrok-free.dev/MyProject/AddNewUserAPI', formData, {
+            const response = await axios.post(`${BackendURL}/MyProject/AddNewUserAPI`, formData, {
                 headers: {
                     'Content-Type': 'application/json',
                     'ngrok-skip-browser-warning': 'true'

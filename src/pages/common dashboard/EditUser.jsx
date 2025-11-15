@@ -4,8 +4,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
-const API_BASE_URL = 'https://admonitorial-cinderella-hungerly.ngrok-free.dev';
+import BackendURL from '../../utils/BackendURL'
 
 export default function EditUser({ username }) {
     const navigate = useNavigate();
@@ -20,7 +19,7 @@ export default function EditUser({ username }) {
     // Fetch user data when component mounts or username changes
     useEffect(() => {
         if (username) {
-            axios.get(`${API_BASE_URL}/MyProject/EditUserGetDataAPI?username=${username}`, {
+            axios.get(`${BackendURL}/MyProject/EditUserGetDataAPI?username=${username}`, {
                 headers: { "ngrok-skip-browser-warning": "true" }
             })
                 .then(response => {
@@ -49,7 +48,7 @@ export default function EditUser({ username }) {
             console.log("Submitting PUT data:", formData, "oldUsername:", username);
 
             const response = await axios.put(
-                `${API_BASE_URL}/MyProject/EditUserAPI?oldUsername=${username}`,
+                `${BackendURL}/MyProject/EditUserAPI?oldUsername=${username}`,
                 formData,
                 {
                     headers: {
