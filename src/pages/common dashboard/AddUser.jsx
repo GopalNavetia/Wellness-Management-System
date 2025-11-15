@@ -42,7 +42,7 @@ export default function AddUser() {
                 setFormData({ username: "", password: "", role: "admin", email: "" });
                 navigate(-1);
             } else {
-                // alert('Failed to add user: ' + response.data.message);
+                alert('Failed to add user: ' + response.data.message);
             }
         } catch (error) {
             if (error.response && error.response.data && error.response.data.message) {

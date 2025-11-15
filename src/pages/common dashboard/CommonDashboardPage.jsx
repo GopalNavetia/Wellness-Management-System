@@ -7,18 +7,21 @@ import ManageUsersContainer from './ManageUsersContainer'
 import AddUser from './AddUser'
 import EditUser from './EditUser';
 import { useRoutes } from 'react-router-dom';
-
-const DashboardRoutes = () => {
-    return useRoutes([
-        { path: '', element: <SystemContainer /> },
-        { path: 'myprofile', element: <MyProfileContainer /> },
-        { path: 'manageuser', element: <ManageUsersContainer /> },
-        { path: 'adduser', element: <AddUser /> },
-        { path: 'edituser', element: <EditUser /> }
-    ]);
-};
+import { useState } from 'react';
 
 export default function CommonDashboardPage() {
+    const DashboardRoutes = () => {
+        return useRoutes([
+            { path: '', element: <SystemContainer /> },
+            { path: 'myprofile', element: <MyProfileContainer /> },
+            { path: 'manageuser', element: <ManageUsersContainer onEditUser={setSelectedUsername} /> },
+            { path: 'adduser', element: <AddUser /> },
+            { path: 'edituser', element: <EditUser username={selectedUsername} /> }
+        ]);
+    };
+
+    // Get ID of Selected User
+    let [selectedUsername, setSelectedUsername] = useState(null);
     return (
         <div className='CommonDashboard'>
             <NavbarContainer title='Main Dashboard' logo={navLogo} />

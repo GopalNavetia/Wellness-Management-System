@@ -6,13 +6,14 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export default function ManageUsersConatiner() {
+export default function ManageUsersConatiner({ onEditUser }) {
     const navigate = useNavigate();
     let handleAddButton = () => {
         navigate('/dashboard/adduser');
     };
 
-    let handleEditButton = () => {
+    let handleEditButton = (username) => {
+        onEditUser(username)
         navigate('/dashboard/edituser');
     };
 
@@ -68,7 +69,7 @@ export default function ManageUsersConatiner() {
                 <td>{user.password}</td>
                 <td>{user.role}</td>
                 <td>{user.email}</td>
-                <td><button onClick={handleEditButton}>Edit</button> <button onClick={() => { handleDeleteButton(user.username) }}>Delete</button></td>
+                <td><button onClick={() => { handleEditButton(user.username) }}>Edit</button> <button onClick={() => { handleDeleteButton(user.username) }}>Delete</button></td>
             </tr>
         ));
     }
