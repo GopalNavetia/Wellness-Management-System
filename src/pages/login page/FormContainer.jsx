@@ -2,6 +2,7 @@ import './FormContainer.css'
 import UserData from '../../mocks/UsersData'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
 
 
 export default function FormContainer() {
@@ -28,6 +29,37 @@ export default function FormContainer() {
         });
     };
 
+    // With API
+    // let handleSubmit = async (e) => {
+    //     e.preventDefault(); // use to remove default behavior of submit button
+
+    //     try {
+    //         const response = await axios.post(`${BackendURL}/MyProject/LoginAPI`, formData, {
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //                 'ngrok-skip-browser-warning': 'true'
+    //             }
+    //         })
+
+    //         if (response.status === 200 && response.data.token) {
+    //             localStorage.setItem('authToken', response.data.token);
+    //             setFormData({ username: "", password: "" });
+    //             navigate("/dashboard", { replace: true });
+    //         }
+    //         else {
+    //             alert('Login failed: ' + response.data.message);
+    //         }
+    //     } catch (error) {
+    //         console.error(error.message);
+    //     }
+
+
+
+    // Set Form Data Back to Empty
+
+    // };
+
+    // With MOCK data
     let handleSubmit = (e) => {
         e.preventDefault(); // use to remove default behavior of submit button
 

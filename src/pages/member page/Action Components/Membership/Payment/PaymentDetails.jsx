@@ -7,6 +7,7 @@ import AddPayment from './AddPayment';
 import EditPayment from './EditPayment';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import BackendURL from '../../../../../utils/BackendURL'
 
 export default function PaymentDetails({ membershipID: propMembershipID }) {
     // If using route location.state for membershipID (for robustness)
@@ -14,7 +15,6 @@ export default function PaymentDetails({ membershipID: propMembershipID }) {
     // Prefer location.state first, fallback to prop
     const membershipID = location.state?.membershipID || propMembershipID;
 
-    const API_BASE_URL = 'https://admonitorial-cinderella-hungerly.ngrok-free.dev';
     const [fetchData, setFetchData] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -28,12 +28,11 @@ export default function PaymentDetails({ membershipID: propMembershipID }) {
         async function fetchPaymentDetail() {
             try {
                 console.log("send ID:", membershipID);
-                const result = await axios.get(`${API_BASE_URL}/MyProject/PaymentDetail?id=${membershipID}`, {
+                const result = await axios.get(`${BackendURL}/MyProject/PaymentDetail?membership_id=${membershipID}`, {
                     headers: {
                         "ngrok-skip-browser-warning": "true"
                     }
                 });
-                console.log(result.data);
                 setFetchData(result.data);
             } catch (error) {
                 console.log(error);

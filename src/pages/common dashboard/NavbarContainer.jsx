@@ -22,6 +22,8 @@ export default function NavbarContainer() {
 
     // Log out Button
     function handelLogoutButtonClick() {
+        // Remove the auth token from localStorage
+        // localStorage.removeItem('authToken');
         navigate('/', { replace: true });
     }
 

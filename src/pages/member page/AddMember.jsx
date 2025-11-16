@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import axios from 'axios'
+import BackendURL from '../../utils/BackendURL'
 
 export default function AddMember() {
 
@@ -33,18 +35,27 @@ export default function AddMember() {
         });
     };
 
-    let handleSubmit = (e) => {
+    // Backend API Call
+    let handleSubmit = async (e) => {
         e.preventDefault();
 
-        setFormData({
-            name: "",
-            dob: "",
-            phone: "",
-            address: "",
-            pic: "",
-            gender: ""
-        });
-        // Cannot chnage in MockData as it is static file i need backend for change in runtime.
+        try {
+            const response = await axios.post(`${BackendURL}/MyProject/AddMemberAPI`, formData, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'ngrok-skip-browser-warning': 'true'
+                }
+            });
+            if (response.data.success) {
+                setFormData({ username: "", password: "", role: "admin", email: "" });
+                navigate(-1);
+            } else {
+                alert('Failed to add member: ' + response.data.message);
+            }
+
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     let handleReset = () => {

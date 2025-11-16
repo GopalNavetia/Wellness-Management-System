@@ -46,11 +46,6 @@ export default function AddUser() {
                 alert('Failed to add user: ' + response.data.message);
             }
         } catch (error) {
-            if (error.response && error.response.data && error.response.data.message) {
-                alert('Error: ' + error.response.data.message);
-            } else {
-                alert('Failed to add user (network/server error).');
-            }
             console.error(error);
         }
     };
