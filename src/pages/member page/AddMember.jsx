@@ -18,7 +18,7 @@ export default function AddMember() {
         dob: "",
         phone: "",
         address: "",
-        pic: "",
+        photo: "",
         gender: ""
     });
 
@@ -40,6 +40,7 @@ export default function AddMember() {
         e.preventDefault();
 
         try {
+            // console.log(formData);
             const response = await axios.post(`${BackendURL}/MyProject/AddMemberAPI`, formData, {
                 headers: {
                     'Content-Type': 'application/json',
@@ -47,9 +48,11 @@ export default function AddMember() {
                 }
             });
             if (response.data.success) {
-                setFormData({ username: "", password: "", role: "admin", email: "" });
+                // console.log(response.data);
+                setFormData({ name: "", dob: "", phone: "", address: "", photo: "", gender: "" });
                 navigate(-1);
             } else {
+                console.log(formData)
                 alert('Failed to add member: ' + response.data.message);
             }
 
@@ -65,7 +68,7 @@ export default function AddMember() {
             dob: "",
             phone: "",
             address: "",
-            pic: "",
+            photo: "",
             gender: ""
         });
     }
@@ -77,7 +80,8 @@ export default function AddMember() {
                 <span className='xMark' onClick={handleClose}><FontAwesomeIcon icon={faXmark} /></span>
             </div>
 
-            <div className="formContainer">
+            <form className="formContainer">
+
                 <div>
                     <label htmlFor="fullname">Full Name:</label><br />
                     <input type="text" name="name" value={formData.name} id="fullname" placeholder="Enter name" onChange={handleInputChange} />
@@ -100,7 +104,7 @@ export default function AddMember() {
 
                 <div>
                     <label htmlFor="fileUpload">Choose Photo:</label>
-                    <input type="file" name="pic" value={formData.pic} id="fileUpload" accept="image/*" onChange={handleInputChange} />
+                    <input type="file" name="pic" value={formData.photo} id="fileUpload" accept="image/*" onChange={handleInputChange} />
                 </div>
 
                 <div>
@@ -116,7 +120,7 @@ export default function AddMember() {
                     <button id="save" onClick={handleSubmit}>Save</button>
                     <button id="reset" onClick={handleReset}>Reset</button>
                 </div>
-            </div>
+            </form>
         </div>
     );
 }

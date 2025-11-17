@@ -27,12 +27,13 @@ export default function PaymentDetails({ membershipID: propMembershipID }) {
         }
         async function fetchPaymentDetail() {
             try {
-                console.log("send ID:", membershipID);
+                // console.log("send ID in detail:", membershipID);
                 const result = await axios.get(`${BackendURL}/MyProject/PaymentDetail?membership_id=${membershipID}`, {
                     headers: {
                         "ngrok-skip-browser-warning": "true"
                     }
                 });
+                // console.log(result.data);
                 setFetchData(result.data);
             } catch (error) {
                 console.log(error);
@@ -91,7 +92,7 @@ export default function PaymentDetails({ membershipID: propMembershipID }) {
                     )}
                 </div>
             </div>
-            <PaymentRecord />
+            <PaymentRecord membershipID={membershipID} />
         </>
     );
 

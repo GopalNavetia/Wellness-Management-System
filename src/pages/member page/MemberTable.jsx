@@ -101,7 +101,13 @@ export default function MemberTable({ onViewMember }) {
                 <td>{member.name}</td>
                 <td>{member.type}</td>
                 <td>{member.payment_status}</td>
-                <td>{new Date(member.end_date) >= new Date() ? 'Active' : 'Expired'}</td>
+                <td>
+                    {member.end_date === ''
+                        ? '-'
+                        : new Date(member.end_date) >= new Date()
+                            ? 'Active'
+                            : 'Expired'}
+                </td>
                 <td>{member.phone}</td>
                 <td><button onClick={() => { onViewMember(member.id); handleViewButton() }}>View</button></td>
             </tr>
