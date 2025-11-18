@@ -47,7 +47,7 @@ export default function FormContainer() {
             );
 
             // Debug: log full response for inspection
-            console.log("[DEBUG] Axios response:", response);
+            // console.log("[DEBUG] Axios response:", response);
 
             if (response.status === 200 && response.data.token) {
                 localStorage.setItem('authToken', response.data.token);

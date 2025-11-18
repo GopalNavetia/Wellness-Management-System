@@ -19,13 +19,15 @@ export default function NavbarContainer(props) {
         setDropVisible(false);
     }
 
-    // Main DDashboard Navigate
+    // Main Dashboard Navigate
     function handleClickDashboard() {
         navigate('/dashboard');
     }
 
     // Log out Button
-    function handelLogoutButtonClick() {
+    function handleLogoutButtonClick() {
+        // Remove the auth token from localStorage
+        localStorage.removeItem('authToken');
         navigate('/', { replace: true });
     }
 
@@ -52,7 +54,7 @@ export default function NavbarContainer(props) {
                     <p>Manage Users</p>
                 </Link>
 
-                <p className='logoutBttn' style={{ color: '#ff4d4d' }} onClick={handelLogoutButtonClick}>Logout</p>
+                <p className='logoutBttn' style={{ color: '#ff4d4d' }} onClick={handleLogoutButtonClick}>Logout</p>
             </div>
 
         </div >
