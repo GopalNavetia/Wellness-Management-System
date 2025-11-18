@@ -4,7 +4,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import UsersData from '../../mocks/UsersData'
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import axiosInstance from '../../utils/axiosInstance'
+import axiosInstance from '../../utils/axiosInstance.jsx'
 
 export default function ManageUsersConatiner({ onEditUser }) {
     const navigate = useNavigate();
