@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import BackendURL from '../../utils/BackendURL'
+import axiosInstance from '../../utils/AxiosInstance.jsx'
 
 export default function AddUser() {
     const navigate = useNavigate();
@@ -32,7 +33,7 @@ export default function AddUser() {
         e.preventDefault();
 
         try {
-            const response = await axios.post(`${BackendURL}/MyProject/AddNewUserAPI`, formData, {
+            const response = await axiosInstance.post(`/MyProject/AddNewUserAPI`, formData, {
                 headers: {
                     'Content-Type': 'application/json',
                     'ngrok-skip-browser-warning': 'true'

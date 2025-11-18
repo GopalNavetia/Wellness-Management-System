@@ -1,8 +1,7 @@
 import './PaymentRecord.css'
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
-import BackendURL from '../../../../../utils/BackendURL'
+import axiosInstance from '../../../../../utils/AxiosInstance.jsx'
 
 export default function PaymentRecord({ membershipID }) {
 
@@ -21,7 +20,7 @@ export default function PaymentRecord({ membershipID }) {
         async function fetchPaymentRecord() {
             try {
                 // console.log("send ID in record:", membershipID);
-                const result = await axios.get(`${BackendURL}/MyProject/PaymentRecordFetch?membership_id=${membershipID}`, {
+                const result = await axiosInstance.get(`/MyProject/PaymentRecordFetch?membership_id=${membershipID}`, {
                     headers: {
                         "ngrok-skip-browser-warning": "true"
                     }

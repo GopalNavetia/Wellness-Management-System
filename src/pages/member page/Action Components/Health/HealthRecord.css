@@ -1,0 +1,93 @@
+.healthRecord {
+    margin: 0% 1% 1% 1%;
+    width: 95%;
+    border-radius: 12px;
+    border: 1px solid rgba(17, 17, 17, 0.5);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.healthRecord .healthRecordHeadSection {
+    width: 100%;
+    padding: 0.5% 1.5%;
+    background-color: #111;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.healthRecord .healthRecordHeadSection h1 {
+    color: #fff;
+    margin: 0;
+    font-size: 1.5em;
+    cursor: default;
+}
+
+.healthRecord .healthRecordHeadSection .buttonsContainer {
+    display: flex;
+    gap: 0.8em;
+    align-items: center;
+}
+
+.healthRecord .healthRecordHeadSection button {
+    padding: 2% 7%;
+    font-size: 0.95em;
+    cursor: pointer;
+}
+
+.healthRecord .healthRecordHeadSection .xMark {
+    color: #fff;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.healthRecord .healthRecordHeadSection .xMark:hover {
+    color: #ff4d4d;
+    transform: scale(1.2, 1.2);
+}
+
+.healthRecord .healthTableContainer {
+    margin: 1% 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.healthTableContainer table {
+    width: 96%;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 1em;
+}
+
+.healthTableContainer th,
+.healthTableContainer td {
+    border: 1px solid #ccc;
+    padding: 0.5% 0.5%;
+}
+
+.healthTableContainer th {
+    background-color: #222;
+    color: #fff;
+    font-weight: 600;
+}
+
+.healthTableContainer td {
+    font-size: 0.9em;
+    text-align: left;
+}
+
+.healthTableContainer .buttonContainer {
+    margin: 1% 0% 0.2% 2%;
+    width: 15%;
+    display: flex;
+    gap: 10%;
+    align-self: start;
+}
+
+.healthTableContainer button {
+    /* margin-top: 5%; */
+    padding: 1% 2.5%;
+}

@@ -20,7 +20,7 @@ export default function ManageUsersConatiner({ onEditUser }) {
     let handleDeleteButton = async (username) => {
         // console.log("Delete Button click")
         try {
-            await axiosInstance.delete(`/MyProject/DeleteMemberAPI?username=${username}`, {
+            await axiosInstance.delete(`/MyProject/DeleteUserAPI?username=${username}`, {
                 headers: { "ngrok-skip-browser-warning": "true" }
             });
             // Update UI after Successfull deletion

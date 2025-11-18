@@ -29,10 +29,27 @@
     cursor: default;
 }
 
-.workoutPlanRecordHeadSection button {
-    padding: 0.1% 0.4%;
+.workoutPlanRecord .workoutPlanRecordHeadSection .buttonsContainer {
+    display: flex;
+    gap: 0.8em;
+    align-items: center;
+}
+
+.workoutPlanRecord .workoutPlanRecordHeadSection button {
+    padding: 2% 7%;
     font-size: 0.95em;
     cursor: pointer;
+}
+
+.workoutPlanRecord .workoutPlanRecordHeadSection .xMark {
+    color: #fff;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.workoutPlanRecord .workoutPlanRecordHeadSection .xMark:hover {
+    color: #ff4d4d;
+    transform: scale(1.2, 1.2);
 }
 
 .workoutPlanRecord .historySection {

@@ -3,9 +3,9 @@ import MembersData from '../../mocks/MembersData'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import BackendURL from '../../utils/BackendURL'
+import axiosInstance from '../../utils/AxiosInstance.jsx'
+
 
 export default function MemberTable({ onViewMember }) {
     // Members Table Data Fetch
@@ -16,7 +16,7 @@ export default function MemberTable({ onViewMember }) {
     useEffect(() => {
         async function fetchMemberTableData() {
             try {
-                const result = await axios.get(`${BackendURL}/MyProject/MemberDashboard`, {
+                const result = await axiosInstance.get(`/MyProject/MemberDashboard`, {
                     headers: {
                         "ngrok-skip-browser-warning": "true"
                     }

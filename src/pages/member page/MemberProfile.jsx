@@ -1,13 +1,11 @@
 import './MemberProfile.css';
-import MembersData from '../../mocks/MembersData';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate, useRoutes } from 'react-router-dom';
 import EditMember from './EditMember';
 import MemberActionContainer from './MemberActionContainer';
-import axios from 'axios';
-import BackendURL from '../../utils/BackendURL'
+import axiosInstance from '../../utils/AxiosInstance.jsx'
 
 export default function MemberProfile({ memberID }) {
     const navigate = useNavigate();
@@ -20,12 +18,14 @@ export default function MemberProfile({ memberID }) {
     useEffect(() => {
         async function fetchMemberData() {
             try {
-                const response = await axios.get(`${BackendURL}/MyProject/MemberDetail/${memberID}`, {
+                const response = await axiosInstance.get(`/MyProject/MemberDetail?id=${memberID}`, {
                     headers: {
                         "ngrok-skip-browser-warning": "true"
                     }
                 });
                 setFetchData(response.data);
+                console.log(response.data)
+
             } catch (error) {
                 console.error('Error fetching member data:', error);
             } finally {
@@ -45,6 +45,19 @@ export default function MemberProfile({ memberID }) {
 
     const handleClose = () => navigate(-1);
     const handleEditButton = () => navigate('/gymdashboard/memberprofile/editmember');
+    let handleDeleteButton = async (memberID) => {
+        // console.log("Delete Button click")
+        try {
+            const response = await axiosInstance.delete(`/MyProject/DeleteMemberAPI?id=${memberID}`, {
+                headers: { "ngrok-skip-browser-warning": "true" }
+            });
+            if (response.data.success) {
+                navigate(-1);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     // Member Profile Content
     const renderProfileContent = () => (
@@ -65,7 +78,7 @@ export default function MemberProfile({ memberID }) {
                     <p><b>Address:</b> {fetchData.address}</p>
                     <div className="buttons">
                         <button onClick={handleEditButton}>Edit</button>
-                        <button>Delete</button>
+                        <button onClick={() => handleDeleteButton(memberID)}>Delete</button>
                     </div>
                 </div>
                 <div className="imgSection"></div>
@@ -82,8 +95,7 @@ export default function MemberProfile({ memberID }) {
                 path: '/editmember',
                 element: (
                     <>
-                        <EditMember />
-                        {renderProfileContent()}
+                        <EditMember memberID={memberID} />
                     </>
                 ),
             },

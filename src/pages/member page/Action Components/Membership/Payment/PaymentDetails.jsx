@@ -6,8 +6,7 @@ import PaymentRecord from './PaymentRecord';
 import AddPayment from './AddPayment';
 import EditPayment from './EditPayment';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
-import BackendURL from '../../../../../utils/BackendURL'
+import axiosInstance from '../../../../../utils/AxiosInstance.jsx'
 
 export default function PaymentDetails({ membershipID: propMembershipID }) {
     // If using route location.state for membershipID (for robustness)
@@ -28,7 +27,7 @@ export default function PaymentDetails({ membershipID: propMembershipID }) {
         async function fetchPaymentDetail() {
             try {
                 // console.log("send ID in detail:", membershipID);
-                const result = await axios.get(`${BackendURL}/MyProject/PaymentDetail?membership_id=${membershipID}`, {
+                const result = await axiosInstance.get(`/MyProject/PaymentDetail?membership_id=${membershipID}`, {
                     headers: {
                         "ngrok-skip-browser-warning": "true"
                     }

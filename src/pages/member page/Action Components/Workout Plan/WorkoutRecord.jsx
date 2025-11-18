@@ -1,9 +1,22 @@
 import './WorkoutRecord.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import WorkoutPlanMockData from '../../../../mocks/WorkoutPlanMockData'
 import WorkoutTableData from '../../../../mocks/WorkoutTableData'
+import AddWorkoutPlan from './AddWorkoutPlan'
+import EditWorkoutPlan from './EditWorkoutPlan'
+import { useNavigate, useRoutes } from 'react-router-dom';
 import { useState } from 'react'
 
 export default function WorkoutPlan() {
+
+    // Navigation helpers
+    const navigate = useNavigate();
+    const handleCloseButton = () => navigate(-1);
+    const handleAddButton = () => navigate('addworkout');
+    const handleEditButton = () => navigate('editworkout');
+
+
     const [viewId, setViewId] = useState(null);
 
     // Generate History Items
@@ -44,7 +57,7 @@ export default function WorkoutPlan() {
                             </tbody>
                         </table>
                             <div className="buttonContainer">
-                                <button>Edit</button>
+                                <button onClick={handleEditButton}>Edit</button>
                                 <button>Delete</button>
                             </div>
                         </>
@@ -56,11 +69,15 @@ export default function WorkoutPlan() {
         }
     }
 
-    return (
+    // Render Page Content
+    const renderPageContent = () => (
         <div className="workoutPlanRecord">
             <div className="workoutPlanRecordHeadSection">
                 <h1>Workout Plan</h1>
-                <button>Add</button>
+                <div className='buttonsContainer'>
+                    <button onClick={handleAddButton}>Add</button>
+                    <span className='xMark' onClick={handleCloseButton}><FontAwesomeIcon icon={faXmark} /></span>
+                </div>
             </div>
             <div className="historySection">
                 <div className="historyItem">
@@ -69,4 +86,16 @@ export default function WorkoutPlan() {
             </div>
         </div>
     );
+
+
+    // Workout Plan Page Routes
+    const WorkoutPlanRoutes = () => {
+        return useRoutes([
+            { path: '/', element: renderPageContent() },
+            { path: 'addWorkout', element: <AddWorkoutPlan /> },
+            { path: 'editWorkout', element: <EditWorkoutPlan /> },
+        ]);
+    };
+
+    return <WorkoutPlanRoutes />
 }

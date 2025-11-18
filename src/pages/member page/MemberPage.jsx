@@ -22,7 +22,7 @@ export default function MemberPage() {
                 </>
             },
             {
-                path: '/addmember', element: <><AddMember /> <MemberTable /></>
+                path: '/addmember', element: <AddMember />
             },
             {
                 path: '/memberprofile/*', element: <MemberProfile memberID={selectedMemberId} />,

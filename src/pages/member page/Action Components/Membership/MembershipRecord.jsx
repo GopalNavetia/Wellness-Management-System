@@ -1,5 +1,4 @@
 import './MembershipRecord.css';
-import MembershipData from '../../../../mocks/MembershipData';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import AddMembership from './AddMembership';
@@ -7,8 +6,7 @@ import EditMembership from './EditMembership';
 import PaymentDetails from './Payment/PaymentDetails';
 import { useNavigate, useRoutes } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
-import BackendURL from '../../../../utils/BackendURL'
+import axiosInstance from '../../../../utils/AxiosInstance.jsx'
 
 export default function MembershipRecord({ memberID }) {
     // Track selected membership
@@ -21,7 +19,7 @@ export default function MembershipRecord({ memberID }) {
     useEffect(() => {
         async function fetchMemberships() {
             try {
-                const result = await axios.get(`${BackendURL}/MyProject/MembershipDetail?id=${memberID}`, {
+                const result = await axiosInstance.get(`/MyProject/MembershipDetail?id=${memberID}`, {
                     headers: { "ngrok-skip-browser-warning": "true" }
                 });
                 setFetchData(result.data || []);
@@ -65,6 +63,7 @@ export default function MembershipRecord({ memberID }) {
                     <span className='xMark' onClick={handleCloseButton}><FontAwesomeIcon icon={faXmark} /></span>
                 </div>
             </div>
+
             <div className='membershipListContainer'>
                 {loading ? (
                     <div>Loading users...</div>

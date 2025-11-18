@@ -3,8 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import axios from 'axios'
-import BackendURL from '../../utils/BackendURL'
+import axiosInstance from '../../utils/AxiosInstance.jsx'
 
 export default function AddMember() {
 
@@ -41,7 +40,7 @@ export default function AddMember() {
 
         try {
             // console.log(formData);
-            const response = await axios.post(`${BackendURL}/MyProject/AddMemberAPI`, formData, {
+            const response = await axiosInstance.post(`/MyProject/AddMemberAPI`, formData, {
                 headers: {
                     'Content-Type': 'application/json',
                     'ngrok-skip-browser-warning': 'true'
