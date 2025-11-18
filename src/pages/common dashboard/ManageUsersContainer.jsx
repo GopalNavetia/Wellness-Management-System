@@ -39,28 +39,28 @@ export default function ManageUsersConatiner({ onEditUser }) {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-    async function fetchUsers() {
-        try {
-            const result = await axiosInstance.get('/MyProject/TransferDataUser', {
-                headers: {
-                    "ngrok-skip-browser-warning": "true"
-                    // Don't add Authorization: interceptor sends it from localStorage
+        async function fetchUsers() {
+            try {
+                const result = await axiosInstance.get('/MyProject/TransferDataUser', {
+                    headers: {
+                        "ngrok-skip-browser-warning": "true"
+                        // Don't add Authorization: interceptor sends it from localStorage
+                    }
+                });
+                setFetchData(result.data);
+            } catch (error) {
+                if (error.response && error.response.data) {
+                    // Print exact backend error message if exists
+                    console.log('API Error:', error.response.data);
+                } else {
+                    console.log('General Error:', error.message);
                 }
-            });
-            setFetchData(result.data);
-        } catch (error) {
-            if (error.response && error.response.data) {
-                // Print exact backend error message if exists
-                console.log('API Error:', error.response.data);
-            } else {
-                console.log('General Error:', error.message);
+            } finally {
+                setLoading(false);
             }
-        } finally {
-            setLoading(false);
         }
-    }
-    fetchUsers();
-}, []);
+        fetchUsers();
+    }, []);
 
 
     function generateUserData() {
