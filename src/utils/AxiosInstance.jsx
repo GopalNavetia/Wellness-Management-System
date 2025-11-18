@@ -1,8 +1,9 @@
 import axios from 'axios';
+import BackendURL from "./BackendURL"
 
 // Create an axios instance with base URL
 const axiosInstance = axios.create({
-    baseURL: 'https://yourbackend.com/api', // Change this to your backend API URL
+    baseURL: BackendURL, // Change this to your backend API URL
 });
 
 // Add a request interceptor
