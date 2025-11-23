@@ -47,16 +47,19 @@ export default function AddMember() {
                 }
             });
             if (response.data.success) {
-                // console.log(response.data);
+                alert("New Member Added Successfully");
                 setFormData({ name: "", dob: "", phone: "", address: "", photo: "", gender: "" });
                 navigate(-1);
             } else {
-                console.log(formData)
                 alert('Failed to add member: ' + response.data.message);
             }
 
         } catch (error) {
-            console.error(error);
+            if (error.response && error.response.data && error.response.data.message) {
+                alert('Error: ' + error.response.data.message);
+            } else {
+                alert('Failed to edit user (network/server error).');
+            }
         }
     };
 

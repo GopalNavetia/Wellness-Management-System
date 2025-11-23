@@ -24,8 +24,6 @@ export default function MemberProfile({ memberID }) {
                     }
                 });
                 setFetchData(response.data);
-                console.log(response.data)
-
             } catch (error) {
                 console.error('Error fetching member data:', error);
             } finally {
@@ -45,8 +43,13 @@ export default function MemberProfile({ memberID }) {
 
     const handleClose = () => navigate(-1);
     const handleEditButton = () => navigate('/gymdashboard/memberprofile/editmember');
-    let handleDeleteButton = async (memberID) => {
-        // console.log("Delete Button click")
+    let handleDeleteButton = async (memberID, name) => {
+        // Ask for confirmation
+        const ok = window.confirm(`Are you sure you want to delete member: "${name}"?`);
+
+        // If user clicks Cancel, just return
+        if (!ok) return;
+
         try {
             const response = await axiosInstance.delete(`/MyProject/DeleteMemberAPI?id=${memberID}`, {
                 headers: { "ngrok-skip-browser-warning": "true" }
@@ -78,7 +81,7 @@ export default function MemberProfile({ memberID }) {
                     <p><b>Address:</b> {fetchData.address}</p>
                     <div className="buttons">
                         <button onClick={handleEditButton}>Edit</button>
-                        <button onClick={() => handleDeleteButton(memberID)}>Delete</button>
+                        <button onClick={() => handleDeleteButton(memberID, fetchData.name)}>Delete</button>
                     </div>
                 </div>
                 <div className="imgSection"></div>

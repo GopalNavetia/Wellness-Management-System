@@ -1,15 +1,12 @@
 import './FormContainer.css'
-import UserData from '../../mocks/UsersData'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BackendURL from '../../utils/BackendURL'
 import axios from 'axios'
 
 
-export default function FormContainer() {
+export default function FormContainer({ storeLoginPerson }) {
     const navigate = useNavigate();
-    // Stored Data For Validation
-    const storedUser = UserData;
 
     // Initialize Common State for Form
     let [formData, setFormData] = useState({
@@ -46,39 +43,27 @@ export default function FormContainer() {
                 }
             );
 
-            // Debug: log full response for inspection
-            // console.log("[DEBUG] Axios response:", response);
-
             if (response.status === 200 && response.data.token) {
                 localStorage.setItem('authToken', response.data.token);
+                localStorage.setItem('username', formData.username);
+                storeLoginPerson(formData.username);
                 setFormData({ username: "", password: "" });
                 navigate("/dashboard", { replace: true });
             } else {
-                alert('Login failed: ' + (response.data.message || "No token in response"));
                 console.log("[DEBUG] Response status:", response.status);
                 console.log("[DEBUG] Response data:", response.data);
             }
-        } catch (error) {
-            // Debug: log all Axios error details
-            if (error.response) {
-                // Request made, server responded with error code
-                console.error("[DEBUG] Backend responded with error");
-                console.error("Status:", error.response.status);
-                console.error("Data:", error.response.data);
-                console.error("Headers:", error.response.headers);
-            } else if (error.request) {
-                // Request made, no response received
-                console.error("[DEBUG] No response received from server");
-                console.error("Request:", error.request);
+        }
+        catch (error) {
+            console.log(error.response);
+            if (error.response && error.response.data && error.response.data.message) {
+                alert(error.response.data.message);
             } else {
-                // Error setting up request
-                console.error("[DEBUG] Error setting up Axios request");
-                console.error("Message:", error.message);
+                alert("Login failed. Please check your username and password.");
             }
-            // Always log original error config for trace
-            console.error("[DEBUG] Error config:", error.config);
         }
     };
+
 
 
     // With MOCK data

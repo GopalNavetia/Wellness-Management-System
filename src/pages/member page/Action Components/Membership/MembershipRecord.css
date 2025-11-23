@@ -80,6 +80,7 @@
 }
 
 .membershipListContainer table button {
+    margin: 0% 1.5%;
     padding: 1% 2%;
     cursor: pointer;
 }

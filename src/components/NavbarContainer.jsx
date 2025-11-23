@@ -28,6 +28,7 @@ export default function NavbarContainer(props) {
     function handleLogoutButtonClick() {
         // Remove the auth token from localStorage
         localStorage.removeItem('authToken');
+        localStorage.removeItem('username');
         navigate('/', { replace: true });
     }
 
@@ -41,7 +42,7 @@ export default function NavbarContainer(props) {
                 </div>
                 <div className='profileContainer' onMouseEnter={handleMouseEnterProfile} onMouseLeave={handleMouseLeaveProfile} >
                     <span><FontAwesomeIcon className='icon' icon={faUserTie} /></span>
-                    <h3>Admin Name</h3>
+                    <h3>{props.loginPerson}</h3>
                 </div>
             </nav >
 

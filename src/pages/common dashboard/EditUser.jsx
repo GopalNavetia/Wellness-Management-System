@@ -44,8 +44,6 @@ export default function EditUser({ username }) {
     let handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            console.log("Submitting PUT data:", formData, "oldUsername:", username);
-
             const response = await axiosInstance.put(
                 `/MyProject/EditUserAPI?oldUsername=${username}`,
                 formData,
@@ -57,10 +55,11 @@ export default function EditUser({ username }) {
                 }
             );
             if (response.data.success) {
+                alert(response.data.message);
                 setFormData({ username: "", password: "", role: "", email: "" });
                 navigate(-1);
             } else {
-                alert('Failed to edit user: ' + response.data.message);
+                alert('Failed to Edit User: ' + response);
             }
         } catch (error) {
             if (error.response && error.response.data && error.response.data.message) {

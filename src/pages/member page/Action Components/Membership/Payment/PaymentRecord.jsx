@@ -39,7 +39,7 @@ export default function PaymentRecord({ membershipID }) {
     }, [membershipID]);
 
     const navigate = useNavigate()
-    let handleEditButton = () => navigate('editpayment')
+    let handleEditButton = (payID) => navigate(`editpayment/${membershipID}/${payID}`)
 
     return (
         <div className="paymentRecord">
@@ -70,7 +70,7 @@ export default function PaymentRecord({ membershipID }) {
                                         <td>{payment.mode}</td>
                                         <td>{payment.due_date}</td>
                                         <td>
-                                            <button onClick={handleEditButton}>Edit</button>
+                                            <button onClick={() => handleEditButton(payment.pay_id)}>Edit</button>
                                             <button>Delete</button>
                                         </td>
                                     </tr>

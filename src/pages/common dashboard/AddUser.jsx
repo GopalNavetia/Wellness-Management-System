@@ -3,8 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import BackendURL from '../../utils/BackendURL'
 import axiosInstance from '../../utils/AxiosInstance.jsx'
 
 export default function AddUser() {
@@ -40,14 +38,18 @@ export default function AddUser() {
                 }
             });
             if (response.data.success) {
-                // alert("New User Added: " + response.data.message);
+                alert("New User Added: " + response.data.message);
                 setFormData({ username: "", password: "", role: "admin", email: "" });
                 navigate(-1);
             } else {
                 alert('Failed to add user: ' + response.data.message);
             }
         } catch (error) {
-            console.error(error);
+            if (error.response && error.response.data && error.response.data.message) {
+                alert('Error: ' + error.response.data.message);
+            } else {
+                alert('Failed to edit user (network/server error).');
+            }
         }
     };
 

@@ -1,8 +1,9 @@
 import './AddMembership.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
+import axiosInstance from '../../../../utils/AxiosInstance.jsx'
 
 export default function AddMembership() {
 
@@ -15,7 +16,7 @@ export default function AddMembership() {
         type: "",
         start_date: "",
         end_date: "",
-        fees: ""
+        amount: ""
     });
 
     // Common Input Change
@@ -31,16 +32,42 @@ export default function AddMembership() {
         });
     };
 
-    let handleSubmit = (e) => {
+
+    // Backend API Call
+    const { memberID } = useParams();
+
+    let handleSubmit = async (e) => {
         e.preventDefault();
 
-        setFormData({
-            type: "",
-            start_date: "",
-            end_date: "",
-            fees: ""
-        });
-        // Cannot chnage in MockData as it is static file i need backend for change in runtime.
+        try {
+            // 💡 Sending formData as JSON. memberID is correctly passed in the URL.
+            const response = await axiosInstance.post(`/MyProject/AddMembershipAPI?id=${memberID}`, formData, {
+                headers: {
+                    // This is the correct Content-Type for the Java Servlet's JSON parser
+                    'Content-Type': 'application/json',
+                    'ngrok-skip-browser-warning': 'true'
+                }
+            });
+
+            // Note: The backend uses 'status' not 'success' for the outcome key.
+            if (response.data.status === 'success') {
+                alert("Add Membership Successful.")
+                setFormData({ type: "", start_date: "", end_date: "", amount: "" });
+                navigate(-1);
+            } else {
+                // If backend returns a 'failed' status
+                console.log("Form Data:", formData);
+                alert('Failed to add membership: ' + response.data.message);
+            }
+
+        } catch (error) {
+            // Handles network errors, timeouts, and non-2xx status codes (e.g., 400, 401, 500)
+            console.error('API Request Error:', error.response ? error.response.data : error.message);
+            const errorMessage = error.response && error.response.data && error.response.data.error
+                ? error.response.data.error
+                : 'A network or server error occurred.';
+            alert(errorMessage);
+        }
     };
 
     let handleReset = () => {
@@ -48,7 +75,7 @@ export default function AddMembership() {
             type: "",
             start_date: "",
             end_date: "",
-            fees: ""
+            amount: ""
         });
     }
 
@@ -60,6 +87,7 @@ export default function AddMembership() {
             </div>
 
             <div className="formContainer">
+                {/* Your form structure remains the same */}
                 <div>
                     <label htmlFor="type">Type:</label>
                     <select name="type" value={formData.type} id="type" onChange={handleInputChange}>
@@ -80,8 +108,8 @@ export default function AddMembership() {
                 </div>
 
                 <div>
-                    <label htmlFor="fees">Fee Amount:</label>
-                    <input type="text" name="fees" value={formData.fees} id="fees" placeholder="Enter Amount" onChange={handleInputChange}/>
+                    <label htmlFor="amount">Fee Amount:</label>
+                    <input type="text" name="amount" value={formData.amount} id="amount" placeholder="Enter Amount" onChange={handleInputChange} />
                 </div>
 
                 <div className="buttonContainer">

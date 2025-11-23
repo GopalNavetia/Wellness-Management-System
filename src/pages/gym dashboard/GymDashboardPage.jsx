@@ -4,10 +4,10 @@ import NavbarContainer from '../../components/NavbarContainer';
 import MenubarContainer from './MenubarContainer';
 import PageContainer from './PageContainer';
 
-export default function GymDashboardPage() {
+export default function GymDashboardPage({ loginPerson }) {
     return (
         <div className='gymDashboard'>
-            <NavbarContainer title='Gym Dashboard' logo={gymLogo} />
+            <NavbarContainer loginPerson={loginPerson} title='Gym Dashboard' logo={gymLogo} />
             <div className="MainContainer">
                 <MenubarContainer />
                 <PageContainer />

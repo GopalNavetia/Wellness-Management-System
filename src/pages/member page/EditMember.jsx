@@ -2,7 +2,7 @@ import './EditMember.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axiosInstance from '../../utils/AxiosInstance.jsx'
 
 export default function EditMember({ memberID }) {
@@ -38,7 +38,7 @@ export default function EditMember({ memberID }) {
     // Fetch API
     // useEffect(() => {
     //     if (memberID) {
-    //         axiosInstance.get(`/MyProject/EditMemberGetDataAPI?${memberID}`, {
+    //         axiosInstance.get(`/MyProject/MemberDetail?${memberID}`, {
     //             headers: { "ngrok-skip-browser-warning": "true" }
     //         })
     //             .then(response => {
@@ -63,18 +63,17 @@ export default function EditMember({ memberID }) {
             })
 
             if (response.data.success) {
-                // console.log(response.data);
+                alert(response.data.message);
                 setFormData({ name: "", dob: "", phone: "", address: "", photo: "", gender: "" });
                 navigate(-1);
             } else {
-                console.log(formData)
                 alert('Failed to edit member: ' + response.data.message);
             }
         } catch (error) {
             if (error.response && error.response.data && error.response.data.message) {
                 alert('Error: ' + error.response.data.message);
             } else {
-                alert('Failed to edit member (network/server error).');
+                alert('Failed to edit user (network/server error).');
             }
             console.error(error);
         }

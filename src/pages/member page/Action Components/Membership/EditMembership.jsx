@@ -1,8 +1,9 @@
 import './EditMembership.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import axiosInstance from '../../../../utils/AxiosInstance.jsx';
 
 export default function EditMembership() {
 
@@ -15,7 +16,7 @@ export default function EditMembership() {
         type: "",
         start_date: "",
         end_date: "",
-        fees: ""
+        amount: ""
     });
 
     // Common Input Change
@@ -31,24 +32,61 @@ export default function EditMembership() {
         });
     };
 
-    let handleSubmit = (e) => {
+    // Backend API
+    const { membershipID } = useParams();
+
+    // Fetch API
+    // useEffect(() => {
+    //     if (membershipID) {
+    //         axiosInstance.get(`/MyProject/EditMemberGetDataAPI?id=${membershipID}`, {
+    //             headers: { "ngrok-skip-browser-warning": "true" }
+    //         })
+    //             .then(response => {
+    //                 setFormData(response.data);
+    //             })
+    //             .catch(error => {
+    //                 console.error("Failed to load membership data:", error);
+    //             });
+    //     }
+    // }, [membershipID]);
+
+    // Update API
+    let handleSubmit = async (e) => {
         e.preventDefault();
 
-        setFormData({
-            type: "",
-            start_date: "",
-            end_date: "",
-            fees: ""
-        });
-        // Cannot chnage in MockData as it is static file i need backend for change in runtime.
+        try {
+            const response = await axiosInstance.put(`/MyProject/EditMembershipAPI?id=${membershipID}`, formData, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'ngrok-skip-browser-warning': 'true'
+                }
+            })
+
+            if (response.data.success) {
+                // console.log(response.data);
+                setFormData({ type: "", start_date: "", end_date: "", amount: "" });
+                navigate(-1);
+            } else {
+                console.log(formData)
+                alert('Failed to edit membership: ' + response.data.message);
+            }
+        } catch (error) {
+            if (error.response && error.response.data && error.response.data.message) {
+                alert('Error: ' + error.response.data.message);
+            } else {
+                alert('Failed to edit membership (network/server error).');
+            }
+            console.error(error);
+        }
     };
+
 
     let handleReset = () => {
         setFormData({
             type: "",
             start_date: "",
             end_date: "",
-            fees: ""
+            amount: ""
         });
     }
 
@@ -80,8 +118,8 @@ export default function EditMembership() {
                 </div>
 
                 <div>
-                    <label htmlFor="fees">Fee Amount:</label>
-                    <input type="text" name="fees" value={formData.fees} id="fees" placeholder="Enter Amount" />
+                    <label htmlFor="amount">Fee Amount:</label>
+                    <input type="text" name="amount" value={formData.amount} id="amount" placeholder="Enter Amount" onChange={handleInputChange} />
                 </div>
 
                 <div className="buttonContainer">

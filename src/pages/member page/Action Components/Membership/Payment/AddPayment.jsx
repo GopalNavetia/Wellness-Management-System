@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import axiosInstance from '../../../../../utils/AxiosInstance.jsx'
 
 export default function AddPayment() {
 
@@ -31,17 +33,35 @@ export default function AddPayment() {
         });
     };
 
-    let handleSubmit = (e) => {
-        e.preventDefault();
+    // Backend API Call
+    const { membershipID } = useParams();
 
-        setFormData({
-            mode: "",
-            pay_date: "",
-            due_date: "",
-            amount: ""
-        });
-        // Cannot chnage in MockData as it is static file i need backend for change in runtime.
+    let handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            // console.log(formData);
+            const response = await axiosInstance.post(`/MyProject/AddPaymentAPI?id=${membershipID}`, formData, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'ngrok-skip-browser-warning': 'true'
+                }
+            });
+            if (response.data.success) {
+                // console.log(response.data);
+                alert("Add Payment Successful.")
+                setFormData({ mode: "", pay_date: "", due_date: "", amount: "" });
+                navigate(-1);
+            } else {
+                console.log(formData)
+                alert('Failed to add payment: ' + (response.data.message || response.data.error || 'Unknown error'));
+            }
+
+        } catch (error) {
+            console.log(formData)
+            console.error(error);
+        }
     };
+
 
     let handleReset = () => {
         setFormData({

@@ -36,11 +36,25 @@ export default function MembershipRecord({ memberID }) {
     // Navigation helpers
     const navigate = useNavigate();
     const handleCloseButton = () => navigate(-1);
-    const handleAddButton = () => navigate('addmembership');
-    const handleEditButton = (id) => {
-        setSelectedMembershipId(id);
-        navigate('editmembership');
+    const handleAddButton = () => navigate(`addmembership/${memberID}`);
+    const handleEditButton = (membershipID) => {
+        // setSelectedMembershipId(membershipID);
+        navigate(`editmembership/${membershipID}`);
     };
+    const handleDeleteButton = async (membershipID) => {
+        if (!window.confirm('Are you sure you want to delete this membership?')) {
+            return;
+        }
+        try {
+            await axiosInstance.delete(`/MyProject/DeleteMembershipAPI?id=${membershipID}`, {
+                headers: { "ngrok-skip-browser-warning": "true" }
+            });
+            setFetchData(prevData => prevData.filter(membership => membership.id !== membershipID));
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
 
     // View/PaymentDetails navigation with mandatory ID check
     const handleViewButton = id => {
@@ -94,6 +108,7 @@ export default function MembershipRecord({ memberID }) {
                                         </td>
                                         <td>
                                             <button onClick={() => handleEditButton(membership.id)}>Edit</button>
+                                            <button onClick={() => handleDeleteButton(membership.id)}>Delete</button>
                                         </td>
                                     </tr>
                                 ))
@@ -115,8 +130,8 @@ export default function MembershipRecord({ memberID }) {
     const MembershipRecordRoutes = () => {
         return useRoutes([
             { path: '/', element: renderPageContent() },
-            { path: 'addmembership', element: <><AddMembership />{renderPageContent()}</> },
-            { path: 'editmembership', element: <><EditMembership />{renderPageContent()}</> },
+            { path: 'addmembership/:memberID', element: <AddMembership /> },
+            { path: 'editmembership/:membershipID', element: <EditMembership /> },
             {
                 path: 'paymentdetails/*',
                 element: <PaymentDetails membershipID={selectedMembershipId} />

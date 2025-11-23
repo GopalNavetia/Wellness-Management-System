@@ -1,8 +1,8 @@
 import './LoginPage.css'
 import LoginContainer from './LoginContainer'
 
-export default function LoginPage() {
+export default function LoginPage({ storeLoginPerson }) {
     return <div className='window'>
-        <LoginContainer />
+        <LoginContainer storeLoginPerson={storeLoginPerson} />
     </div>
 }

@@ -9,7 +9,7 @@ import EditUser from './EditUser';
 import { useRoutes } from 'react-router-dom';
 import { useState } from 'react';
 
-export default function CommonDashboardPage() {
+export default function CommonDashboardPage({ loginPerson }) {
     const DashboardRoutes = () => {
         return useRoutes([
             { path: '', element: <SystemContainer /> },
@@ -24,7 +24,7 @@ export default function CommonDashboardPage() {
     let [selectedUsername, setSelectedUsername] = useState(null);
     return (
         <div className='CommonDashboard'>
-            <NavbarContainer title='Main Dashboard' logo={navLogo} />
+            <NavbarContainer loginPerson={loginPerson} title='Main Dashboard' logo={navLogo} />
             <DashboardRoutes />
         </div>
     );

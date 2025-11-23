@@ -80,6 +80,7 @@
 }
 
 .userListContainer table button {
+    margin: 0.5% 1.5%;
     padding: 2%;
     cursor: pointer;
 }

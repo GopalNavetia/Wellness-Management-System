@@ -3,12 +3,12 @@ import LoginHeadSection from './LoginHeadSection';
 import LoginWelcomeContainer from './LoginWelcomeContainer';
 import FormContainer from './FormContainer';
 
-export default function LoginContainer() {
+export default function LoginContainer({ storeLoginPerson }) {
     return (
         <div className='loginContainer'>
             <LoginHeadSection />
             <LoginWelcomeContainer />
-            <FormContainer />
+            <FormContainer storeLoginPerson={storeLoginPerson} />
         </div>
     );
 }

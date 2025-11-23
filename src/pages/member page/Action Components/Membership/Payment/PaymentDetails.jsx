@@ -45,7 +45,7 @@ export default function PaymentDetails({ membershipID: propMembershipID }) {
     }, [membershipID]);
 
     const navigate = useNavigate();
-    const handleAddButton = () => navigate('addpayment');
+    const handleAddButton = () => navigate(`addpayment/${membershipID}`);
     const handleClose = () => navigate(-1);
 
     // UI rendering logic: shows loading, error, or payment data
@@ -99,8 +99,8 @@ export default function PaymentDetails({ membershipID: propMembershipID }) {
     const PaymentDetailsRoutes = () => {
         return useRoutes([
             { path: '/', element: renderPageContent() },
-            { path: 'addpayment', element: <><AddPayment />{renderPageContent()}</> },
-            { path: 'editpayment', element: <><EditPayment />{renderPageContent()}</> },
+            { path: 'addpayment/:membershipID', element: <AddPayment /> },
+            { path: 'editpayment/:membershipID/:payID', element: <EditPayment /> },
         ]);
     };
 

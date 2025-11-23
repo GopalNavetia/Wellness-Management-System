@@ -18,17 +18,26 @@ export default function ManageUsersConatiner({ onEditUser }) {
     };
 
     let handleDeleteButton = async (username) => {
-        // console.log("Delete Button click")
+        // Ask for confirmation
+        const ok = window.confirm(`Are you sure you want to delete user "${username}"?`);
+
+        // If user clicks Cancel, just return
+        if (!ok) return;
+
         try {
-            await axiosInstance.delete(`/MyProject/DeleteUserAPI?username=${username}`, {
-                headers: { "ngrok-skip-browser-warning": "true" }
-            });
-            // Update UI after Successfull deletion
+            await axiosInstance.delete(
+                `/MyProject/DeleteUserAPI?username=${username}`,
+                { headers: { "ngrok-skip-browser-warning": "true" } }
+            );
+            // Update UI after successful deletion
             setFetchData(prevData => prevData.filter(user => user.username !== username));
+            alert("User deleted successfully.");
         } catch (error) {
-            console.log(error);
+            console.log(error.response);
+            alert("Failed to delete user. Please try again.");
         }
-    }
+    };
+
 
     let handleCloseButton = () => {
         navigate('/dashboard');
@@ -74,7 +83,10 @@ export default function ManageUsersConatiner({ onEditUser }) {
                 <td>{user.password}</td>
                 <td>{user.role}</td>
                 <td>{user.email}</td>
-                <td><button onClick={() => { handleEditButton(user.username) }}>Edit</button> <button onClick={() => { handleDeleteButton(user.username) }}>Delete</button></td>
+                <td>
+                    <button onClick={() => { handleEditButton(user.username) }}>Edit</button>
+                    <button onClick={() => { handleDeleteButton(user.username) }}>Delete</button>
+                </td>
             </tr>
         ));
     }

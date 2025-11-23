@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import axiosInstance from '../../../../../utils/AxiosInstance.jsx'
 
 export default function EditPayment() {
 
@@ -31,16 +33,52 @@ export default function EditPayment() {
         });
     };
 
-    let handleSubmit = (e) => {
+    // Backend API
+    const { membershipID, payID } = useParams();
+
+    // // Fetch API
+    // useEffect(() => {
+    //     if (payID) {
+    //         axiosInstance.get(`/MyProject/EditMemberGetDataAPI?id=${payID}`, {
+    //             headers: { "ngrok-skip-browser-warning": "true" }
+    //         })
+    //             .then(response => {
+    //                 setFormData(response.data);
+    //             })
+    //             .catch(error => {
+    //                 console.error("Failed to load payment data:", error);
+    //             });
+    //     }
+    // }, [payID]);
+
+    // Update API
+    let handleSubmit = async (e) => {
         e.preventDefault();
 
-        setFormData({
-            mode: "",
-            pay_date: "",
-            due_date: "",
-            amount: ""
-        });
-        // Cannot chnage in MockData as it is static file i need backend for change in runtime.
+        try {
+            const response = await axiosInstance.put(`/MyProject/EditPaymentAPI?id=${payID}`, formData, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'ngrok-skip-browser-warning': 'true'
+                }
+            })
+
+            if (response.data.success) {
+                // console.log(response.data);
+                setFormData({ mode: "", pay_date: "", due_date: "", amount: "" });
+                navigate(-1);
+            } else {
+                console.log(formData)
+                alert('Failed to edit member: ' + response.data.message);
+            }
+        } catch (error) {
+            if (error.response && error.response.data && error.response.data.message) {
+                alert('Error: ' + error.response.data.message);
+            } else {
+                alert('Failed to edit member (network/server error).');
+            }
+            console.error(error);
+        }
     };
 
     let handleReset = () => {
