@@ -2,7 +2,7 @@ import './MemberActionContainer.css'
 import MembershipRecord from './Action Components/Membership/MembershipRecord'
 import WorkoutRecord from './Action Components/Workout Plan/WorkoutRecord'
 import HealthRecord from './Action Components/Health/HealthRecord'
-// import AddWorkoutPlan from './Action Components/Workout Plan/AddWorkoutPlan'
+import ProgressRecord from './Action Components/Progress/ProgressRecord'
 import { useNavigate, useRoutes } from 'react-router-dom';
 
 
@@ -31,7 +31,8 @@ export default function MemberActionContainer({ memberID }) {
             { path: '/', element: renderPageContent() },
             { path: 'membershiprecord/*', element: <>{renderPageContent()} < MembershipRecord memberID={memberID} /></> },
             { path: 'workoutplan/*', element: <>{renderPageContent()} <WorkoutRecord memberID={memberID} /></> },
-            { path: 'healthrecord/*', element: <>{renderPageContent()} <HealthRecord memberID={memberID} /></> }
+            { path: 'healthrecord/*', element: <>{renderPageContent()} <HealthRecord memberID={memberID} /></> },
+            { path: 'progress/*', element: <>{renderPageContent()} <ProgressRecord memberID={memberID} /></> }
         ]);
     }
 

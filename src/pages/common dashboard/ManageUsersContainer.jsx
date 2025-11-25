@@ -14,7 +14,7 @@ export default function ManageUsersConatiner({ onEditUser }) {
 
     let handleEditButton = (username) => {
         onEditUser(username)
-        navigate('/dashboard/edituser');
+        navigate(`/dashboard/edituser/${username}`);
     };
 
     let handleDeleteButton = async (username) => {

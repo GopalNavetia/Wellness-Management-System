@@ -16,7 +16,7 @@ export default function CommonDashboardPage({ loginPerson }) {
             { path: 'myprofile', element: <MyProfileContainer /> },
             { path: 'manageuser', element: <ManageUsersContainer onEditUser={setSelectedUsername} /> },
             { path: 'adduser', element: <AddUser /> },
-            { path: 'edituser', element: <EditUser username={selectedUsername} /> }
+            { path: 'edituser/:username', element: <EditUser /> }
         ]);
     };
 

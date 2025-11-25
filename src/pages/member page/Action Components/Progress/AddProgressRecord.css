@@ -1,0 +1,93 @@
+.addProgressRecord {
+    width: 95%;
+    /* border: 2px solid brown; */
+    margin: 1% 1.5% 0.5% 1.5%;
+    border: 1px solid rgba(17, 17, 17, 0.5);
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.addProgressRecordHeadSection {
+    width: 100%;
+    padding: 0.5% 1.5%;
+    background-color: #111;
+    color: #fff;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.addProgressRecordHeadSection h1 {
+    background-color: #111;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    color: #fff;
+    font-size: 1.5em;
+    cursor: default;
+}
+
+.addProgressRecordHeadSection .xMark {
+    color: #fff;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.addProgressRecordHeadSection .xMark:hover {
+    color: #ff4d4d;
+    transform: scale(1.2, 1.2);
+}
+
+.addProgressRecord .formContainer {
+    width: 96%;
+    margin: 1% 2%;
+    font-size: 0.9em;
+}
+
+.addProgressRecord .formContainer .dateContainer {
+    font-size: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addProgressRecord .formContainer .dateContainer input {
+    font-size: 1em;
+    margin: 0.5% 1.5%;
+    padding: 0.2% 1.3%;
+}
+
+.addProgressRecord .formContainer table {
+    width: 100%;
+    margin: 1% 0%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 1em;
+}
+
+.addProgressRecord .formContainer table th,
+.addProgressRecord .formContainer table td {
+    border: 1px solid #ccc;
+    padding: 0.5% 1%;
+}
+
+.addProgressRecord .formContainer th {
+    background-color: #222;
+    color: #fff;
+    font-weight: 600;
+}
+
+.addProgressRecord .formContainer td input {
+    width: 96%;
+    font-size: 1em;
+    padding: 0.2% 1.3%;
+}
+
+.addProgressRecord .formContainer button {
+    margin: 0.5%;
+    padding: 0.3% 1.3%;
+    font-size: 0.9em;
+}

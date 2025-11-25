@@ -40,32 +40,24 @@ export default function AddMembership() {
         e.preventDefault();
 
         try {
-            // 💡 Sending formData as JSON. memberID is correctly passed in the URL.
             const response = await axiosInstance.post(`/MyProject/AddMembershipAPI?id=${memberID}`, formData, {
                 headers: {
-                    // This is the correct Content-Type for the Java Servlet's JSON parser
                     'Content-Type': 'application/json',
                     'ngrok-skip-browser-warning': 'true'
                 }
             });
 
-            // Note: The backend uses 'status' not 'success' for the outcome key.
             if (response.data.status === 'success') {
                 alert("Add Membership Successful.")
                 setFormData({ type: "", start_date: "", end_date: "", amount: "" });
                 navigate(-1);
             } else {
-                // If backend returns a 'failed' status
                 console.log("Form Data:", formData);
                 alert('Failed to add membership: ' + response.data.message);
             }
 
         } catch (error) {
-            // Handles network errors, timeouts, and non-2xx status codes (e.g., 400, 401, 500)
             console.error('API Request Error:', error.response ? error.response.data : error.message);
-            const errorMessage = error.response && error.response.data && error.response.data.error
-                ? error.response.data.error
-                : 'A network or server error occurred.';
             alert(errorMessage);
         }
     };

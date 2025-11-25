@@ -2,10 +2,10 @@ import './EditUser.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useParams } from 'react-router-dom';
 import axiosInstance from '../../utils/AxiosInstance.jsx'
 
-export default function EditUser({ username }) {
+export default function EditUser() {
     const navigate = useNavigate();
 
     let [formData, setFormData] = useState({
@@ -14,6 +14,9 @@ export default function EditUser({ username }) {
         role: "",
         email: ""
     });
+
+    // Backend API
+    const { username } = useParams();
 
     // Fetch user data when component mounts or username changes
     useEffect(() => {

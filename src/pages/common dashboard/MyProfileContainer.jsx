@@ -30,13 +30,13 @@ export default function MyProfileContainer() {
     }, []);
 
     const navigate = useNavigate();
-    let handleEditButton = () => {
-        navigate('/dashboard/edituser');
+    let handleEditButton = (username) => {
+        navigate(`/dashboard/edituser/${username}`);
     };
 
     let handleClose = () => {
         navigate(-1)
-    }; 
+    };
 
     if (loading) {
         return <p style={{ textAlign: 'center' }}>Loading...</p>;
@@ -54,7 +54,7 @@ export default function MyProfileContainer() {
                     <img src={adminLogo} alt="adminLogo" />
                     <h1>Admin</h1>
                     <p>user profile information</p>
-                    <button onClick={handleEditButton}>Edit</button>
+                    <button onClick={() => handleEditButton(fetchData.username)}>Edit</button>
                 </div>
                 <div className="adminData">
                     <div className='data'>

@@ -36,19 +36,19 @@ export default function EditMember({ memberID }) {
 
     // Backend API Call
     // Fetch API
-    // useEffect(() => {
-    //     if (memberID) {
-    //         axiosInstance.get(`/MyProject/MemberDetail?${memberID}`, {
-    //             headers: { "ngrok-skip-browser-warning": "true" }
-    //         })
-    //             .then(response => {
-    //                 setFormData(response.data);
-    //             })
-    //             .catch(error => {
-    //                 console.error("Failed to load member data:", error);
-    //             });
-    //     }
-    // }, [memberID]);
+    useEffect(() => {
+        if (memberID) {
+            axiosInstance.get(`/MyProject/MemberDetail?id=${memberID}`, {
+                headers: { "ngrok-skip-browser-warning": "true" }
+            })
+                .then(response => {
+                    setFormData(response.data);
+                })
+                .catch(error => {
+                    console.error("Failed to load member data:", error);
+                });
+        }
+    }, [memberID]);
 
     // Update API
     let handleSubmit = async (e) => {
