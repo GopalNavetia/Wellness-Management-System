@@ -2,7 +2,7 @@ import './EditPayment.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axiosInstance from '../../../../../utils/AxiosInstance.jsx'
 
@@ -37,19 +37,19 @@ export default function EditPayment() {
     const { membershipID, payID } = useParams();
 
     // // Fetch API
-    // useEffect(() => {
-    //     if (payID) {
-    //         axiosInstance.get(`/MyProject/EditMemberGetDataAPI?id=${payID}`, {
-    //             headers: { "ngrok-skip-browser-warning": "true" }
-    //         })
-    //             .then(response => {
-    //                 setFormData(response.data);
-    //             })
-    //             .catch(error => {
-    //                 console.error("Failed to load payment data:", error);
-    //             });
-    //     }
-    // }, [payID]);
+    useEffect(() => {
+        if (payID) {
+            axiosInstance.get(`/MyProject/EditGetPaymentAPI?id=${payID}`, {
+                headers: { "ngrok-skip-browser-warning": "true" }
+            })
+                .then(response => {
+                    setFormData(response.data);
+                })
+                .catch(error => {
+                    console.error("Failed to load payment data:", error);
+                });
+        }
+    }, [payID]);
 
     // Update API
     let handleSubmit = async (e) => {

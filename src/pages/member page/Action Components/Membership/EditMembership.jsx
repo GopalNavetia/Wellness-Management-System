@@ -36,19 +36,20 @@ export default function EditMembership() {
     const { membershipID } = useParams();
 
     // Fetch API
-    // useEffect(() => {
-    //     if (membershipID) {
-    //         axiosInstance.get(`/MyProject/EditMemberGetDataAPI?id=${membershipID}`, {
-    //             headers: { "ngrok-skip-browser-warning": "true" }
-    //         })
-    //             .then(response => {
-    //                 setFormData(response.data);
-    //             })
-    //             .catch(error => {
-    //                 console.error("Failed to load membership data:", error);
-    //             });
-    //     }
-    // }, [membershipID]);
+    useEffect(() => {
+        console.log("Edit" + membershipID)
+        if (membershipID) {
+            axiosInstance.get(`/MyProject/EditGetMembershipAPI?id=${membershipID}`, {
+                headers: { "ngrok-skip-browser-warning": "true" }
+            })
+                .then(response => {
+                    setFormData(response.data);
+                })
+                .catch(error => {
+                    console.error("Failed to load membership data:", error);
+                });
+        }
+    }, [membershipID]);
 
     // Update API
     let handleSubmit = async (e) => {

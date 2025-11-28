@@ -40,20 +40,20 @@ export default function EditWorkoutPlan() {
     // Backend API Call
     const { workoutID } = useParams();
 
-    // Fetch user data when component mounts or username changes
-    // useEffect(() => {
-    //     if (workoutID) {
-    //         axiosInstance.get(`/MyProject/WorkoutRecordAPI?id=${workoutID}`, {
-    //             headers: { "ngrok-skip-browser-warning": "true" }
-    //         })
-    //             .then(response => {
-    //                 setFormData(response.data);
-    //             })
-    //             .catch(error => {
-    //                 console.error("Failed to load workout plan data:", error);
-    //             });
-    //     }
-    // }, [workoutID]);
+    // Fetch API
+    useEffect(() => {
+        if (workoutID) {
+            axiosInstance.get(`/MyProject/EditGetWorkoutAPI?id=${workoutID}`, {
+                headers: { "ngrok-skip-browser-warning": "true" }
+            })
+                .then(response => {
+                    setFormData(response.data);
+                })
+                .catch(error => {
+                    console.error("Failed to load workout plan data:", error);
+                });
+        }
+    }, [workoutID]);
 
     // Submit API
     let handleSubmit = async (e) => {

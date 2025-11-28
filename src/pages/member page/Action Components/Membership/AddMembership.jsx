@@ -47,12 +47,11 @@ export default function AddMembership() {
                 }
             });
 
-            if (response.data.status === 'success') {
+            if (response.data.success) {
                 alert("Add Membership Successful.")
                 setFormData({ type: "", start_date: "", end_date: "", amount: "" });
                 navigate(-1);
             } else {
-                console.log("Form Data:", formData);
                 alert('Failed to add membership: ' + response.data.message);
             }
 
@@ -79,7 +78,6 @@ export default function AddMembership() {
             </div>
 
             <div className="formContainer">
-                {/* Your form structure remains the same */}
                 <div>
                     <label htmlFor="type">Type:</label>
                     <select name="type" value={formData.type} id="type" onChange={handleInputChange}>

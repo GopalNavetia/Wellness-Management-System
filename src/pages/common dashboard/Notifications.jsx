@@ -5,6 +5,9 @@ import axiosInstance from '../../utils/AxiosInstance'
 
 export default function Notifications(props) {
 
+    // const [fetchData, setFetchData] = useState(null);
+    // const [loading, setLoading] = useState(true);
+
     // When you pass props.data explicitly as an argument to a helper function or any nested function, that function receives data directly as its parameter.
     function generateNotification(data) {
         if (!data || data.length === 0) return null;

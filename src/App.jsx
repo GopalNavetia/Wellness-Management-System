@@ -5,6 +5,7 @@ import GymDashboardPage from './pages/gym dashboard/GymDashboardPage';
 import { useState } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import PrivateRoute from './utils/PrivateRoute'
+// import ProgressLineChart from '/src/pages/member page/Action Components/Progress/ProgressLineChart'
 
 function App() {
   const [loginPerson, setLoginPerson] = useState(localStorage.getItem('username') || '');
@@ -23,6 +24,7 @@ function App() {
     }
   ]);
 
+  // return <ProgressLineChart />
   return <RouterProvider router={router} />
 }
 

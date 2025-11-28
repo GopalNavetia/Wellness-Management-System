@@ -5,13 +5,13 @@ import AddHealthRecord from './AddHealthRecord'
 import EditHealthRecord from './EditHealthRecord'
 import { useNavigate, useRoutes } from 'react-router-dom';
 
-export default function HealthRecord() {
+export default function HealthRecord({ memberID }) {
 
     // Navigation helpers
     const navigate = useNavigate();
     const handleCloseButton = () => navigate(-1);
-    const handleAddButton = () => navigate('addhealthrecord');
-    const handleEditButton = () => navigate('edithealthrecord');
+    const handleAddButton = (memberID) => navigate(`addhealthrecord/${memberID}`);
+    const handleEditButton = (memberID) => navigate(`edithealthrecord/${memberID}`);
 
     // Render Page
     const renderPageContent = () => (
@@ -19,7 +19,7 @@ export default function HealthRecord() {
             <div className="healthRecordHeadSection">
                 <h1>Health Record</h1>
                 <div className='buttonsContainer'>
-                    <button onClick={handleAddButton}>Add</button>
+                    <button onClick={() => handleAddButton(memberID)}>Add</button>
                     <span className='xMark' onClick={handleCloseButton}><FontAwesomeIcon icon={faXmark} /></span>
                 </div>
             </div>
@@ -86,8 +86,8 @@ export default function HealthRecord() {
     const HealthRecordRoutes = () => {
         return useRoutes([
             { path: '/', element: renderPageContent() },
-            { path: 'addhealthrecord', element: <AddHealthRecord /> },
-            { path: 'edithealthrecord', element: <EditHealthRecord /> },
+            { path: 'addhealthrecord/:memberID', element: <AddHealthRecord /> },
+            { path: 'edithealthrecord/:memberID', element: <EditHealthRecord /> },
         ]);
     };
 

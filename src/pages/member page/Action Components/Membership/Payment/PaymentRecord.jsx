@@ -71,7 +71,6 @@ export default function PaymentRecord({ membershipID }) {
                                         <td>{payment.due_date}</td>
                                         <td>
                                             <button onClick={() => handleEditButton(payment.pay_id)}>Edit</button>
-                                            <button>Delete</button>
                                         </td>
                                     </tr>
                                 ))
