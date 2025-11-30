@@ -111,11 +111,11 @@ export default function MemberTable({ onViewMember }) {
                 <tr key={member.id}>
                     <td>{member.name}</td>
                     <td>{member.type}</td>
-                    <td className={paymentStatusClass}>
-                        {member.payment_status}
-                    </td>
                     <td className={membershipStatusClass}>
                         {membershipStatus}
+                    </td>
+                    <td className={paymentStatusClass}>
+                        {member.payment_status}
                     </td>
                     <td>{member.phone}</td>
                     <td><button onClick={() => { onViewMember(member.id); handleViewButton() }}>View</button></td>
@@ -145,8 +145,8 @@ export default function MemberTable({ onViewMember }) {
                         <tr>
                             <th>Name</th>
                             <th>Type</th>
-                            <th>Payment</th>
                             <th>Membership</th>
+                            <th>Payment</th>
                             <th>Contact</th>
                             <th>Action</th>
                         </tr>
