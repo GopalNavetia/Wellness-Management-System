@@ -15,3 +15,7 @@
 body {
   background: #f6f8fa;
 }
+
+button {
+  cursor: pointer;
+}

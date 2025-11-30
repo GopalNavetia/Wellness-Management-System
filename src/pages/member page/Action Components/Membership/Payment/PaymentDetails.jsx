@@ -85,7 +85,16 @@ export default function PaymentDetails({ membershipID: propMembershipID }) {
                             </div>
                             <div>
                                 <p className="title">Status:</p>
-                                <p className="data">{fetchData.status}</p>
+                                {(() => {
+                                    const paymentStatus = fetchData.status || '-';
+                                    const paymentStatusClass = `paymentStatus-${paymentStatus.toLowerCase()}`;
+
+                                    return (
+                                        <p className={`data ${paymentStatusClass}`}>
+                                            {paymentStatus}
+                                        </p>
+                                    );
+                                })()}
                             </div>
                         </>
                     )}

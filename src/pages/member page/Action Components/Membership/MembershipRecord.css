@@ -84,3 +84,13 @@
     padding: 1% 2%;
     cursor: pointer;
 }
+
+.membershipStatus-active {
+    color: #2e7d32;
+    font-weight: 600;
+}
+
+.membershipStatus-expired {
+    color: #dc3545;
+    font-weight: 600;
+}

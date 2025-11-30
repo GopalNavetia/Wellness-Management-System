@@ -29,6 +29,7 @@ export default function ProgressLineChart({ data }) {
         'arms',
         'thighs',
         'back',
+        'height'
     ];
 
     const [selectedPart, setSelectedPart] = useState('all');
@@ -113,6 +114,7 @@ export default function ProgressLineChart({ data }) {
                                 bmi: '#795548',
                                 fat_percent: '#3f51b5',
                                 muscle_percent: '#ff5722',
+                                height: '#ffc107'
                             };
 
                             const isActive = activeKeys.includes(key);
@@ -153,6 +155,7 @@ export default function ProgressLineChart({ data }) {
                                 bmi: '#795548',
                                 fat_percent: '#3f51b5',
                                 muscle_percent: '#ff5722',
+                                height: '#ffc107'
                             };
 
                             const color = colorMap[selectedPart];
@@ -187,6 +190,8 @@ export default function ProgressLineChart({ data }) {
                             <YAxis />
                             <Tooltip />
                             {shouldShowLine('weight') && (<Line type="monotone" dataKey="weight" stroke="#8884d8" strokeWidth={2} dot={{ r: 4 }} activeDot={{ r: 5 }} />)}
+
+                            {shouldShowLine('height') && (<Line type="monotone" dataKey="height" stroke="#ffc107" strokeWidth={2} dot={{ r: 4 }} activeDot={{ r: 5 }} />)}
 
                             {shouldShowLine('thighs') && (<Line type="monotone" dataKey="thighs" stroke="#82ca9d" strokeWidth={2} dot={{ r: 4 }} activeDot={{ r: 5 }} />)}
 

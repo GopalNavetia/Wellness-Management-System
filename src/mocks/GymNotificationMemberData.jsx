@@ -3,7 +3,7 @@ let mockData = [
     {
         id: 1,
         name: "Ravi Kumar",
-        membershipEndDate: "2025-11-30",  // Active
+        membershipEndDate: "2025-12-15",  // Active (future)
         paymentDueDate: null
     },
 
@@ -11,38 +11,39 @@ let mockData = [
     {
         id: 2,
         name: "Amit Sharma",
-        membershipEndDate: "2025-11-15",  // Active
-        paymentDueDate: "2025-10-18"      // Payment overdue
+        membershipEndDate: "2025-12-10",  // Active (future)
+        paymentDueDate: "2025-11-20"      // Payment overdue
     },
 
     {
         id: 3,
         name: "Suresh Singh",
-        membershipEndDate: "2025-12-01",  // Active
-        paymentDueDate: "2025-11-25"      // Payment not yet due
+        membershipEndDate: "2025-12-05",  // Active (future)
+        paymentDueDate: "2025-11-25"      // Payment overdue
     },
 
-    // Case 3: Expired + Paid → Membership expired alert
+    // Case 3: Recently Expired + Paid → Membership expired alert (within 10 days)
     {
         id: 4,
         name: "Manoj Verma",
-        membershipEndDate: "2025-10-10",  // Expired
+        membershipEndDate: "2025-11-25",  // Recently expired (4 days ago)
         paymentDueDate: null
     },
 
-    // Case 4: Expired + Pending → Both alerts
+    // Case 4: Recently Expired + Pending → Both alerts (within 10 days)
     {
         id: 5,
         name: "Rahul Mehta",
-        membershipEndDate: "2025-10-05",  // Expired
-        paymentDueDate: "2025-10-01"      // Payment overdue
+        membershipEndDate: "2025-11-22",  // Recently expired (7 days ago)
+        paymentDueDate: "2025-11-10"      // Payment overdue
     },
 
+    // Case 5: Long Expired → Will be null from backend, but keeping for testing
     {
         id: 6,
         name: "Karan Patel",
-        membershipEndDate: "2025-09-30",  // Expired
-        paymentDueDate: "2025-09-28"      // Payment overdue
+        membershipEndDate: null,           // Long expired (>10 days)
+        paymentDueDate: "2025-11-15"       // Payment overdue
     }
 ];
 

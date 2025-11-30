@@ -1,8 +1,9 @@
 import './EditProgressRecord.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import axiosInstance from '../../../../utils/AxiosInstance.jsx'
 
 export default function EditProgressRecord() {
 
@@ -10,7 +11,6 @@ export default function EditProgressRecord() {
         date: "",
         weight: "",
         height: "",
-        bmi: "",
         fat_percent: "",
         muscle_percent: "",
         chest: "",
@@ -35,45 +35,16 @@ export default function EditProgressRecord() {
     };
 
     const navigate = useNavigate();
+
     let handleClose = () => {
         navigate(-1)
     };
-
-    let handleSubmit = () => (console.log(formData));
-
-    // Backend API Call
-    // const { memberID } = useParams();
-
-    // let handleSubmit = async (e) => {
-    //     e.preventDefault();
-
-    //     try {
-    //         const response = await axiosInstance.post(`/MyProject/EditProgressAPI?id=${memberID}`, formData, {
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //                 'ngrok-skip-browser-warning': 'true'
-    //             }
-    //         });
-
-    //         if (response.data.status === 'success') {
-    //             alert("Edit Progress Successful.")
-    //             setFormData({ date: "", weight: "", height: "", bmi: "", fat_percent: "", muscle_percent: "", chest: "", waist: "", shoulder: "", arms: "", thighs: "", back: "" });
-    //             navigate(-1);
-    //         } else {
-    //             alert('Failed to edit progress: ' + response.data.message);
-    //         }
-
-    //     } catch (error) {
-    //         console.error('API Request Error:', error.response ? error.response.data : error.message);
-    //         alert(errorMessage);
-    //     }
 
     let handleReset = () => {
         setFormData({
             date: "",
             weight: "",
             height: "",
-            bmi: "",
             fat_percent: "",
             muscle_percent: "",
             chest: "",
@@ -84,6 +55,58 @@ export default function EditProgressRecord() {
             back: ""
         });
     }
+
+    // Backend API Call
+    const { progressID } = useParams();
+
+    // //  Fetch API
+    useEffect(() => {
+        if (progressID) {
+            axiosInstance.get(`/MyProject/EditGetProgressAPI?id=${progressID}`, {
+                headers: { "ngrok-skip-browser-warning": "true" }
+            })
+                .then(response => {
+                    setFormData(response.data);
+                })
+                .catch(error => {
+                    console.error("Failed to load progress data:", error);
+                });
+        }
+    }, [progressID]);
+
+    // Edit API
+    let handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await axiosInstance.put(
+                `/MyProject/EditProgressAPI?id=${progressID}`,
+                formData,
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'ngrok-skip-browser-warning': 'true'
+                    }
+                }
+            );
+
+            // Backend sends: { success: true/false, message: "..." }
+            if (response.data.success === true) {
+                alert("Edit Progress Successful.");
+                handleReset();
+                navigate(-1);
+            } else {
+                alert('Failed to edit progress: ' + (response.data.message || 'Unknown error'));
+            }
+
+        } catch (error) {
+            console.error(
+                'API Request Error:',
+                error.response ? error.response.data : error.message
+            );
+            alert('Error while editing progress.');
+        }
+    };
 
     return (
         <div className="editProgressRecord">
@@ -114,10 +137,10 @@ export default function EditProgressRecord() {
                             <td><label htmlFor="height">Height</label></td>
                             <td><input type="text" name="height" value={formData.height} id="height" onChange={handleInputChange} /></td>
                         </tr>
-                        <tr>
+                        {/* <tr>
                             <td><label htmlFor="bmi">BMI</label></td>
                             <td><input type="text" name="bmi" value={formData.bmi} id="bmi" onChange={handleInputChange} /></td>
-                        </tr>
+                        </tr> */}
                         <tr>
                             <td><label htmlFor="fat_percent">Fat%</label></td>
                             <td><input type="text" name="fat_percent" value={formData.fat_percent} id="fat_percent" onChange={handleInputChange} /></td>

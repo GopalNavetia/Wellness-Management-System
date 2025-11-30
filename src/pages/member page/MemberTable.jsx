@@ -96,26 +96,37 @@ export default function MemberTable({ onViewMember }) {
     }
 
     function generateMembersData() {
-        return membersDataPrint.map(member => (
-            <tr key={member.id}>
-                <td>{member.name}</td>
-                <td>{member.type}</td>
-                <td>{member.payment_status}</td>
-                <td>
-                    {member.end_date === ''
-                        ? '-'
-                        : new Date(member.end_date) >= new Date()
-                            ? 'Active'
-                            : 'Expired'}
-                </td>
-                <td>{member.phone}</td>
-                <td><button onClick={() => { onViewMember(member.id); handleViewButton() }}>View</button></td>
-            </tr>
-        ));
+        return membersDataPrint.map(member => {
+            // Compute status values with consistent naming
+            const membershipStatus = member.end_date === ''
+                ? '-'
+                : new Date(member.end_date) >= new Date()
+                    ? 'Active'
+                    : 'Expired';
+
+            const paymentStatusClass = `paymentStatus-${member.payment_status.toLowerCase()}`;
+            const membershipStatusClass = `membershipStatus-${membershipStatus.toLowerCase()}`;
+
+            return (
+                <tr key={member.id}>
+                    <td>{member.name}</td>
+                    <td>{member.type}</td>
+                    <td className={paymentStatusClass}>
+                        {member.payment_status}
+                    </td>
+                    <td className={membershipStatusClass}>
+                        {membershipStatus}
+                    </td>
+                    <td>{member.phone}</td>
+                    <td><button onClick={() => { onViewMember(member.id); handleViewButton() }}>View</button></td>
+                </tr>
+            );
+        });
     }
 
+
     return (
-        <div className='tableContainer'>
+        <div className='memberTableContainer'>
             <div className="headContainer">
                 <h1>Member List</h1>
                 {/*  Search Container  */}

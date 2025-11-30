@@ -14,7 +14,7 @@ export default function ProgressRecord({ memberID }) {
     const [fetchData, setFetchData] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    // Fetch user memberships
+    // Fetch Progress Record
     useEffect(() => {
         async function fetchProgressData() {
             try {
@@ -36,8 +36,27 @@ export default function ProgressRecord({ memberID }) {
     const navigate = useNavigate();
     const handleCloseButton = () => navigate(-1);
     const handleAddButton = () => navigate(`addprogress/${memberID}`);
-    const handleEditButton = () => navigate(`editprogress/${memberID}`);
-    // const handleDeleteButton = async (progressID) => {}
+    const handleEditButton = (progressID) => navigate(`editprogress/${progressID}`);
+    const handleDeleteButton = async (progressID) => {
+        // Ask for confirmation
+        const ok = window.confirm("Are you sure you want to delete progress record?");
+
+        // If user clicks Cancel, just return
+        if (!ok) return;
+
+        try {
+            await axiosInstance.delete(
+                `/MyProject/DeleteProgressAPI?id=${progressID}`,
+                { headers: { "ngrok-skip-browser-warning": "true" } }
+            );
+            // Update UI after successful deletion
+            setFetchData(prevData => prevData.filter(progress => progress.id !== progressID));
+            alert("Progress record deleted successfully.");
+        } catch (error) {
+            console.log(error.response);
+            alert("Failed to delete progress record.");
+        }
+    }
 
     const renderPageContent = () => (
         <div className="progressRecordContainer">
@@ -89,8 +108,8 @@ export default function ProgressRecord({ memberID }) {
                                         <td>{memberProgress.thighs}</td>
                                         <td>{memberProgress.back}</td>
                                         <td>
-                                            <button onClick={handleEditButton}>Edit</button>
-                                            <button>Delete</button>
+                                            <button onClick={() => handleEditButton(memberProgress.id)}>Edit</button>
+                                            <button onClick={() => handleDeleteButton(memberProgress.id)}>Delete</button>
                                         </td>
                                     </tr>
                                 ))
@@ -114,7 +133,7 @@ export default function ProgressRecord({ memberID }) {
         return useRoutes([
             { path: '/', element: <>{renderPageContent()} <ProgressLineChart data={fetchData} /></> },
             { path: 'addprogress/:memberID', element: <AddProgressRecord /> },
-            { path: 'editprogress/:memberID', element: <EditProgressRecord /> }
+            { path: 'editprogress/:progressID', element: <EditProgressRecord /> }
         ]);
     };
 

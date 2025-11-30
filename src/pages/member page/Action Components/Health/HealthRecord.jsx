@@ -4,8 +4,32 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import AddHealthRecord from './AddHealthRecord'
 import EditHealthRecord from './EditHealthRecord'
 import { useNavigate, useRoutes } from 'react-router-dom';
+import { useState, useEffect } from 'react'
+import axiosInstance from '../../../../utils/AxiosInstance.jsx'
+
 
 export default function HealthRecord({ memberID }) {
+
+    // Backend data and UI loading state
+    const [fetchData, setFetchData] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        async function fetchHealthData() {
+            try {
+                const result = await axiosInstance.get(`/MyProject/HealthRecordFetchAPI?id=${memberID}`, {
+                    headers: { "ngrok-skip-browser-warning": "true" }
+                });
+                setFetchData(result.data || []);
+            } catch (error) {
+                console.log(error);
+                setFetchData([]);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchHealthData();
+    }, [memberID]);
 
     // Navigation helpers
     const navigate = useNavigate();
@@ -36,45 +60,45 @@ export default function HealthRecord({ memberID }) {
                     <tbody>
                         <tr>
                             <td><strong>Medical History</strong></td>
-                            <td>Dibeties</td>
+                            <td>{fetchData.medical_history}</td>
                         </tr>
                         <tr>
                             <td><strong>Current Medication</strong></td>
-                            <td>Prescribe</td>
+                            <td>{fetchData.current_medication}</td>
                         </tr>
                         <tr>
                             <td><strong>Allergy</strong></td>
-                            <td>Peanut</td>
+                            <td>{fetchData.allergy}</td>
                         </tr>
                         <tr>
                             <td><strong>Surgery</strong></td>
-                            <td>Hand</td>
+                            <td>{fetchData.surgery}</td>
                         </tr>
                         <tr>
                             <td><strong>Injury</strong></td>
-                            <td>Wrist</td>
+                            <td>{fetchData.injury}</td>
                         </tr>
                         <tr>
                             <td><strong>Supplement</strong></td>
-                            <td>Protien</td>
+                            <td>{fetchData.supplement}</td>
                         </tr>
                         <tr>
                             <td><strong>Diet Preference</strong></td>
-                            <td>Veg</td>
+                            <td>{fetchData.diet_preference}</td>
                         </tr>
                         <tr>
                             <td><strong>Drink</strong></td>
-                            <td>No</td>
+                            <td>{fetchData.drink}</td>
                         </tr>
                         <tr>
                             <td><strong>Smoke</strong></td>
-                            <td>Yes</td>
+                            <td>{fetchData.smoke}</td>
                         </tr>
                     </tbody>
                 </table>
 
                 <div className="buttonContainer">
-                    <button onClick={handleEditButton}>Edit</button>
+                    <button onClick={() => handleEditButton(memberID)}>Edit</button>
                     <button>Delete</button>
                 </div>
 

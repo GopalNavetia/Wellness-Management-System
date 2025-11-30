@@ -96,12 +96,23 @@ export default function MembershipRecord({ memberID }) {
                         </thead>
                         <tbody>
                             {Array.isArray(fetchData) && fetchData.length > 0 ? (
-                                fetchData.map((membership) => (
-                                    <tr key={membership.id}>
+                                fetchData.map((membership) => {
+
+                                    const membershipStatus = membership.end_date === ''
+                                        ? '-'
+                                        : new Date(membership.end_date) >= new Date()
+                                            ? 'Active'
+                                            : 'Expired';
+
+                                    const membershipStatusClass = `membershipStatus-${membershipStatus.toLowerCase()}`;
+
+                                    return (<tr key={membership.id}>
                                         <td>{membership.type}</td>
                                         <td>{membership.start_date}</td>
                                         <td>{membership.end_date}</td>
-                                        <td>{new Date(membership.end_date) >= new Date() ? 'Active' : 'Expired'}</td>
+                                        <td className={membershipStatusClass}>
+                                            {membershipStatus}
+                                        </td>
                                         <td>{membership.fees}</td>
                                         <td>
                                             <button onClick={() => handleViewButton(membership.id)}>View</button>
@@ -111,7 +122,8 @@ export default function MembershipRecord({ memberID }) {
                                             <button onClick={() => handleDeleteButton(membership.id)}>Delete</button>
                                         </td>
                                     </tr>
-                                ))
+                                    )
+                                })
                             ) : (
                                 <tr>
                                     <td colSpan="7" style={{ textAlign: 'center' }}>
