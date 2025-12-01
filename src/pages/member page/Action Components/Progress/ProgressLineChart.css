@@ -43,6 +43,11 @@
     width: 20%;
 }
 
+.progressChart .formContainer button {
+    margin-left: 0.5%;
+    padding: 0.05%
+}
+
 .progressChart input {
     padding: 0.2% 0.4%;
     margin-bottom: 0.4%;

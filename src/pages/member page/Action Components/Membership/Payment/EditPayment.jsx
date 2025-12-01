@@ -54,30 +54,32 @@ export default function EditPayment() {
     // Update API
     let handleSubmit = async (e) => {
         e.preventDefault();
-
         try {
-            const response = await axiosInstance.put(`/MyProject/EditPaymentAPI?id=${payID}`, formData, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'ngrok-skip-browser-warning': 'true'
+            const response = await axiosInstance.put(
+                `/MyProject/EditPaymentAPI?id=${payID}`,
+                formData,
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "ngrok-skip-browser-warning": "true",
+                    },
                 }
-            })
+            );
 
             if (response.data.success) {
-                // console.log(response.data);
+                alert("Edit Payment Successful.");
                 setFormData({ mode: "", pay_date: "", due_date: "", amount: "" });
                 navigate(-1);
             } else {
-                console.log(formData)
-                alert('Failed to edit member: ' + response.data.message);
+                console.log("API error response:", response.data);
+                alert(response.data.message || "Failed to edit payment.");
             }
         } catch (error) {
-            if (error.response && error.response.data && error.response.data.message) {
-                alert('Error: ' + error.response.data.message);
-            } else {
-                alert('Failed to edit member (network/server error).');
-            }
-            console.error(error);
+            console.error("Request failed:", error);
+            alert(
+                error.response?.data?.message ||
+                "Something went wrong while editing payment."
+            );
         }
     };
 

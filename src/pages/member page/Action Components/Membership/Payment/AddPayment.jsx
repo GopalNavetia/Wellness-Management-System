@@ -39,28 +39,34 @@ export default function AddPayment() {
     let handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            // console.log(formData);
-            const response = await axiosInstance.post(`/MyProject/AddPaymentAPI?id=${membershipID}`, formData, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'ngrok-skip-browser-warning': 'true'
+            const response = await axiosInstance.post(
+                `/MyProject/AddPaymentAPI?id=${membershipID}`,
+                formData,
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "ngrok-skip-browser-warning": "true",
+                    },
                 }
-            });
+            );
+
             if (response.data.success) {
-                // console.log(response.data);
-                alert("Add Payment Successful.")
+                alert("Add Payment Successful.");
                 setFormData({ mode: "", pay_date: "", due_date: "", amount: "" });
                 navigate(-1);
             } else {
-                console.log(formData)
-                alert('Failed to add payment: ' + (response.data.message || response.data.error || 'Unknown error'));
+                console.log("API error response:", response.data);
+                alert(response.data.message || "Failed to add payment.");
             }
-
         } catch (error) {
-            console.log(formData)
-            console.error(error);
+            console.error("Request failed:", error);
+            alert(
+                error.response?.data?.message ||
+                "Something went wrong while adding payment."
+            );
         }
     };
+
 
 
     let handleReset = () => {

@@ -23,6 +23,7 @@ export default function MemberProfile({ memberID }) {
                         "ngrok-skip-browser-warning": "true"
                     }
                 });
+                console.log(response.data)
                 setFetchData(response.data);
             } catch (error) {
                 console.error('Error fetching member data:', error);
@@ -84,7 +85,8 @@ export default function MemberProfile({ memberID }) {
                         <button onClick={() => handleDeleteButton(memberID, fetchData.name)}>Delete</button>
                     </div>
                 </div>
-                <div className="imgSection"></div>
+                <div className="imgSection"><img src={fetchData.photo} alt={fetchData.name} /></div>
+
             </div>
 
             <MemberActionContainer memberID={memberID} />

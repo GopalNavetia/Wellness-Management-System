@@ -1,133 +1,149 @@
 import './TrainerTable.css'
-import MembersData from '../../mocks/MembersData'
+import TrainerData from '../../mocks/TrainerData'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axiosInstance from '../../utils/AxiosInstance.jsx'
 
-export default function TrainerTable({ onViewMember }) {
+export default function TrainerTable() {
 
-    // // Stored Data For Validation
-    // let storedMembers = MembersData;
-    // // Pagination state
-    // let [pageNo, setPageNo] = useState(1);
-    // let membersPerPage = 8;
+    // API CODE  
+    //  const [fetchData, setFetchData] = useState(null);
+    //     const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
 
-    // // Search form state
-    // let [formData, setFormData] = useState({ membername: "", phone: "" });
-
-    // // Common Input Change
-    // let handleInputChange = (e) => {
-    //     let fieldName = e.target.name;
-    //     let newValue = e.target.value;
-
-    //     setFormData((currData) => {
-    //         return {
-    //             ...currData,
-    //             [fieldName]: newValue
+    //     useEffect(() => {
+    //         async function fetchMemberTableData() {
+    //             try {
+    //                 const result = await axiosInstance.get(`/MyProject/MemberDashboard`, {
+    //                     headers: {
+    //                         "ngrok-skip-browser-warning": "true"
+    //                     }
+    //                 });
+    //                 setFetchData(result.data);
+    //             } catch (error) {
+    //                 console.log(error);
+    //             }
+    //             finally {
+    //                 setLoading(false);
+    //             }
     //         }
-    //     });
-    //     setPageNo(1); // Reset on every search
-    // };
+    //         fetchMemberTableData();
+    //     }, []);
 
-    // // Filter members based on search inputs
-    // let filteredMembers = storedMembers.filter(member => {
-    //     const nameMatch = formData.membername.trim() === '' || member.name.toLowerCase().includes(formData.membername.toLowerCase());
-    //     const phoneMatch = formData.phone.trim() === '' || member.phone.toLowerCase().includes(formData.phone.toLowerCase());
-    //     return nameMatch && phoneMatch;
-    // });
+    // Stored Data For Validation
+    // let storedTrainers = fetchData || [];
+    let storedTrainers = TrainerData;
 
-    // // Pagination Calculation
-    // let totalPages = Math.ceil(filteredMembers.length / membersPerPage);
-    // let startIdx = (pageNo - 1) * membersPerPage;
-    // let endIdx = startIdx + membersPerPage;
-    // let membersDataPrint = filteredMembers.slice(startIdx, endIdx);
+    // Pagination state
+    let [pageNo, setPageNo] = useState(1);
+    let trainersPerPage = 8;
 
-    // // Handle Right Angle Button
-    // let handleRightButton = () => {
-    //     if (pageNo < totalPages) {
-    //         setPageNo(pageNo + 1);
-    //     }
-    // }
+    // Search form state
+    let [formData, setFormData] = useState({ trainername: "", phone: "" });
 
-    // // Handle Left Angle Button
-    // let handleLeftButton = () => {
-    //     if (pageNo > 1) {
-    //         setPageNo(pageNo - 1);
-    //     }
-    // }
+    // Common Input Change
+    let handleInputChange = (e) => {
+        let fieldName = e.target.name;
+        let newValue = e.target.value;
 
-    // const navigate = useNavigate();
-    // // Add Member Button
-    // function handelAddMemberButton() {
-    //     navigate('/gymdashboard/addmember');
-    // }
+        setFormData((currData) => {
+            return {
+                ...currData,
+                [fieldName]: newValue
+            }
+        });
+        setPageNo(1);
+    };
 
-    // // View Button
-    // function handleViewButton() {
-    //     navigate('/gymdashboard/memberprofile');
-    // }
+    // Filter members based on search inputs
+    let filteredTrainers = storedTrainers.filter(trainer => {
+        const nameMatch = formData.trainername.trim() === '' || trainer.name.toLowerCase().includes(formData.trainername.toLowerCase());
+        const phoneMatch = formData.phone.trim() === '' || trainer.phone.toLowerCase().includes(formData.phone.toLowerCase());
+        return nameMatch && phoneMatch;
+    });
 
-    // function generateMembersData() {
-    //     return membersDataPrint.map(member => (
-    //         <tr key={member.id}>
-    //             <td>{member.name}</td>
-    //             <td>{member.type}</td>
-    //             <td>{member.payment_status}</td>
-    //             <td>{new Date(member.end_date) >= new Date() ? 'Active' : 'Expired'}</td>
-    //             <td>{member.phone}</td>
-    //             <td><button onClick={() => { onViewMember(member.id); handleViewButton() }}>View</button></td>
-    //         </tr>
-    //     ));
-    // }
+    // Pagination Calculation
+    let totalPages = Math.ceil(filteredTrainers.length / trainersPerPage);
+    let startIdx = (pageNo - 1) * trainersPerPage;
+    let endIdx = startIdx + trainersPerPage;
+    let trainersDataPrint = filteredTrainers.slice(startIdx, endIdx);
+
+    // Handle Right Angle Button
+    let handleRightButton = () => {
+        if (pageNo < totalPages) {
+            setPageNo(pageNo + 1);
+        }
+    }
+
+    // Handle Left Angle Button
+    let handleLeftButton = () => {
+        if (pageNo > 1) {
+            setPageNo(pageNo - 1);
+        }
+    }
+
+    const navigate = useNavigate();
+    // Add trainer Button
+    function handleAddTrainerButton() {
+        navigate('/gymdashboard/trainerpage/addtrainer');
+    }
+
+    // View Button
+    function handleViewButton(trainerID) {
+        navigate(`/gymdashboard/trainerpage/trainerprofile/${trainerID}`);
+    }
+
+    function generateTrainersData() {
+        return trainersDataPrint.map(trainer => {
+            return (
+                <tr key={trainer.id}>
+                    <td>{trainer.name}</td>
+                    <td>{trainer.assigned_members}</td>
+                    <td>{trainer.status}</td>
+                    <td>{trainer.contact}</td>
+                    <td><button onClick={() => handleViewButton(trainer.id)}>View</button></td>
+                </tr>
+            );
+        });
+    }
 
     return (
-        <div className='tableContainer'>
+        <div className='trainerTableContainer'>
             <div className="headContainer">
                 <h1>Trainer List</h1>
                 {/*  Search Container  */}
                 <div className="searchContainer">
-                    <input type="text" name="membername" value={''} id="name" placeholder="Search by Name" onChange={''} />
-                    <input type="text" name="phone" value={''} id="phone" placeholder="Search by Phone " onChange={''} />
-                    <button onClick={''}>Add</button>
+                    <input type="text" name="trainername" value={formData.name} id="name" placeholder="Search by Name" onChange={handleInputChange} />
+                    <input type="text" name="phone" value={formData.phone} id="phone" placeholder="Search by Phone " onChange={handleInputChange} />
+                    <button onClick={handleAddTrainerButton}>Add</button>
                 </div>
             </div>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                         <th>Assigned Client</th>
-                         <th>Status</th>
-                        <th>Contact</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
+            {loading ? (
+                <div>Loading users...</div> // Loading indicator/message
+            ) : (
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Assigned Members</th>
+                            <th>Status</th>
+                            <th>Contact</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
 
-                <tbody>
-                    {/* INPUT TABLE DATA */}
-                    <tr>
-                    <td>Akash</td>
-                    <td>5</td>
-                    <td>OnLeave</td>
-                    <td>9845642323</td>
-                   
-                    
-                    <td><button>View</button></td>
-                    </tr>
-                    <tr>
-                    <td>Manav</td>
-                    <td>5</td>
-                    <td>OnLeave</td>
-                    <td>9845642323</td>
-                   <td><button>View</button></td> 
-                 </tr>
- 
-                </tbody>
-            </table>
+                    <tbody>
+                        {generateTrainersData()}
+                    </tbody>
+                </table>
+            )}
 
             <div className="pagination">
-                <p><span className='leftIcon' onClick={''}><FontAwesomeIcon icon={faAngleLeft} /></span> Showing Page {} out of {} <span className='rightIcon' onClick={''}><FontAwesomeIcon icon={faAngleRight} /></span></p>
+                <p><span className='leftIcon' onClick={handleLeftButton}><FontAwesomeIcon icon={faAngleLeft} /></span> Showing Page {pageNo} out of {totalPages} <span className='rightIcon' onClick={handleRightButton}><FontAwesomeIcon icon={faAngleRight} /></span></p>
             </div>
         </div>
     );

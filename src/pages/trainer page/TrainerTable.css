@@ -1,7 +1,7 @@
-.tableContainer {
+.trainerTableContainer {
     margin: 0 1.5% 1.5% 1.5%;
     width: 97%;
-    border: 1px solid rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(17, 17, 17, 0.5);
     border-radius: 12px;
     background: #fff;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
@@ -56,7 +56,7 @@
     cursor: pointer;
 }
 
-.tableContainer table {
+.trainerTableContainer table {
     width: 96%;
     margin: 1.5% auto 0.5% auto;
     border-collapse: collapse;
@@ -64,29 +64,29 @@
     font-size: 0.9em;
 }
 
-.tableContainer th,
-.tableContainer td {
+.trainerTableContainer th,
+.trainerTableContainer td {
     border: 1px solid #ccc;
     padding: 0.5% 1%;
 }
 
-.tableContainer th {
+.trainerTableContainer th {
     background-color: #222;
     color: #fff;
     font-weight: 600;
 }
 
-.tableContainer table button {
+.trainerTableContainer table button {
     padding: 1.5% 2.5%;
     cursor: pointer;
 }
 
-.tableContainer .pagination {
+.trainerTableContainer .pagination {
     margin-bottom: 0.5%;
     /* border: 1px solid blue */
 }
 
-.tableContainer .pagination p {
+.trainerTableContainer .pagination p {
     display: flex;
     justify-content: center;
     align-items: end;
@@ -94,9 +94,28 @@
     color: rgba(0, 0, 0, 0.5);
 }
 
-.tableContainer .pagination .leftIcon,
+.trainerTableContainer .pagination .leftIcon,
 .rightIcon {
     color: rgba(0, 0, 0, 0.6);
     cursor: pointer;
 }
 
+/* .paymentStatus-paid {
+    color: #2e7d32;
+    font-weight: 600;
+}
+
+.paymentStatus-pending {
+    color: #f57c00;
+    font-weight: 600;
+}
+
+.membershipStatus-active {
+    color: #2e7d32;
+    font-weight: 600;
+}
+
+.membershipStatus-expired {
+    color: #dc3545;
+    font-weight: 600;
+} */
