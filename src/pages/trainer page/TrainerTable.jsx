@@ -9,33 +9,32 @@ import axiosInstance from '../../utils/AxiosInstance.jsx'
 export default function TrainerTable() {
 
     // API CODE  
-    //  const [fetchData, setFetchData] = useState(null);
-    //     const [loading, setLoading] = useState(true);
+    const [fetchData, setFetchData] = useState(null);
+    const [loading, setLoading] = useState(true);
     // const [loading, setLoading] = useState(false);
-    const [loading, setLoading] = useState(false);
 
-    //     useEffect(() => {
-    //         async function fetchMemberTableData() {
-    //             try {
-    //                 const result = await axiosInstance.get(`/MyProject/MemberDashboard`, {
-    //                     headers: {
-    //                         "ngrok-skip-browser-warning": "true"
-    //                     }
-    //                 });
-    //                 setFetchData(result.data);
-    //             } catch (error) {
-    //                 console.log(error);
-    //             }
-    //             finally {
-    //                 setLoading(false);
-    //             }
-    //         }
-    //         fetchMemberTableData();
-    //     }, []);
+    useEffect(() => {
+        async function fetchMemberTableData() {
+            try {
+                const result = await axiosInstance.get(`/MyProject/TrainerDashboardAPI`, {
+                    headers: {
+                        "ngrok-skip-browser-warning": "true"
+                    }
+                });
+                setFetchData(result.data);
+            } catch (error) {
+                console.log(error);
+            }
+            finally {
+                setLoading(false);
+            }
+        }
+        fetchMemberTableData();
+    }, []);
 
     // Stored Data For Validation
-    // let storedTrainers = fetchData || [];
-    let storedTrainers = TrainerData;
+    let storedTrainers = fetchData || [];
+    // let storedTrainers = TrainerData;
 
     // Pagination state
     let [pageNo, setPageNo] = useState(1);

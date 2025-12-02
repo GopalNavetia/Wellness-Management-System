@@ -1,22 +1,22 @@
 import './TrainerActionContainer.css'
-import { useNavigate, useRoutes } from 'react-router-dom';
+import { useNavigate, useRoutes, useParams } from 'react-router-dom';
 
 
 export default function TrainerActionContainer() {
     // Navigation
+    const { trainerID } = useParams();
     const navigate = useNavigate();
 
-    let handleMembershipButton = () => navigate('/gymdashboard/memberprofile/membershiprecord')
-    let handleHealthRecordButton = () => navigate('/gymdashboard/memberprofile/healthrecord')
-    let handleWorkoutButton = () => navigate('/gymdashboard/memberprofile/workoutplan')
-    let handleProgressButton = () => navigate('/gymdashboard/memberprofile/progress')
+    let handleClientsButton = () => navigate(`/gymdashboard/trainerpage/trainerprofile/${trainerID}/clients/${trainerID}`)
+    let handleSlotsButton = () => navigate(`/gymdashboard/trainerpage/trainerprofile/${trainerID}/slots/${trainerID}`)
+    let handleSalaryButton = () => navigate(`/gymdashboard/trainerpage/trainerprofile/${trainerID}/salary/${trainerID}`)
 
     // Render Page Content
     const renderPageContent = () => (
         <div className="trainerNavigationButtons">
-            <button onClick={handleMembershipButton}>Clients</button>
-            <button onClick={handleHealthRecordButton}>Slots</button>
-            <button onClick={handleWorkoutButton}>Salary</button>
+            <button onClick={handleClientsButton}>Clients</button>
+            <button onClick={handleSlotsButton}>Slots</button>
+            <button onClick={handleSalaryButton}>Salary</button>
         </div>
     )
 
@@ -24,10 +24,9 @@ export default function TrainerActionContainer() {
     const TrainerActionRoutes = () => {
         return useRoutes([
             { path: '/', element: renderPageContent() },
-            { path: 'membershiprecord/*', element: <>{renderPageContent()}</> },
-            { path: 'workoutplan/*', element: <>{renderPageContent()}</> },
-            { path: 'healthrecord/*', element: <>{renderPageContent()}</> },
-            { path: 'progress/*', element: <>{renderPageContent()}</> }
+            { path: 'clients/*', element: <>{renderPageContent()} Client Page</> },
+            { path: 'slots/*', element: <>{renderPageContent()} Slots Page</> },
+            { path: 'salary/*', element: <>{renderPageContent()} Salary Page</> }
         ]);
     }
 
