@@ -1,0 +1,86 @@
+.salaryRecordContainer {
+    margin: 0% 1% 1% 1%;
+    width: 95%;
+    border-radius: 12px;
+    border: 1px solid rgba(17, 17, 17, 0.5);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.salaryRecordContainer .salaryRecordHeadSection {
+    width: 100%;
+    padding: 0.5% 1.5%;
+    background-color: #111;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.salaryRecordContainer .salaryRecordHeadSection h1 {
+    color: #fff;
+    margin: 0;
+    font-size: 1.5em;
+    cursor: default;
+}
+
+.salaryRecordContainer .salaryRecordHeadSection .buttonsContainer {
+    display: flex;
+    gap: 0.8em;
+    align-items: center;
+}
+
+.salaryRecordContainer .salaryRecordHeadSection button {
+    padding: 2% 7%;
+    font-size: 0.95em;
+    cursor: pointer;
+}
+
+.salaryRecordContainer .salaryRecordHeadSection .xMark {
+    color: #fff;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.salaryRecordContainer .salaryRecordHeadSection .xMark:hover {
+    color: #ff4d4d;
+    transform: scale(1.2, 1.2);
+}
+
+.salaryListContainer {
+    margin: 1% 0;
+    display: flex;
+    justify-content: center;
+}
+
+.salaryListContainer table {
+    width: 96%;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 1em;
+}
+
+.salaryListContainer th,
+.salaryListContainer td {
+    border: 1px solid #ccc;
+    padding: 0.5% 0.5%;
+}
+
+.salaryListContainer th {
+    background-color: #222;
+    color: #fff;
+    font-weight: 600;
+}
+
+.salaryListContainer td {
+    font-size: 0.9em;
+}
+
+.salaryListContainer table button {
+    margin: 0% 1.5%;
+    padding: 1% 2%;
+    cursor: pointer;
+}

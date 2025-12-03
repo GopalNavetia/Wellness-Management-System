@@ -1,0 +1,97 @@
+.addSalaryRecord {
+    width: 95%;
+    /* border: 2px solid brown; */
+    margin: 0% 1% 1% 1%;
+    border: 1px solid rgba(17, 17, 17, 0.5);
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.addSalaryRecordHeadSection {
+    width: 100%;
+    padding: 0.5% 1.5%;
+    background-color: #111;
+    color: #fff;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.addSalaryRecordHeadSection h1 {
+    background-color: #111;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    color: #fff;
+    font-size: 1.5em;
+    cursor: default;
+}
+
+.addSalaryRecordHeadSection .xMark {
+    color: #fff;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.addSalaryRecordHeadSection .xMark:hover {
+    color: #ff4d4d;
+    transform: scale(1.2, 1.2);
+}
+
+.addSalaryRecord .formContainer {
+    margin: 2.5% 1.5%;
+    width: 100%;
+    padding-bottom: 1.4%;
+    display: grid;
+    grid-gap: 5%;
+    grid-template-columns: 40% 40%;
+    grid-auto-rows: auto;
+    justify-content: center;
+}
+
+.addSalaryRecord input {
+    padding: 0.2% 0.4%;
+    margin-bottom: 0.4%;
+    width: 95%;
+    font-size: 1em;
+}
+
+.addSalaryRecord input::placeholder {
+    font-weight: 100;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.addSalaryRecord label {
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.addSalaryRecord select {
+    width: 40%;
+    margin-left: 1%;
+    font-size: 1em;
+    font-weight: 400;
+}
+
+.addSalaryRecord .buttonContainer {
+    width: 15%;
+    margin-top: 1%;
+    font-size: 0.5em;
+    font-weight: 500;
+    display: flex;
+    /* To keep buttons side by side */
+    grid-row: 4;
+    grid-column: 1/3;
+    justify-content: center;
+    gap: 12%;
+    justify-self: center;
+    align-self: end;
+}
+
+.addSalaryRecord .formContainer .buttonContainer button {
+    padding: 2.5% 3.5%;
+    cursor: pointer;
+}

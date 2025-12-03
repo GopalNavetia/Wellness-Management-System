@@ -59,7 +59,7 @@ export default function EditHealthRecord() {
         e.preventDefault();
 
         try {
-            const response = await axiosInstance.put(`/MyProject/EditHealthRecordAPI?Member_ID=${memberID}`, formData, {
+            const response = await axiosInstance.put(`/MyProject/EditHealthRecordAPI?id=${memberID}`, formData, {
                 headers: {
                     'Content-Type': 'application/json',
                     'ngrok-skip-browser-warning': 'true'
@@ -79,6 +79,45 @@ export default function EditHealthRecord() {
             alert(errorMessage);
         }
     };
+
+    // let handleSubmit = async (e) => {
+    //     e.preventDefault();
+
+    //     Ensure formData handles empty fields properly
+    //     const formData = {
+    //         Curr_Medication: form.Curr_Medication?.trim() || "",
+    //         Allergy: form.Allergy?.trim() || "",
+    //         Surgery: form.Surgery?.trim() || "",
+    //         Injury: form.Injury?.trim() || "",
+    //         Supplement: form.Supplement?.trim() || "",
+    //         Diet_Preference: form.Diet_Preference?.trim() || "",
+    //         Drink: form.Drink?.trim() || "",
+    //         Smoke: form.Smoke?.trim() || "",
+    //         Medical_History: form.Medical_History?.trim() || ""
+    //     };
+
+    //     try {
+    //         const response = await axiosInstance.put(`/MyProject/EditHealthRecordAPI?id=${memberID}`, formData, {
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //                 'ngrok-skip-browser-warning': 'true'
+    //             }
+    //         });
+
+    //         if (response.data.status === "1") {  // Backend returns status "1" for success
+    //             alert("Edit Health Record Successful.");
+    //             handleReset();
+    //             navigate(-1);
+    //         } else {
+    //             alert('Failed to edit health record: ' + (response.data.message || 'Unknown error'));
+    //         }
+
+    //     } catch (error) {
+    //         console.error('API Request Error:', error.response ? error.response.data : error.message);
+    //         const errorMessage = error.response?.data?.message || 'Network error occurred';
+    //         alert('Error: ' + errorMessage);
+    //     }
+    // };
 
     let handleReset = () => {
         setFormData({

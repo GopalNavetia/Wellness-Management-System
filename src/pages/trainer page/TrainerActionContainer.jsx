@@ -1,6 +1,7 @@
 import './TrainerActionContainer.css'
 import ClientRecord from './Action Components/Clients/ClientRecord'
 import SlotRecord from './Action Components/Slots/SlotRecord'
+import SalaryRecord from './Action Components/Salary/SalaryRecord'
 import { useNavigate, useRoutes, useParams } from 'react-router-dom';
 
 
@@ -30,7 +31,7 @@ export default function TrainerActionContainer() {
             {
                 path: 'slots/*', element: <>{renderPageContent()} <SlotRecord /></>
             },
-            { path: 'salary/*', element: <>{renderPageContent()} Salary Page</> }
+            { path: 'salary/*', element: <>{renderPageContent()} <SalaryRecord /></> }
         ]);
     }
 
