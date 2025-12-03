@@ -4,14 +4,14 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import AddMembership from './AddMembership';
 import EditMembership from './EditMembership';
 import PaymentDetails from './Payment/PaymentDetails';
-import { useNavigate, useRoutes } from 'react-router-dom';
+import { useNavigate, useRoutes, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axiosInstance from '../../../../utils/AxiosInstance.jsx'
 
-export default function MembershipRecord({ memberID }) {
+export default function MembershipRecord() {
+    const { memberID } = useParams();
+
     // Track selected membership
-    const [selectedMembershipId, setSelectedMembershipId] = useState(null);
-    // Backend data and UI loading state
     const [fetchData, setFetchData] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -35,10 +35,9 @@ export default function MembershipRecord({ memberID }) {
 
     // Navigation helpers
     const navigate = useNavigate();
-    const handleCloseButton = () => navigate(-1);
+    const handleCloseButton = () => navigate(`/gymdashboard/memberprofile/${memberID}`);
     const handleAddButton = () => navigate(`addmembership/${memberID}`);
     const handleEditButton = (membershipID) => {
-        // setSelectedMembershipId(membershipID);
         navigate(`editmembership/${membershipID}`);
     };
     const handleDeleteButton = async (membershipID) => {
@@ -57,15 +56,7 @@ export default function MembershipRecord({ memberID }) {
 
 
     // View/PaymentDetails navigation with mandatory ID check
-    const handleViewButton = id => {
-        if (!id) {
-            alert('No membership selected');
-            return;
-        }
-        setSelectedMembershipId(id);
-        // Use search params to ensure robust passing (alternative: route param)
-        navigate('paymentdetails', { state: { membershipID: id } });
-    };
+    const handleViewButton = membershipid => navigate(`paymentdetails/${membershipid}`);
 
     // Render all memberships with actions
     const renderPageContent = () => (
@@ -141,13 +132,10 @@ export default function MembershipRecord({ memberID }) {
     // Routes: always pass ID with location.state (or use params for scalability)
     const MembershipRecordRoutes = () => {
         return useRoutes([
-            { path: '/', element: renderPageContent() },
-            { path: 'addmembership/:memberID', element: <AddMembership /> },
-            { path: 'editmembership/:membershipID', element: <EditMembership /> },
-            {
-                path: 'paymentdetails/*',
-                element: <PaymentDetails membershipID={selectedMembershipId} />
-            }
+            { path: '/:memberID', element: renderPageContent() },
+            { path: ':memberID/addmembership/:memberID', element: <AddMembership /> },
+            { path: ':memberID/editmembership/:membershipID', element: <EditMembership /> },
+            { path: ':memberID/paymentdetails/:membershipID/*', element: <PaymentDetails /> }
         ]);
     };
 

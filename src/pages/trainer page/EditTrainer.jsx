@@ -72,14 +72,14 @@ export default function EditTrainer() {
         certification: ""
     });
 
-    const {trainerID}=useParams()
+    const { trainerID } = useParams()
     const [selectedPhotoName, setSelectedPhotoName] = useState(""); // Photo filename
     const [isLoadingPhoto, setIsLoadingPhoto] = useState(false);
 
     // Fetch existing member data
     useEffect(() => {
         if (trainerID) {
-            axiosInstance.get(`/MyProject/TrainerProfile?id=${trainerID}`, {
+            axiosInstance.get(`/MyProject/TrainerProfileAPI?id=${trainerID}`, {
                 headers: { "ngrok-skip-browser-warning": "true" }
             })
                 .then(response => {
@@ -184,7 +184,7 @@ export default function EditTrainer() {
 
         try {
             const response = await axiosInstance.post(
-                `/MyProject/EditTrainerAPI`,
+                `/MyProject/EditTrainerAPI?id=${trainerID}`,
                 formData,
                 {
                     headers: {

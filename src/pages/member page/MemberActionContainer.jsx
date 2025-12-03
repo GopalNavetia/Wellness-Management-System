@@ -3,17 +3,18 @@ import MembershipRecord from './Action Components/Membership/MembershipRecord'
 import WorkoutRecord from './Action Components/Workout Plan/WorkoutRecord'
 import HealthRecord from './Action Components/Health/HealthRecord'
 import ProgressRecord from './Action Components/Progress/ProgressRecord'
-import { useNavigate, useRoutes } from 'react-router-dom';
+import { useNavigate, useRoutes, useParams } from 'react-router-dom';
 
 
-export default function MemberActionContainer({ memberID }) {
+export default function MemberActionContainer() {
     // Navigation
+    const { memberID } = useParams();
     const navigate = useNavigate();
 
-    let handleMembershipButton = () => navigate('/gymdashboard/memberprofile/membershiprecord')
-    let handleHealthRecordButton = () => navigate('/gymdashboard/memberprofile/healthrecord')
-    let handleWorkoutButton = () => navigate('/gymdashboard/memberprofile/workoutplan')
-    let handleProgressButton = () => navigate('/gymdashboard/memberprofile/progress')
+    let handleMembershipButton = () => navigate(`/gymdashboard/memberprofile/${memberID}/membershiprecord/${memberID}`)
+    let handleHealthRecordButton = () => navigate(`/gymdashboard/memberprofile/${memberID}/healthrecord/${memberID}`)
+    let handleWorkoutButton = () => navigate(`/gymdashboard/memberprofile/${memberID}/workoutplan/${memberID}`)
+    let handleProgressButton = () => navigate(`/gymdashboard/memberprofile/${memberID}/progress/${memberID}`)
 
     // Render Page Content
     const renderPageContent = () => (
@@ -28,11 +29,11 @@ export default function MemberActionContainer({ memberID }) {
     // Routes
     const MemberActionRoutes = () => {
         return useRoutes([
-            { path: '/', element: renderPageContent() },
-            { path: 'membershiprecord/*', element: <>{renderPageContent()} < MembershipRecord memberID={memberID} /></> },
-            { path: 'workoutplan/*', element: <>{renderPageContent()} <WorkoutRecord memberID={memberID} /></> },
-            { path: 'healthrecord/*', element: <>{renderPageContent()} <HealthRecord memberID={memberID} /></> },
-            { path: 'progress/*', element: <>{renderPageContent()} <ProgressRecord memberID={memberID} /></> }
+            { path: '/*', element: renderPageContent() },
+            { path: 'membershiprecord/*', element: <>{renderPageContent()} < MembershipRecord /></> },
+            { path: 'workoutplan/*', element: <>{renderPageContent()} <WorkoutRecord /></> },
+            { path: 'healthrecord/*', element: <>{renderPageContent()} <HealthRecord /></> },
+            { path: 'progress/*', element: <>{renderPageContent()} <ProgressRecord /></> }
         ]);
     }
 

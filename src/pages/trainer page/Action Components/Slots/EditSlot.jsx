@@ -33,13 +33,13 @@ export default function EditSlot() {
 
 
     // Backend API Call
-    const { trainerID } = useParams();
+    const { scheduleID } = useParams();
 
     let handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            const response = await axiosInstance.post(`/MyProject/AddSlotAPI?id=${trainerID}`, formData, {
+            const response = await axiosInstance.post(`/MyProject/EditSlotAPI?schedule_id=${scheduleID}`, formData, {
                 headers: {
                     'Content-Type': 'application/json',
                     'ngrok-skip-browser-warning': 'true'

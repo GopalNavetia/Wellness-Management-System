@@ -91,8 +91,8 @@ export default function MemberTable({ onViewMember }) {
     }
 
     // View Button
-    function handleViewButton() {
-        navigate('/gymdashboard/memberprofile');
+    function handleViewButton(memberID) {
+        navigate(`/gymdashboard/memberprofile/${memberID}`);
     }
 
     function generateMembersData() {
@@ -118,7 +118,7 @@ export default function MemberTable({ onViewMember }) {
                         {member.payment_status}
                     </td>
                     <td>{member.phone}</td>
-                    <td><button onClick={() => { onViewMember(member.id); handleViewButton() }}>View</button></td>
+                    <td><button onClick={() => handleViewButton(member.id)}>View</button></td>
                 </tr>
             );
         });

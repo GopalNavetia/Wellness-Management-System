@@ -59,7 +59,7 @@ export default function EditHealthRecord() {
         e.preventDefault();
 
         try {
-            const response = await axiosInstance.put(`/MyProject/EditHealthRecordAPI?id=${memberID}`, formData, {
+            const response = await axiosInstance.put(`/MyProject/EditHealthAPI?id=${memberID}`, formData, {
                 headers: {
                     'Content-Type': 'application/json',
                     'ngrok-skip-browser-warning': 'true'

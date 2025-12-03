@@ -39,30 +39,40 @@ export default function AddSlot() {
         e.preventDefault();
 
         try {
-            const response = await axiosInstance.post(`/MyProject/AddSlotAPI?id=${trainerID}`, formData, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'ngrok-skip-browser-warning': 'true'
+            const response = await axiosInstance.post(
+                `/MyProject/AddSlotAPI?trainer_id=${trainerID}`,
+                formData,
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "ngrok-skip-browser-warning": "true",
+                    },
                 }
-            });
+            );
 
             if (response.data.success) {
-                alert("Add Slot Successful.")
+                alert("Add Slot Successful.");
                 setFormData({
                     label: "",
                     start_time: "",
-                    end_time: ""
+                    end_time: "",
                 });
                 navigate(-1);
             } else {
-                alert('Failed to add slot: ' + response.data.message);
+                // success === false -> show backend message
+                alert(response.data.message || "Failed to add slot");
             }
-
         } catch (error) {
-            console.error('API Request Error:', error.response ? error.response.data : error.message);
-            alert(errorMessage);
+            // non‑200 or network error
+            const msg =
+                error.response?.data?.message ||
+                error.message ||
+                "Something went wrong";
+            alert(msg);
+            console.error("API Request Error:", error.response || error);
         }
     };
+
 
     let handleReset = () => {
         setFormData({

@@ -1,14 +1,16 @@
 import './ProgressRecord.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate, useRoutes } from 'react-router-dom';
+import { useNavigate, useRoutes, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import AddProgressRecord from './AddProgressRecord'
 import EditProgressRecord from './EditProgressRecord'
 import ProgressLineChart from './ProgressLineChart'
 import axiosInstance from '../../../../utils/AxiosInstance.jsx'
 
-export default function ProgressRecord({ memberID }) {
+export default function ProgressRecord() {
+
+    const { memberID } = useParams();
 
     // Backend data and UI loading state
     const [fetchData, setFetchData] = useState([]);
@@ -34,7 +36,7 @@ export default function ProgressRecord({ memberID }) {
 
     // Navigation helpers
     const navigate = useNavigate();
-    const handleCloseButton = () => navigate(-1);
+    const handleCloseButton = () => navigate(`/gymdashboard/memberprofile/${memberID}`);
     const handleAddButton = () => navigate(`addprogress/${memberID}`);
     const handleEditButton = (progressID) => navigate(`editprogress/${progressID}`);
     const handleDeleteButton = async (progressID) => {
@@ -131,9 +133,9 @@ export default function ProgressRecord({ memberID }) {
     // Routes: always pass ID with location.state (or use params for scalability)
     const ProgressRecordRoutes = () => {
         return useRoutes([
-            { path: '/', element: <>{renderPageContent()} <ProgressLineChart data={fetchData} /></> },
-            { path: 'addprogress/:memberID', element: <AddProgressRecord /> },
-            { path: 'editprogress/:progressID', element: <EditProgressRecord /> }
+            { path: ':memberID/', element: <>{renderPageContent()} <ProgressLineChart data={fetchData} /></> },
+            { path: ':memberID/addprogress/:memberID', element: <AddProgressRecord /> },
+            { path: ':memberID/editprogress/:progressID', element: <EditProgressRecord /> }
         ]);
     };
 

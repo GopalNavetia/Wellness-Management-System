@@ -1,10 +1,10 @@
 import './PaymentRecord.css'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axiosInstance from '../../../../../utils/AxiosInstance.jsx'
 
-export default function PaymentRecord({ membershipID }) {
-
+export default function PaymentRecord() {
+    const { membershipID } = useParams();
     const [fetchData, setFetchData] = useState(null);
     const [loading, setLoading] = useState(true);
 

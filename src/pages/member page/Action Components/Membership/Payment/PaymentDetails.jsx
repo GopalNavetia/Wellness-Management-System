@@ -1,19 +1,15 @@
 import "./PaymentDetails.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate, useRoutes, useLocation } from 'react-router-dom';
+import { useNavigate, useRoutes, useParams } from 'react-router-dom';
 import PaymentRecord from './PaymentRecord';
 import AddPayment from './AddPayment';
 import EditPayment from './EditPayment';
 import { useState, useEffect } from 'react';
 import axiosInstance from '../../../../../utils/AxiosInstance.jsx'
 
-export default function PaymentDetails({ membershipID: propMembershipID }) {
-    // If using route location.state for membershipID (for robustness)
-    const location = useLocation();
-    // Prefer location.state first, fallback to prop
-    const membershipID = location.state?.membershipID || propMembershipID;
-
+export default function PaymentDetails() {
+    const { membershipID } = useParams();
     const [fetchData, setFetchData] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -100,7 +96,7 @@ export default function PaymentDetails({ membershipID: propMembershipID }) {
                     )}
                 </div>
             </div>
-            <PaymentRecord membershipID={membershipID} />
+            <PaymentRecord />
         </>
     );
 

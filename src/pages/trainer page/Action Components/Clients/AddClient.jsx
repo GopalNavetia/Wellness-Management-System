@@ -38,7 +38,7 @@ export default function AddClient() {
         e.preventDefault();
 
         try {
-            const response = await axiosInstance.post(`/MyProject/AddClientAPI?id=${trainerID}`, formData, {
+            const response = await axiosInstance.post(`/MyProject/AddClientAPI?trainer_id=${trainerID}`, formData, {
                 headers: {
                     'Content-Type': 'application/json',
                     'ngrok-skip-browser-warning': 'true'
@@ -54,8 +54,12 @@ export default function AddClient() {
             }
 
         } catch (error) {
-            console.error('API Request Error:', error.response ? error.response.data : error.message);
-            alert(errorMessage);
+            const msg =
+                error.response?.data?.message || // e.g. "Member not found"
+                error.message ||
+                "Something went wrong";
+            console.error('API Request Error:', msg);
+            alert(msg);
         }
     };
 

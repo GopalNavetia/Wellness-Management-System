@@ -3,14 +3,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import AddHealthRecord from './AddHealthRecord'
 import EditHealthRecord from './EditHealthRecord'
-import { useNavigate, useRoutes } from 'react-router-dom';
+import { useNavigate, useRoutes, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react'
 import axiosInstance from '../../../../utils/AxiosInstance.jsx'
 
 
-export default function HealthRecord({ memberID }) {
+export default function HealthRecord() {
 
     // Backend data and UI loading state
+    const { memberID } = useParams();
     const [fetchData, setFetchData] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -33,7 +34,7 @@ export default function HealthRecord({ memberID }) {
 
     // Navigation helpers
     const navigate = useNavigate();
-    const handleCloseButton = () => navigate(-1);
+    const handleCloseButton = () => navigate(`/gymdashboard/memberprofile/${memberID}`);
     const handleAddButton = (memberID) => navigate(`addhealthrecord/${memberID}`);
     const handleEditButton = (memberID) => navigate(`edithealthrecord/${memberID}`);
     let handleDeleteButton = async (memberID) => {
@@ -146,9 +147,9 @@ export default function HealthRecord({ memberID }) {
     // Workout Plan Page Routes
     const HealthRecordRoutes = () => {
         return useRoutes([
-            { path: '/', element: renderPageContent() },
-            { path: 'addhealthrecord/:memberID', element: <AddHealthRecord /> },
-            { path: 'edithealthrecord/:memberID', element: <EditHealthRecord /> },
+            { path: ':memberID/', element: renderPageContent() },
+            { path: ':memberID/addhealthrecord/:memberID', element: <AddHealthRecord /> },
+            { path: ':memberID/edithealthrecord/:memberID', element: <EditHealthRecord /> },
         ]);
     };
 

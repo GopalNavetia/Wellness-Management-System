@@ -75,7 +75,7 @@ export default function SalaryRecord() {
 
     // Navigation helpers
     const navigate = useNavigate();
-    const handleCloseButton = () => navigate(-1);
+    const handleCloseButton = () => navigate(`/gymdashboard/trainerpage/trainerprofile/${trainerID}`);
     const handleAddButton = () => navigate(`addsalary/${trainerID}`);
     const handleEditButton = () => {
         navigate(`editsalary/${trainerID}`);

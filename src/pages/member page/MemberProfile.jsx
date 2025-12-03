@@ -2,13 +2,14 @@ import './MemberProfile.css';
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate, useRoutes } from 'react-router-dom';
+import { useNavigate, useRoutes, useParams } from 'react-router-dom';
 import EditMember from './EditMember';
 import MemberActionContainer from './MemberActionContainer';
 import axiosInstance from '../../utils/AxiosInstance.jsx'
 
-export default function MemberProfile({ memberID }) {
+export default function MemberProfile() {
     const navigate = useNavigate();
+    const { memberID } = useParams();
 
     // API base URL
     const [fetchData, setFetchData] = useState(null);
@@ -42,8 +43,8 @@ export default function MemberProfile({ memberID }) {
         return <p>No member data found.</p>;
     }
 
-    const handleClose = () => navigate(-1);
-    const handleEditButton = () => navigate('/gymdashboard/memberprofile/editmember');
+    const handleClose = () => navigate('/gymdashboard');
+    const handleEditButton = () => navigate(`/gymdashboard/memberprofile/${memberID}/editmember/${memberID}`);
     let handleDeleteButton = async (memberID, name) => {
         // Ask for confirmation
         const ok = window.confirm(`Are you sure you want to delete member: "${name}"?`);
@@ -89,7 +90,7 @@ export default function MemberProfile({ memberID }) {
 
             </div>
 
-            <MemberActionContainer memberID={memberID} />
+            <MemberActionContainer />
         </div>
     );
 
@@ -97,10 +98,10 @@ export default function MemberProfile({ memberID }) {
         useRoutes([
             { path: '/*', element: renderProfileContent() },
             {
-                path: '/editmember',
+                path: '/editmember/:memberID',
                 element: (
                     <>
-                        <EditMember memberID={memberID} />
+                        <EditMember />
                     </>
                 ),
             },

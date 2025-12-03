@@ -10,7 +10,6 @@ import axiosInstance from '../../utils/AxiosInstance'
 export default function MemberPage() {
     const [fetchData, setFetchData] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [selectedMemberId, setSelectedMemberId] = useState(null); // useState, not let
 
     useEffect(() => {
         async function fetchMemberCardData() {
@@ -42,14 +41,14 @@ export default function MemberPage() {
                     <Card title='Active Members' data={fetchData.active_members} />
                     <Card title='Expired Members' data={fetchData.expired_members} />
                 </div>
-                <MemberTable onViewMember={setSelectedMemberId} />
+                <MemberTable />
             </>
         },
         {
             path: '/addmember', element: <AddMember />
         },
         {
-            path: '/memberprofile/*', element: <MemberProfile memberID={selectedMemberId} />,
+            path: '/memberprofile/:memberID*', element: <MemberProfile />,
         },
     ]);
 

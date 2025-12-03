@@ -3,12 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import AddWorkoutPlan from './AddWorkoutPlan';
 import EditWorkoutPlan from './EditWorkoutPlan';
-import { useNavigate, useRoutes } from 'react-router-dom';
+import { useNavigate, useRoutes, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axiosInstance from '../../../../utils/AxiosInstance';
 
-export default function WorkoutPlan({ memberID }) {
+export default function WorkoutPlan() {
     // Workout Record Table Data Fetch
+    const { memberID } = useParams();
     const [fetchData, setFetchData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [viewId, setViewId] = useState(null);
@@ -101,7 +102,7 @@ export default function WorkoutPlan({ memberID }) {
     );
 
     const navigate = useNavigate();
-    const handleCloseButton = () => navigate(-1);
+    const handleCloseButton = () => navigate(`/gymdashboard/memberprofile/${memberID}`);
     const handleAddButton = (memberID) => navigate(`addWorkout/${memberID}`);
     const handleEditButton = (workoutID) => navigate(`editWorkout/${workoutID}`);
     let handleDeleteButton = async (workoutID) => {
@@ -126,9 +127,9 @@ export default function WorkoutPlan({ memberID }) {
 
     // Define routes at top-level, call useRoutes directly
     const routes = useRoutes([
-        { path: '/', element: renderPageContent() },
-        { path: 'addWorkout/:memberID', element: <AddWorkoutPlan /> },
-        { path: 'editWorkout/:workoutID', element: <EditWorkoutPlan /> },
+        { path: ':memberID/', element: renderPageContent() },
+        { path: ':memberID/addWorkout/:memberID', element: <AddWorkoutPlan /> },
+        { path: ':memberID/editWorkout/:workoutID', element: <EditWorkoutPlan /> },
     ]);
 
     return routes;

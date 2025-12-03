@@ -289,8 +289,8 @@ export default function AddMember() {
                     <label htmlFor="gender">Gender:</label>
                     <select name="gender" value={formData.gender} id="gender" onChange={handleInputChange}>
                         <option value="">Choose</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
                     </select>
                 </div>
 

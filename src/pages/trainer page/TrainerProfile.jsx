@@ -42,20 +42,7 @@ export default function TrainerProfile() {
         return <p>No trainer data found.</p>;
     }
 
-    // MOCK DATA
-    // let fetchData = {
-    //     name: "Rahul Sharma",
-    //     gender: "Male",
-    //     dob: "1998-05-12",
-    //     phone: "9876543210",
-    //     specialization: "Strength & Conditioning",
-    //     certification: "Certified Personal Trainer (CPT)",
-    //     address: "Dwarka, New Delhi",
-    //     status: "Active",
-    //     photo: "https://via.placeholder.com/150", // sample image URL
-    // };
-
-    const handleClose = () => navigate(-1);
+    const handleClose = () => navigate('/gymdashboard/trainerpage');
     const handleEditButton = (trainerID) => navigate(`/gymdashboard/trainerpage/trainerprofile/${trainerID}/edittrainer/${trainerID}`);
     let handleDeleteButton = async (trainerID, name) => {
         // Ask for confirmation

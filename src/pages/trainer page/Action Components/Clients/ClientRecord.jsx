@@ -37,7 +37,7 @@ export default function ClientRecord() {
 
     // Navigation helpers
     const navigate = useNavigate();
-    const handleCloseButton = () => navigate(-1);
+    const handleCloseButton = () => navigate(`/gymdashboard/trainerpage/trainerprofile/${trainerID}`);
     const handleAddButton = () => navigate(`addclient/${trainerID}`);
     const handleEditButton = () => {
         navigate(`editclient/${trainerID}`);

@@ -1,7 +1,7 @@
 import './EditMember.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axiosInstance from '../../utils/AxiosInstance.jsx'
 
@@ -56,12 +56,14 @@ async function compressImage(file, maxWidth = 400, maxHeight = 400, quality = 0.
     });
 }
 
-export default function EditMember({ memberID }) {
+export default function EditMember() {
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         name: "", dob: "", phone: "", address: "", photo: "", gender: ""
     });
+
+    const { memberID } = useParams()
     const [selectedPhotoName, setSelectedPhotoName] = useState(""); // Photo filename
     const [isLoadingPhoto, setIsLoadingPhoto] = useState(false);
 
