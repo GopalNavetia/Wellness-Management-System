@@ -1,8 +1,7 @@
-.editTrainerContainer {
-    /* position: fixed; */
-    width: 97%;
+.editClientRecord {
+    width: 95%;
     /* border: 2px solid brown; */
-    margin: 1.5% 1.5% 1.5% 1.5%;
+    margin: 0% 1% 1% 1%;
     border: 1px solid rgba(17, 17, 17, 0.5);
     border-radius: 12px;
     background: #fff;
@@ -10,7 +9,7 @@
     overflow: hidden;
 }
 
-.editTrainerHeadSection {
+.editClientRecordHeadSection {
     width: 100%;
     padding: 0.5% 1.5%;
     background-color: #111;
@@ -22,8 +21,7 @@
     justify-content: space-between;
 }
 
-.editTrainerHeadSection h1 {
-    margin-left: 0%;
+.editClientRecordHeadSection h1 {
     background-color: #111;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
@@ -32,21 +30,20 @@
     cursor: default;
 }
 
-.editTrainerHeadSection .xMark {
+.editClientRecordHeadSection .xMark {
     color: #fff;
     transition: all 0.3s ease;
     cursor: pointer;
 }
 
-.editTrainerHeadSection .xMark:hover {
+.editClientRecordHeadSection .xMark:hover {
     color: #ff4d4d;
     transform: scale(1.2, 1.2);
 }
 
-.editTrainerContainer .formContainer {
-    margin: 1.5% 1.5% 6%;
+.editClientRecord .formContainer {
+    margin: 2.5% 1.5%;
     width: 100%;
-    /* border: 1px solid red; */
     padding-bottom: 1.4%;
     display: grid;
     grid-gap: 5%;
@@ -55,38 +52,38 @@
     justify-content: center;
 }
 
-.editTrainerContainer input {
-    font-size: 0.9em;
+.editClientRecord input {
     padding: 0.2% 0.4%;
     margin-bottom: 0.4%;
     width: 95%;
     font-size: 1em;
 }
 
-.editTrainerContainer input::placeholder {
+.editClientRecord input::placeholder {
     font-weight: 100;
     color: rgba(0, 0, 0, 0.5);
 }
 
-.editTrainerContainer label {
+.editClientRecord label {
     font-size: 1em;
     font-weight: 500;
 }
 
-.editTrainerContainer select {
+.editClientRecord select {
+    width: 40%;
     margin-left: 1%;
-    font-size: 0.9em;
+    font-size: 1em;
     font-weight: 400;
 }
 
-.editTrainerContainer .buttonContainer {
+.editClientRecord .buttonContainer {
     width: 15%;
     margin-top: 1%;
     font-size: 0.5em;
     font-weight: 500;
     display: flex;
     /* To keep buttons side by side */
-    grid-row: 6;
+    grid-row: 4;
     grid-column: 1/3;
     justify-content: center;
     gap: 12%;
@@ -94,7 +91,7 @@
     align-self: end;
 }
 
-.editTrainerContainer .formContainer .buttonContainer button {
+.editClientRecord .formContainer .buttonContainer button {
     padding: 2.5% 3.5%;
     cursor: pointer;
 }

@@ -74,51 +74,70 @@ export default function HealthRecord({ memberID }) {
                             <th>Data</th>
                         </tr>
                     </thead>
-
+                    {console.log(fetchData)}
                     <tbody>
-                        <tr>
-                            <td><strong>Medical History</strong></td>
-                            <td>{fetchData.medical_history}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Current Medication</strong></td>
-                            <td>{fetchData.current_medication}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Allergy</strong></td>
-                            <td>{fetchData.allergy}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Surgery</strong></td>
-                            <td>{fetchData.surgery}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Injury</strong></td>
-                            <td>{fetchData.injury}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Supplement</strong></td>
-                            <td>{fetchData.supplement}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Diet Preference</strong></td>
-                            <td>{fetchData.diet_preference}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Drink</strong></td>
-                            <td>{fetchData.drink}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Smoke</strong></td>
-                            <td>{fetchData.smoke}</td>
-                        </tr>
+                        {loading ? (
+                            <tr>
+                                <td colSpan="2" style={{ textAlign: "center" }}>Loading...</td>
+                            </tr>
+                        ) : fetchData.status === "not_found" ? (
+                            <tr>
+                                <td colSpan="2" style={{ textAlign: "center" }}>
+                                    No health record found
+                                </td>
+                            </tr>
+                        ) : (
+                            <>
+                                <tr>
+                                    <td><strong>Medical History</strong></td>
+                                    <td>{fetchData.medical_history}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Current Medication</strong></td>
+                                    <td>{fetchData.current_medication}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Allergy</strong></td>
+                                    <td>{fetchData.allergy}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Surgery</strong></td>
+                                    <td>{fetchData.surgery}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Injury</strong></td>
+                                    <td>{fetchData.injury}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Supplement</strong></td>
+                                    <td>{fetchData.supplement}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Diet Preference</strong></td>
+                                    <td>{fetchData.diet_preference}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Drink</strong></td>
+                                    <td>{fetchData.drink}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Smoke</strong></td>
+                                    <td>{fetchData.smoke}</td>
+                                </tr>
+                            </>
+                        )}
                     </tbody>
+
                 </table>
 
-                <div className="buttonContainer">
+                <div
+                    className="buttonContainer"
+                    style={{ display: fetchData.status === "not_found" ? "none" : "block" }}
+                >
                     <button onClick={() => handleEditButton(memberID)}>Edit</button>
                     <button onClick={() => handleDeleteButton(memberID)}>Delete</button>
                 </div>
+
 
             </div>
         </div>

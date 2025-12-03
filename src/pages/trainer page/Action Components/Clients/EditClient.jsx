@@ -1,0 +1,95 @@
+import './EditClient.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useState } from 'react';
+import axiosInstance from '../../../../utils/AxiosInstance.jsx'
+
+export default function EditClient() {
+
+    const navigate = useNavigate();
+    let handleClose = () => {
+        navigate(-1)
+    };
+
+    let [formData, setFormData] = useState({
+        name: "",
+        phone: ""
+    });
+
+    // Common Input Change
+    let handleInputChange = (e) => {
+        let fieldName = e.target.name;
+        let newValue = e.target.value;
+
+        setFormData((currData) => {
+            return {
+                ...currData,
+                [fieldName]: newValue
+            }
+        });
+    };
+
+
+    // Backend API Call
+    const { trainerID } = useParams();
+
+    let handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await axiosInstance.post(`/MyProject/AddClientAPI?id=${trainerID}`, formData, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'ngrok-skip-browser-warning': 'true'
+                }
+            });
+
+            if (response.data.success) {
+                alert("Edit Client Successful.")
+                setFormData({ name: "", phone: "" });
+                navigate(-1);
+            } else {
+                alert('Failed to edit client: ' + response.data.message);
+            }
+
+        } catch (error) {
+            console.error('API Request Error:', error.response ? error.response.data : error.message);
+            alert(errorMessage);
+        }
+    };
+
+    let handleReset = () => {
+        setFormData({
+            name: "",
+            phone: ""
+        });
+    }
+
+    return (
+        <div className="editClientRecord">
+            <div className="editClientRecordHeadSection">
+                <h1>Edit Client Record</h1>
+                <span className='xMark' onClick={handleClose}><FontAwesomeIcon icon={faXmark} /></span>
+            </div>
+
+            <div className="formContainer">
+
+                <div>
+                    <label htmlFor="name">Member Name:</label><br />
+                    <input type="text" name="name" value={formData.name} id="name" placeholder="Enter Name" onChange={handleInputChange} />
+                </div>
+
+                <div>
+                    <label htmlFor="phone">Phone:</label>
+                    <input type="text" name="phone" value={formData.phone} id="phone" placeholder="Enter Amount" onChange={handleInputChange} />
+                </div>
+
+                <div className="buttonContainer">
+                    <button id="save" onClick={handleSubmit}>Save</button>
+                    <button id="reset" onClick={handleReset}>Reset</button>
+                </div>
+            </div>
+        </div>
+    );
+}

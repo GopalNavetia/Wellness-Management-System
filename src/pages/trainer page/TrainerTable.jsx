@@ -122,7 +122,7 @@ export default function TrainerTable() {
             </div>
 
             {loading ? (
-                <div>Loading users...</div> // Loading indicator/message
+                <div>Loading Trainers...</div> // Loading indicator/message
             ) : (
                 <table>
                     <thead>
