@@ -1,0 +1,86 @@
+.slotRecordContainer {
+    margin: 0% 1% 1% 1%;
+    width: 95%;
+    border-radius: 12px;
+    border: 1px solid rgba(17, 17, 17, 0.5);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.slotRecordContainer .slotRecordHeadSection {
+    width: 100%;
+    padding: 0.5% 1.5%;
+    background-color: #111;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.slotRecordContainer .slotRecordHeadSection h1 {
+    color: #fff;
+    margin: 0;
+    font-size: 1.5em;
+    cursor: default;
+}
+
+.slotRecordContainer .slotRecordHeadSection .buttonsContainer {
+    display: flex;
+    gap: 0.8em;
+    align-items: center;
+}
+
+.slotRecordContainer .slotRecordHeadSection button {
+    padding: 2% 7%;
+    font-size: 0.95em;
+    cursor: pointer;
+}
+
+.slotRecordContainer .slotRecordHeadSection .xMark {
+    color: #fff;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.slotRecordContainer .slotRecordHeadSection .xMark:hover {
+    color: #ff4d4d;
+    transform: scale(1.2, 1.2);
+}
+
+.slotListContainer {
+    margin: 1% 0;
+    display: flex;
+    justify-content: center;
+}
+
+.slotListContainer table {
+    width: 96%;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 1em;
+}
+
+.slotListContainer th,
+.slotListContainer td {
+    border: 1px solid #ccc;
+    padding: 0.5% 0.5%;
+}
+
+.slotListContainer th {
+    background-color: #222;
+    color: #fff;
+    font-weight: 600;
+}
+
+.slotListContainer td {
+    font-size: 0.9em;
+}
+
+.slotListContainer table button {
+    margin: 0% 1.5%;
+    padding: 1% 2%;
+    cursor: pointer;
+}

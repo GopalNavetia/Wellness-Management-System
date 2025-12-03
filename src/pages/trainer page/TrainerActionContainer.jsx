@@ -1,5 +1,6 @@
 import './TrainerActionContainer.css'
 import ClientRecord from './Action Components/Clients/ClientRecord'
+import SlotRecord from './Action Components/Slots/SlotRecord'
 import { useNavigate, useRoutes, useParams } from 'react-router-dom';
 
 
@@ -26,7 +27,9 @@ export default function TrainerActionContainer() {
         return useRoutes([
             { path: '/', element: renderPageContent() },
             { path: 'clients/*', element: <>{renderPageContent()} <ClientRecord /></> },
-            { path: 'slots/*', element: <>{renderPageContent()} Slots Page</> },
+            {
+                path: 'slots/*', element: <>{renderPageContent()} <SlotRecord /></>
+            },
             { path: 'salary/*', element: <>{renderPageContent()} Salary Page</> }
         ]);
     }

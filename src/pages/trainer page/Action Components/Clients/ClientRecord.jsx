@@ -11,49 +11,27 @@ export default function ClientRecord() {
     // Backend data and UI loading state
     const { trainerID } = useParams();
 
-    let fetchData = [{
-        "join_id": 1,
-        "member_name": "Rahul Sharma",
-        "trainer_id": "TRN001"
-    },
-    {
-        "join_id": 2,
-        "member_name": "Priya Patel",
-        "trainer_id": "TRN001"
-    },
-    {
-        "join_id": 3,
-        "member_name": "Amit Kumar",
-        "trainer_id": "TRN001"
-    },
-    {
-        "join_id": 4,
-        "member_name": "Neha Gupta",
-        "trainer_id": "TRN001"
-    }
-    ]
-
-    // const [fetchData, setFetchData] = useState([]);
+    const [fetchData, setFetchData] = useState([]);
+    const [loading, setLoading] = useState(true);
     // const [loading, setLoading] = useState(true);
-    const [loading, setLoading] = useState(false);
 
     // Fetch Clients from backend
-    // useEffect(() => {
-    //     async function fetchClients() {
-    //         try {
-    //             const result = await axiosInstance.get(`/MyProject/ClientDetail?id=${trainerID}`, {
-    //                 headers: { "ngrok-skip-browser-warning": "true" }
-    //             });
-    //             setFetchData(result.data || []);
-    //         } catch (error) {
-    //             console.log(error);
-    //             setFetchData([]);
-    //         } finally {
-    //             setLoading(false);
-    //         }
-    //     }
-    //     fetchClients();
-    // }, [trainerID]);
+    useEffect(() => {
+        async function fetchClients() {
+            try {
+                const result = await axiosInstance.get(`/MyProject/ClientTableAPI?id=${trainerID}`, {
+                    headers: { "ngrok-skip-browser-warning": "true" }
+                });
+                setFetchData(result.data || []);
+            } catch (error) {
+                console.log(error);
+                setFetchData([]);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchClients();
+    }, [trainerID]);
 
 
 
@@ -64,19 +42,19 @@ export default function ClientRecord() {
     const handleEditButton = () => {
         navigate(`editclient/${trainerID}`);
     };
-    // const handleDeleteButton = async (membershipID) => {
-    //     if (!window.confirm('Are you sure you want to delete this client?')) {
-    //         return;
-    //     }
-    //     try {
-    //         await axiosInstance.delete(`/MyProject/DeleteMembershipAPI?id=${membershipID}`, {
-    //             headers: { "ngrok-skip-browser-warning": "true" }
-    //         });
-    //         setFetchData(prevData => prevData.filter(membership => membership.id !== membershipID));
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }
+    const handleDeleteButton = async (joinID) => {
+        if (!window.confirm('Are you sure you want to delete this client?')) {
+            return;
+        }
+        try {
+            await axiosInstance.delete(`/MyProject/DeleteClientAPI?id=${joinID}`, {
+                headers: { "ngrok-skip-browser-warning": "true" }
+            });
+            setFetchData(prevData => prevData.filter(client => client.join_id !== joinID));
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     const renderPageContent = () => (
         <div className='clientRecordContainer'>
