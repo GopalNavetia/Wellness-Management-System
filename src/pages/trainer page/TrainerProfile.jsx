@@ -56,7 +56,7 @@ export default function TrainerProfile() {
                 headers: { "ngrok-skip-browser-warning": "true" }
             });
             if (response.data.success) {
-                navigate(-1);
+                navigate('/gymdashboard/trainerpage');
             }
         } catch (error) {
             console.log(error);

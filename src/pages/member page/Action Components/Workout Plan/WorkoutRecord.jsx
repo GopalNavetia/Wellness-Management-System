@@ -116,9 +116,9 @@ export default function WorkoutPlan() {
             const response = await axiosInstance.delete(`/MyProject/DeleteWorkoutAPI?id=${workoutID}`, {
                 headers: { "ngrok-skip-browser-warning": "true" }
             });
-            if (response.data.success) {
-                setFetchData(prevData => prevData.filter(workoutPlan => workoutPlan.workoutId !== workoutID));
-                navigate(-1);
+            if (response.data.status === "success") {
+                // navigate back to the same page (or parent) after delete
+                navigate(`/gymdashboard/memberprofile/${memberID}/workoutplan/${memberID}`);
             }
         } catch (error) {
             console.log(error);

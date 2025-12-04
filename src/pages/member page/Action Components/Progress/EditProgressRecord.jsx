@@ -90,9 +90,9 @@ export default function EditProgressRecord() {
                 }
             );
 
-            // Backend sends: { success: true/false, message: "..." }
+            // Backend: { success: true/false, message: "..." }
             if (response.data.success === true) {
-                alert("Edit Progress Successful.");
+                alert(response.data.message || "Edit Progress Successful.");
                 handleReset();
                 navigate(-1);
             } else {
@@ -104,7 +104,13 @@ export default function EditProgressRecord() {
                 'API Request Error:',
                 error.response ? error.response.data : error.message
             );
-            alert('Error while editing progress.');
+
+            // Use message from backend for non-2xx responses
+            if (error.response && error.response.data && error.response.data.message) {
+                alert(error.response.data.message);
+            } else {
+                alert('Error while editing progress.');
+            }
         }
     };
 
@@ -127,7 +133,7 @@ export default function EditProgressRecord() {
                     <tbody>
                         <tr>
                             <td><label htmlFor="date">Date</label></td>
-                            <td><input type="text" name="date" value={formData.date} id="date" onChange={handleInputChange} /></td>
+                            <td><input type="date" name="date" value={formData.date} id="date" onChange={handleInputChange} /></td>
                         </tr>
                         <tr>
                             <td><label htmlFor="weight">Weight</label></td>

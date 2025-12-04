@@ -39,9 +39,9 @@ export default function ClientRecord() {
     const navigate = useNavigate();
     const handleCloseButton = () => navigate(`/gymdashboard/trainerpage/trainerprofile/${trainerID}`);
     const handleAddButton = () => navigate(`addclient/${trainerID}`);
-    const handleEditButton = () => {
-        navigate(`editclient/${trainerID}`);
-    };
+    // const handleEditButton = () => {
+    //     navigate(`editclient/${trainerID}`);
+    // };
     const handleDeleteButton = async (joinID) => {
         if (!window.confirm('Are you sure you want to delete this client?')) {
             return;
@@ -84,7 +84,7 @@ export default function ClientRecord() {
                                     return (<tr key={client.join_id}>
                                         <td>{client.member_name}</td>
                                         <td>
-                                            <button onClick={() => handleEditButton(client.join_id)}>Edit</button>
+                                            {/* <button onClick={() => handleEditButton(client.join_id)}>Edit</button> */}
                                             <button onClick={() => handleDeleteButton(client.join_id)}>Delete</button>
                                         </td>
                                     </tr>

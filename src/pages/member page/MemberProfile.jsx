@@ -57,7 +57,7 @@ export default function MemberProfile() {
                 headers: { "ngrok-skip-browser-warning": "true" }
             });
             if (response.data.success) {
-                navigate(-1);
+                navigate('/gymdashboard');
             }
         } catch (error) {
             console.log(error);

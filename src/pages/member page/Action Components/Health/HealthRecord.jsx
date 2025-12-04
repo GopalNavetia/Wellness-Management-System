@@ -38,23 +38,24 @@ export default function HealthRecord() {
     const handleAddButton = (memberID) => navigate(`addhealthrecord/${memberID}`);
     const handleEditButton = (memberID) => navigate(`edithealthrecord/${memberID}`);
     let handleDeleteButton = async (memberID) => {
-        // Ask for confirmation
         const ok = window.confirm("Are you sure you want to delete health record ?");
-
-        // If user clicks Cancel, just return
         if (!ok) return;
 
         try {
-            const response = await axiosInstance.delete(`/MyProject/DeleteHealthRecordAPI?member_id=${memberID}`, {
-                headers: { "ngrok-skip-browser-warning": "true" }
-            });
-            if (response.data.success) {
-                navigate(-1);
+            const response = await axiosInstance.delete(
+                `/MyProject/DeleteHealthRecordAPI?member_id=${memberID}`,
+                { headers: { "ngrok-skip-browser-warning": "true" } }
+            );
+
+            if (response.data.status === "success") {
+                // navigate back to the same page (or parent) after delete
+                navigate(`/gymdashboard/memberprofile/${memberID}/healthrecord/${memberID}`);
             }
         } catch (error) {
             console.log(error);
         }
-    }
+    };
+
 
     // Render Page
     const renderPageContent = () => (

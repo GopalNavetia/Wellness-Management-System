@@ -57,34 +57,44 @@ export default function AddProgressRecord() {
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+  e.preventDefault();
 
-        try {
-            const response = await axiosInstance.post(
-                `/MyProject/AddProgressAPI?id=${memberID}`,
-                formData,
-                {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'ngrok-skip-browser-warning': 'true'
-                    }
-                }
-            );
+  try {
+    const response = await axiosInstance.post(
+      `/MyProject/AddProgressAPI?id=${memberID}`,
+      formData,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'ngrok-skip-browser-warning': 'true',
+        },
+      }
+    );
 
-            const data = response.data;
+    const data = response.data;
 
-            if (data.success) {      // <-- check success
-                alert(data.message || "Add Progress Successful.");
-                handleReset();
-                navigate(-1);
-            } else {
-                alert('Failed to add progress: ' + (data.message || 'Unknown error.'));
-            }
-        } catch (error) {
-            console.error('API Request Error:', error.response ? error.response.data : error.message);
-            alert('An error occurred while saving progress.');
-        }
-    };
+    if (data.success) {
+      alert(data.message || 'Add Progress Successful.');
+      handleReset();
+      navigate(-1);
+    } else {
+      // backend returned success:false
+      alert(data.message || 'Failed to add progress.');
+    }
+  } catch (error) {
+    // backend returned non-2xx or network error
+    if (error.response && error.response.data && error.response.data.message) {
+      alert(error.response.data.message); // e.g. "All fields are required."
+    } else {
+      alert('An error occurred while saving progress.');
+    }
+    console.error(
+      'API Request Error:',
+      error.response ? error.response.data : error.message
+    );
+  }
+};
+
 
     return (
         <div className="addProgressRecord">

@@ -2,7 +2,7 @@ import './EditSlot.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axiosInstance from '../../../../utils/AxiosInstance.jsx'
 
 export default function EditSlot() {
@@ -34,6 +34,21 @@ export default function EditSlot() {
 
     // Backend API Call
     const { scheduleID } = useParams();
+
+    useEffect(() => {
+        if (scheduleID) {
+            axiosInstance.get(`/MyProject/EditGetSlotAPI?id=${scheduleID}`, {
+                headers: { "ngrok-skip-browser-warning": "true" }
+            })
+                .then(response => {
+                    setFormData(response.data);
+                })
+                .catch(error => {
+                    console.error("Failed to load slot data:", error);
+                });
+        }
+    }, [scheduleID]);
+
 
     let handleSubmit = async (e) => {
         e.preventDefault();

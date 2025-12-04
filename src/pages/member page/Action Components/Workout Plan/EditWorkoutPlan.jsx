@@ -61,37 +61,64 @@ export default function EditWorkoutPlan() {
 
         console.log("Form Data:", formData);
         try {
-            const response = await axiosInstance.post(`/MyProject/EditWorkoutAPI?id=${workoutID}`, formData, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'ngrok-skip-browser-warning': 'true'
+            const response = await axiosInstance.post(
+                `/MyProject/EditWorkoutAPI?id=${workoutID}`,
+                formData,
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "ngrok-skip-browser-warning": "true",
+                    },
                 }
-            });
+            );
 
-            // Adjusted to check for success field in response consistently
             if (response.data.success === true) {
                 alert("Edit Workout Plan Successful.");
-                setFormData({ start_date: "", end_date: "", monday: "", tuesday: "", wednesday: "", thursday: "", friday: "", saturday: "", sunday: "" });
+                setFormData({
+                    start_date: "",
+                    end_date: "",
+                    monday: "",
+                    tuesday: "",
+                    wednesday: "",
+                    thursday: "",
+                    friday: "",
+                    saturday: "",
+                    sunday: "",
+                });
                 navigate(-1);
             } else {
-                alert('Failed to Edit Workout Plan: ' + (response.data.message || 'Unknown error'));
+                alert(
+                    "Failed to Edit Workout Plan: " +
+                    (response.data.message || "Unknown error")
+                );
             }
         } catch (error) {
-            console.error('API Request Error:', error.response ? error.response.data : error.message);
+            console.error(
+                "API Request Error:",
+                error.response ? error.response.data : error.message
+            );
 
-            // Extract detailed error info for debug from backend response
-            let errorMessage = 'A network or server error occurred.';
+            let errorMessage = "A network or server error occurred.";
+
             if (error.response && error.response.data) {
                 const data = error.response.data;
-                if (data.error) errorMessage = data.error;
+
+                // 1) Prefer backend message like "Dates are required"
+                if (data.message) {
+                    errorMessage = data.message;
+                } else if (data.error) {
+                    errorMessage = data.error;
+                }
+
+                // 2) Optional: append debug info (only while developing)
                 if (data.exception) errorMessage += `\nException: ${data.exception}`;
-                if (data.stackTraceString) errorMessage += `\nStackTrace:\n${data.stackTraceString}`;
+                if (data.stackTraceString)
+                    errorMessage += `\nStackTrace:\n${data.stackTraceString}`;
             }
 
             alert(errorMessage);
         }
     };
-
 
     let handleReset = () => {
         setFormData({ start_date: "", end_date: "", monday: "", tuesday: "", wednesday: "", thursday: "", friday: "", saturday: "", sunday: "" });
