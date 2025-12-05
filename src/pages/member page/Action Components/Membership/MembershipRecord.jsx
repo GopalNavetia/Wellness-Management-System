@@ -71,7 +71,7 @@ export default function MembershipRecord() {
 
             <div className='membershipListContainer'>
                 {loading ? (
-                    <div>Loading users...</div>
+                    <div>Loading membership...</div>
                 ) : (
                     <table>
                         <thead>

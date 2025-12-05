@@ -30,11 +30,11 @@ export default function MainContainer() {
             />
 
             {/* Clinic */}
-            <CardContainer
+            {/* <CardContainer
                 logo={clinicLogo}
                 title="Clinic Dashboard"
                 desc={clinicDesc}
-            />
+            /> */}
         </div>
     );
 }

@@ -8,7 +8,6 @@ export default function Cards(props) {
         if (props.title == "Gym Dashboard") {
             navigate('/gymdashboard');
         }
-        // else clinic dashboard
     };
 
     return (

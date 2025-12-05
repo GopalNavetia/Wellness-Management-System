@@ -138,7 +138,7 @@ export default function MemberTable() {
             </div>
 
             {loading ? (
-                <div>Loading users...</div> // Loading indicator/message
+                <div>Loading members...</div> // Loading indicator/message
             ) : (
                 <table>
                     <thead>
