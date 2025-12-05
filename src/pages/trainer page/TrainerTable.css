@@ -100,22 +100,12 @@
     cursor: pointer;
 }
 
-/* .paymentStatus-paid {
+.trainer-status-Active {
     color: #2e7d32;
     font-weight: 600;
 }
 
-.paymentStatus-pending {
-    color: #f57c00;
-    font-weight: 600;
-}
-
-.membershipStatus-active {
-    color: #2e7d32;
-    font-weight: 600;
-}
-
-.membershipStatus-expired {
+.trainer-status-Inactive {
     color: #dc3545;
     font-weight: 600;
-} */
+}

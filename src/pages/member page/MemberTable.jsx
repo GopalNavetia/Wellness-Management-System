@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../utils/AxiosInstance.jsx'
 
 
-export default function MemberTable({ onViewMember }) {
+export default function MemberTable() {
     // Members Table Data Fetch
     const [fetchData, setFetchData] = useState(null);
     const [loading, setLoading] = useState(true);

@@ -101,7 +101,9 @@ export default function TrainerTable() {
                 <tr key={trainer.id}>
                     <td>{trainer.name}</td>
                     <td>{trainer.assigned_members}</td>
-                    <td>{trainer.status}</td>
+                    <td className={`trainer-status-${trainer.status}`}>
+                        {trainer.status}
+                    </td>
                     <td>{trainer.contact}</td>
                     <td><button onClick={() => handleViewButton(trainer.id)}>View</button></td>
                 </tr>

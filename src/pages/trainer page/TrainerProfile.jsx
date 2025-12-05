@@ -82,7 +82,7 @@ export default function TrainerProfile() {
                     <p><b>Specialization:</b> {fetchData.specialization}</p>
                     <p><b>Certification:</b> {fetchData.certification}</p>
                     <p><b>Address:</b> {fetchData.address}</p>
-                    <p><b>Status:</b> {fetchData.status}</p>
+                    <p ><b>Status:</b> <span className={`trainer-status-${fetchData.status}`}>{fetchData.status}</span></p>
                     <div className="buttons">
                         <button onClick={() => handleEditButton(trainerID)}>Edit</button>
                         <button onClick={() => handleDeleteButton(trainerID, fetchData.name)}>Delete</button>
