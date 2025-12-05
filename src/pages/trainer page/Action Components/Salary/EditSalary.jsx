@@ -2,7 +2,7 @@ import './EditSalary.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axiosInstance from '../../../../utils/AxiosInstance.jsx'
 
 export default function EditSalary() {
@@ -34,13 +34,27 @@ export default function EditSalary() {
 
 
     // Backend API Call
-    const { trainerID } = useParams();
+    const { salaryID } = useParams();
+
+    useEffect(() => {
+        if (salaryID) {
+            axiosInstance.get(`/MyProject/EditGetSalaryAPI?id=${salaryID}`, {
+                headers: { "ngrok-skip-browser-warning": "true" }
+            })
+                .then(response => {
+                    setFormData(response.data);
+                })
+                .catch(error => {
+                    console.error("Failed to load slot data:", error);
+                });
+        }
+    }, [salaryID]);
 
     let handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            const response = await axiosInstance.post(`/MyProject/EditSalaryAPI?id=${trainerID}`, formData, {
+            const response = await axiosInstance.post(`/MyProject/EditSalaryAPI?id=${salaryID}`, formData, {
                 headers: {
                     'Content-Type': 'application/json',
                     'ngrok-skip-browser-warning': 'true'

@@ -11,65 +11,26 @@ export default function SalaryRecord() {
     // Backend data and UI loading state
     const { trainerID } = useParams();
 
-    // const [fetchData, setFetchData] = useState([]);
-    // const [loading, setLoading] = useState(true);
-    const [loading, setLoading] = useState(false);
-
-    const fetchData = [
-        {
-            salary_id: 1,
-            pay_date: "2025-11-30",
-            pay_salary_month: "November 2025",
-            mode: "Bank Transfer",
-            amount: 25000
-        },
-        {
-            salary_id: 2,
-            pay_date: "2025-10-31",
-            pay_salary_month: "October 2025",
-            mode: "Cash",
-            amount: 25000
-        },
-        {
-            salary_id: 3,
-            pay_date: "2025-09-30",
-            pay_salary_month: "September 2025",
-            mode: "UPI",
-            amount: 26000
-        },
-        {
-            salary_id: 4,
-            pay_date: "2025-08-31",
-            pay_salary_month: "August 2025",
-            mode: "Bank Transfer",
-            amount: 25500
-        },
-        {
-            salary_id: 5,
-            pay_date: "2025-07-31",
-            pay_salary_month: "July 2025",
-            mode: "Cash",
-            amount: 25000
-        }
-    ];
+    const [fetchData, setFetchData] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     // Fetch Clients from backend
-    // useEffect(() => {
-    //     async function fetchSalary() {
-    //         try {
-    //             const result = await axiosInstance.get(`/MyProject/SalaryTableAPI?id=${trainerID}`, {
-    //                 headers: { "ngrok-skip-browser-warning": "true" }
-    //             });
-    //             setFetchData(result.data || []);
-    //         } catch (error) {
-    //             console.log(error);
-    //             setFetchData([]);
-    //         } finally {
-    //             setLoading(false);
-    //         }
-    //     }
-    //     fetchSalary();
-    // }, [trainerID]);
+    useEffect(() => {
+        async function fetchSalary() {
+            try {
+                const result = await axiosInstance.get(`/MyProject/SalaryRecordAPI?id=${trainerID}`, {
+                    headers: { "ngrok-skip-browser-warning": "true" }
+                });
+                setFetchData(result.data || []);
+            } catch (error) {
+                console.log(error);
+                setFetchData([]);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchSalary();
+    }, [trainerID]);
 
 
 
@@ -77,8 +38,8 @@ export default function SalaryRecord() {
     const navigate = useNavigate();
     const handleCloseButton = () => navigate(`/gymdashboard/trainerpage/trainerprofile/${trainerID}`);
     const handleAddButton = () => navigate(`addsalary/${trainerID}`);
-    const handleEditButton = () => {
-        navigate(`editsalary/${trainerID}`);
+    const handleEditButton = (salaryID) => {
+        navigate(`editsalary/${salaryID}`);
     };
     const handleDeleteButton = async (salaryID) => {
         if (!window.confirm('Are you sure you want to delete this salary record?')) {
@@ -152,7 +113,7 @@ export default function SalaryRecord() {
         return useRoutes([
             { path: '/:trainerID', element: renderPageContent() },
             { path: ':trainerID/addsalary/:trainerID', element: <AddSalary /> },
-            { path: ':trainerID/editsalary/:trainerID', element: <EditSalary /> }
+            { path: ':trainerID/editsalary/:salaryID', element: <EditSalary /> }
         ]);
     };
 
