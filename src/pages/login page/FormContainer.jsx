@@ -64,37 +64,44 @@ export default function FormContainer({ storeLoginPerson }) {
         }
     };
 
+    let handleForgotButton = () => {
+        alert("Coming Soon...")
+    }
 
+    // let handleForgotButton = async () => {
+    //     try {
+    //         const response = await axios.post(
+    //             `${BackendURL}/MyProject/LoginPasswordAPI`,
+    //             formData,
+    //             {
+    //                 headers: {
+    //                     'Content-Type': 'application/json',
+    //                     'ngrok-skip-browser-warning': 'true',
+    //                 },
+    //             }
+    //         );
 
-    // With MOCK data
-    // let handleSubmit = (e) => {
-    //     e.preventDefault(); // use to remove default behavior of submit button
-
-    //     // Find matching user from UsersData
-    //     const matchedUser = storedUser.find(
-    //         (user) =>
-    //             user.username === formData.username && user.password === formData.password && user.role === 'Admin'
-    //     );
-
-    //     if (matchedUser) {
-    //         console.log("Login successful!");
-    //         navigate("/dashboard", { replace: true });
-    //     } else {
-    //         alert("Wrong Details");
+    //         if (response.status === 200) {
+    //             setFormData({ username: "", password: "" });
+    //         } else {
+    //             alert(response.data.message);
+    //         }
     //     }
-
-    //     // Set Form Data Back to Empty
-    //     setFormData({
-    //         username: "",
-    //         password: ""
-    //     });
-
-    // };
+    //     catch (error) {
+    //         console.log(error.response);
+    //         if (error.response && error.response.data && error.response.data.message) {
+    //             alert(error.response.data.message);
+    //         } else {
+    //             alert("Failed to send password on mail.");
+    //         }
+    //     }
+    // }
 
     return (
         <form className='form' onSubmit={handleSubmit}>
-            <input type="text" id="username" name='username' value={formData.username} placeholder="USERNAME" autoComplete="off" onChange={handleInputChange} /><br />
-            <input type="password" id="pass" name='password' value={formData.password} placeholder="PASSWORD" autoComplete="off" onChange={handleInputChange} /> <br />
+            <input type="text" id="username" name='username' value={formData.username} placeholder="USERNAME" autoComplete="off" onChange={handleInputChange} />
+            <input type="password" id="pass" name='password' value={formData.password} placeholder="PASSWORD" autoComplete="off" onChange={handleInputChange} />
+            <p onClick={handleForgotButton}>Forgot Password?</p>
             <button className='loginButton'>Login</button>
         </form>
     );
