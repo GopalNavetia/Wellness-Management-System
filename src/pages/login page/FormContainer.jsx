@@ -65,7 +65,7 @@ export default function FormContainer({ storeLoginPerson }) {
     };
 
     let handleForgotButton = () => {
-        alert("Coming Soon...")
+        alert("Work in Progress...")
     }
 
     // let handleForgotButton = async () => {
