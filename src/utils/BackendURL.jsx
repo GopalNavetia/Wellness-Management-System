@@ -1,3 +1,4 @@
-// let BackendURL = "https://admonitorial-cinderella-hungerly.ngrok-free.dev"
-let BackendURL = "https://stephan-unprying-yvonne.ngrok-free.dev"
-export default BackendURL
+// Vite will inject this value from environment variables
+let BackendURL = import.meta.env.VITE_BACKEND_URL;
+
+export default BackendURL;
