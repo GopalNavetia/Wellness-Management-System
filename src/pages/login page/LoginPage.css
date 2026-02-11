@@ -10,5 +10,6 @@
 @media (max-width: 600px) {
     .window {
         flex-direction: column;
+        overflow-y: hidden;
     }
 }
