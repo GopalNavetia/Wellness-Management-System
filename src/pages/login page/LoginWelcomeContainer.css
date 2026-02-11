@@ -17,10 +17,10 @@
 
 @media (max-width:600px) {
     .welcomeText h1 {
-        font-size: 1.3em;
+        font-size: 1.1em;
     }
 
     .welcomeText p {
-        font-size: 0.75em;
+        font-size: 0.5em;
     }
 }
