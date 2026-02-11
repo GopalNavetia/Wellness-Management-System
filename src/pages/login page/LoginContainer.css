@@ -1,6 +1,6 @@
 .loginContainer {
     width: 40%;
-    height: 42%;
+    height: 43.5%;
     color: black;
     /* border: 2px solid black; */
     border-radius: 12px;
@@ -12,6 +12,6 @@
 @media (max-width:600px) {
     .loginContainer {
         width: 85%;
-        height: 40%;
+        height: 26%;
     }
 }
