@@ -50,7 +50,7 @@ input::placeholder {
     background-color: rgb(0, 144, 254);
 }
 
-@media (max-width:600px) {
+@media (max-width:480px) {
     .form {
         justify-content: flex-start;
         margin-top: 1%;

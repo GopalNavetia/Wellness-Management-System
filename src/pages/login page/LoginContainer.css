@@ -1,6 +1,6 @@
 .loginContainer {
-    width: 40%;
-    height: 43.5%;
+    min-width: 40%;
+    height: 43.5vh;
     color: black;
     /* border: 2px solid black; */
     border-radius: 12px;
@@ -9,9 +9,16 @@
     flex-direction: column;
 }
 
-@media (max-width:600px) {
+@media (max-width:768px) {
     .loginContainer {
-        width: 85%;
-        height: 26%;
+        min-width: 60vw;
+        height: 26vh;
+    }
+}
+
+@media (max-width:480px) {
+    .loginContainer {
+        min-width: 85vw;
+        height: 26vh;
     }
 }

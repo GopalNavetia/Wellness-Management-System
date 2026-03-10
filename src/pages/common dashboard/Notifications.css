@@ -6,14 +6,14 @@
     border: 1px solid rgba(17, 17, 17, 0.3);
     border-radius: 10px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    /* display: none; */
 }
 
 .notificationContainer h3 {
-    height: 7%;
+    height: 9%;
     /* width: 17.95%; for both */
-    width: 21%;
-    margin-bottom: 4%;
-    padding: 0.1%;
+    width: 100%;
+    padding-top: 1%;
     background-color: #111;
     border: 1px solid #111;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
@@ -23,13 +23,13 @@
     font-size: 1.5em;
     text-align: center;
     cursor: default;
-    position: fixed;
 }
 
 .listContainer {
     width: 100%;
-    height: 90%;
-    margin-top: 18%;
+    height: 92%;
+    margin-top:0%;
+    /* border: 1px solid red; */
     overflow-y: auto;
     scrollbar-width: none;
 }
@@ -61,4 +61,22 @@
 
 .notificationContainer ul li:hover {
     background-color: #f0f0f0;
+}
+
+@media (max-width:480px) {
+    .notificationContainer {
+        width: 90%;
+        height: 71%;
+    }
+
+    .notificationContainer h3 {
+        height: 11%;
+        width: 100%;
+
+    }
+
+    .listContainer {
+    width: 100%;
+    height: 89%;
+}
 }
