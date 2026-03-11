@@ -15,12 +15,22 @@
     font-size: 0.7em;
 }
 
-@media (max-width:480px) {
+@media (max-width:480px) and (orientation: portrait) {
     .welcomeText h1 {
         font-size: 1.1em;
     }
 
     .welcomeText p {
         font-size: 0.5em;
+    }
+}
+
+@media (max-height:500px) and (orientation: landscape) {
+    .welcomeText h1 {
+        font-size: 1.2em;
+    }
+
+    .welcomeText p {
+        font-size: 0.6em;
     }
 }

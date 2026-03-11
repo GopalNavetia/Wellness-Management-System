@@ -9,16 +9,18 @@
     flex-direction: column;
 }
 
-@media (max-width:768px) {
+@media (max-width:768px) {}
+
+@media (max-width: 480px) and (orientation: portrait) {
     .loginContainer {
-        min-width: 60vw;
+        min-width: 85vw;
         height: 26vh;
     }
 }
 
-@media (max-width:480px) {
-    .loginContainer {
-        min-width: 85vw;
-        height: 26vh;
+@media (max-height: 500px) and (orientation: landscape) {
+   .loginContainer {
+        min-width: 60vw;
+        height: 72vh;
     }
 }

@@ -34,7 +34,7 @@
     color: #555;
 }
 
-@media (max-width:480px) {
+@media (max-width:480px) and (orientation: portrait) {
     .card {
         margin-top: 4%;
         width: 90%;
@@ -49,11 +49,35 @@
     }
 
     .desc h3 {
-    font-size: 1.1em;
-}
+        font-size: 1em;
+    }
 
     .desc ul li {
-        font-size: 0.9em;
+        font-size: 0.8em;
+        overflow: hidden;
+    }
+}
+
+@media (max-height:500px) and (orientation: landscape) {
+    .card {
+        width: 45%;
+        height: 60%;
+        flex-wrap: wrap;
+        align-self: center;
+    }
+
+    .card img {
+        width: 44%;
+        height: 100%;
+    }
+
+    .desc h3 {
+        margin-top: 7%;
+        font-size: 1em;
+    }
+
+    .desc ul li {
+        font-size: 0.8em;
         overflow: hidden;
     }
 }

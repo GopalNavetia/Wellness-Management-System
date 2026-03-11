@@ -13,11 +13,18 @@
 }
 
 
-@media (max-width:480px) {
+@media (max-width:480px) and (orientation: portrait){
     .cardContainers {
         margin-top: 2%;
         width: 100%;
         height: 90%;
         flex-wrap: wrap;
+    }
+}
+
+@media (max-height:500px) and (orientation: landscape){
+    .cardContainers {
+        width: 97%;
+        height: 98%;
     }
 }

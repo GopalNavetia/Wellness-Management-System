@@ -51,7 +51,7 @@ nav .icon {
 
 .navContainer .settings {
     width: 11.8%;
-    height: 13%;
+    height: 147%;
     background-color: #fff;
     border: 2px solid rgba(0, 0, 0, 0.15);
     border-radius: 5px;
@@ -59,9 +59,9 @@ nav .icon {
     flex-direction: column;
     justify-content: center;
     align-items: baseline;
-    position: fixed;
-    top: 6.8%;
-    right: 2.5%;
+    position: relative;
+    top: -27%;
+    right: -86%;
     z-index: 1;
     cursor: pointer;
 }
@@ -89,9 +89,7 @@ nav .icon {
     background-color: #f0f0f0;
 }
 
-@media (max-width:768px) {}
-
-@media (max-width:480px) {
+@media (max-width:480px) and (orientation: portrait) {
     .navContainer {
         height: 7%;
     }
@@ -128,9 +126,65 @@ nav .icon {
 
     .navContainer .settings {
         width: 30%;
-        height: 11.5%;
-        top: 5%;
-        right: 0.4%;
+        height: 148%;
+        top: -28%;
+        right: -70%;
+    }
+
+    .navContainer .settings p,
+    .navContainer .settings a>p {
+        font-size: 0.85em;
+    }
+}
+
+@media (max-height:500px) and (orientation: landscape) {
+    .navContainer {
+        height: 13%;
+    }
+
+    nav {
+        padding: 0 5px;
+    }
+
+    nav img {
+        width: 5%;
+    }
+
+    .navTitle {
+        width: 70%;
+    }
+
+    nav>div {
+        gap: 5px;
+    }
+
+    nav h1 {
+        font-size: 1.2em;
+    }
+
+    nav .profileContainer {
+        /* border: 1px solid red; */
+        width: 20%;
+    }
+
+    nav .icon {
+        font-size: 1em;
+    }
+
+    .profileContainer h3 {
+        font-size: 1em;
+    }
+
+    .navContainer .settings {
+        width: 16%;
+        height: 175%;
+        top: -28%;
+        right: -81.5%;
+    }
+
+    .navContainer .settings p,
+    .navContainer .settings a>p {
+        font-size: 0.85em;
     }
 
 }

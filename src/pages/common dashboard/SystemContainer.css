@@ -10,10 +10,19 @@
     gap: 20px;
 }
 
-@media (max-width:480px) {
+@media (max-width:480px) and (orientation: portrait) {
     .SystemMainContainer {
         flex-direction: column;
         height: 90%;
-        justify-content:start ;
+        justify-content: start;
+    }
+}
+
+@media (max-height:500px) and (orientation: landscape) {
+    .SystemMainContainer {
+        height: 80%;
+        justify-content: center;
+         margin: 2% auto;
+        /* border: 1px solid red; */
     }
 }

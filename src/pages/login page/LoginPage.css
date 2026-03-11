@@ -7,13 +7,16 @@
     align-items: center;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px) {}
+
+@media (max-width: 480px) and (orientation: portrait) {
     .window {
-        
+        flex-direction: column;
+        overflow-y: hidden;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-height: 500px) and (orientation: landscape) {
     .window {
         flex-direction: column;
         overflow-y: hidden;
