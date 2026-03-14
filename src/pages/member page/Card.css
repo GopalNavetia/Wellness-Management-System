@@ -1,4 +1,4 @@
-.cardContainer {
+.memberCardContainer {
     display: inline-block;
     margin: 1.5%;
     height: 90%;
@@ -14,7 +14,42 @@
     cursor: pointer;
 }
 
-.cardContainer p {
-    font-size: larger;
+.memberCardContainer p {
+    font-size: 1.19em;
     font-weight: 400;
+}
+
+@media (max-width:480px) and (orientation: portrait) {
+    .memberCardContainer {
+        margin: 0.5% 1.5%;
+        height: 90%;
+        width: 27%;
+    }
+
+    .memberCardContainer p {
+        font-size: 0.75em;
+        font-weight: 400;
+    }
+
+    .memberCardContainer h2 {
+        font-size: 1em;
+    }
+
+}
+
+@media (max-height:500px) and (orientation: landscape) {
+    .memberCardContainer {
+        margin: 0.8% 1.5%;
+        height: 90%;
+        width: 27%;
+    }
+
+    .memberCardContainer p {
+        font-size: 0.9em;
+        font-weight: 400;
+    }
+
+    .memberCardContainer h2 {
+        font-size: 1em;
+    }
 }

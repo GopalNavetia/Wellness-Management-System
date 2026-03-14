@@ -33,7 +33,7 @@ export default function MenubarContainer() {
 
 
     return (
-        <div className="menubar" style={{ width: isExpanded ? "14%" : "3.5%" }}>
+        <div className="menubar" style={{ width: isExpanded ? "14%" : "3.5%" }} data-expanded={isExpanded} >
             <div className="menuItems">
                 <span className='barIcon' onClick={toggleMenubar}><FontAwesomeIcon icon={faBars} /></span>
                 <hr />

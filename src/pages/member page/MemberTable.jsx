@@ -124,7 +124,6 @@ export default function MemberTable() {
         });
     }
 
-
     return (
         <div className='memberTableContainer'>
             <div className="headContainer">
@@ -136,27 +135,29 @@ export default function MemberTable() {
                     <button onClick={handelAddMemberButton}>Add</button>
                 </div>
             </div>
+            <div className='memberListContainer'>
 
-            {loading ? (
-                <div>Loading members...</div> // Loading indicator/message
-            ) : (
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Type</th>
-                            <th>Membership</th>
-                            <th>Payment</th>
-                            <th>Contact</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
+                {loading ? (
+                    <div>Loading members...</div> // Loading indicator/message
+                ) : (
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Membership</th>
+                                <th>Payment</th>
+                                <th>Contact</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
 
-                    <tbody>
-                        {generateMembersData()}
-                    </tbody>
-                </table>
-            )}
+                        <tbody>
+                            {generateMembersData()}
+                        </tbody>
+                    </table>
+                )}
+            </div>
 
             <div className="pagination">
                 <p><span className='leftIcon' onClick={handleLeftButton}><FontAwesomeIcon icon={faAngleLeft} /></span> Showing Page {pageNo} out of {totalPages} <span className='rightIcon' onClick={handleRightButton}><FontAwesomeIcon icon={faAngleRight} /></span></p>

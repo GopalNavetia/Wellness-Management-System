@@ -67,3 +67,67 @@ hr {
     font-size: 1.1em;
     color: #ff4d4d;
 }
+
+@media (max-width:480px) and (orientation: portrait) {
+    .menubar {
+        width: 15% !important;
+        /* Collapsed mobile default */
+    }
+
+    .menubar[data-expanded="true"] {
+        width: 65% !important;
+        /* Expanded on click, mobile */
+    }
+
+    .menuItems .barIcon {
+        font-size: 1.3em;
+    }
+
+    .menubar .items .icons {
+        font-size: 0.9em;
+    }
+
+    .menuItems h3 {
+        margin: 0 0.45em;
+        font-size: 1em;
+    }
+
+    .menuItems .barIcon:hover {
+        font-size: 1.5em;
+    }
+
+    .menuItems .items:hover {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-height:500px) and (orientation: landscape) {
+    .menubar {
+        width: 5.5% !important;
+    }
+
+    .menubar[data-expanded="true"] {
+        width: 19% !important;
+    }
+
+    .menuItems .barIcon {
+        font-size: 1.3em;
+    }
+
+    .menubar .items .icons {
+        font-size: 0.9em;
+    }
+
+    .menuItems h3 {
+        margin: 0 0.45em;
+        font-size: 1em;
+    }
+
+    .menuItems .barIcon:hover {
+        font-size: 1.5em;
+    }
+
+    .menuItems .items:hover {
+        font-size: 0.9em;
+    }
+}

@@ -14,3 +14,10 @@
     /* justify-content: center; */
     flex-direction: row;
 }
+
+@media (max-height:500px) and (orientation: landscape) {
+    .gymDashboard .MainContainer {
+        height: 87%;
+        width: 100%;
+    }
+}
