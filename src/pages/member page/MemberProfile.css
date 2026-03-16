@@ -91,6 +91,10 @@
 }
 
 @media (max-width:480px) and (orientation: portrait) {
+.memberProfileContainer {
+    width: 96%;
+}
+
     .memberProfileHeadSection {
         width: 100%;
         padding: 0.5% 1.5%;
@@ -127,8 +131,8 @@
     }
 
     .memberProfileContainer .imgSection {
-        width: 55%;
-        height: 10.5em;
+        width: 45%;
+        height: 9.5em;
         margin: 1.7% 0% 1% 0%;
     }
 }
