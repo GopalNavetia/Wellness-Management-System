@@ -91,3 +91,127 @@
     margin: 1% 2% 1%;
     padding: 1% 2.5%;
 }
+
+@media (max-width:480px) and (orientation: portrait) {
+    .healthRecord {
+        width: 96%;
+        height: auto;
+        margin: -0.2% 2% 2% 2%;
+    }
+
+    .healthRecord .healthRecordHeadSection h1 {
+        margin-left: 1%;
+        font-size: 1.2em;
+    }
+
+    .healthRecord .healthRecordHeadSection .buttonsContainer {
+        margin-right: 1%;
+    }
+
+    .healthRecord .healthRecordHeadSection button {
+        padding: 1% 3.5%;
+        font-size: 0.8em;
+    }
+
+    .healthRecord .healthRecordHeadSection .xMark {
+        font-size: 0.8em;
+    }
+
+    .healthRecord .healthTableContainer {
+        margin: 1% 2%;
+        display: block;
+        overflow-x: auto;
+        overflow-y: visible;
+    }
+
+    .healthTableContainer table {
+        min-width: 150%;
+        margin: 0.9% auto;
+        font-size: 0.7em;
+        white-space: nowrap;
+        overflow-y: auto;
+    }
+
+    .healthTableContainer th,
+    .healthTableContainer td {
+        font-size: 0.85em;
+    }
+
+    .healthTableContainer th {
+        font-size: 1em;
+    }
+
+    .healthTableContainer .buttonContainer {
+        margin: 1% 0% 0.2% 0%;
+        width: 40%;
+        gap: 50%;
+    }
+
+    .healthTableContainer button {
+        margin: 1% 2% 1%;
+        padding: 0.5% 1.5%;
+        font-size: 0.7em;
+    }
+}
+
+@media (max-height:500px) and (orientation: landscape) {
+    .healthRecord {
+        width: 96%;
+        height: auto;
+        margin: -0.2% 2% 2% 2%;
+    }
+
+    .healthRecord .healthRecordHeadSection h1 {
+        margin-left: 1%;
+        font-size: 1.2em;
+    }
+
+    .healthRecord .healthRecordHeadSection .buttonsContainer {
+        margin-right: 1%;
+    }
+
+    .healthRecord .healthRecordHeadSection button {
+        padding: 1% 3.5%;
+        font-size: 0.8em;
+    }
+
+    .healthRecord .healthRecordHeadSection .xMark {
+        font-size: 0.8em;
+    }
+
+    .healthRecord .healthTableContainer {
+        margin: 1% 2%;
+        display: block;
+        overflow-x: auto;
+        overflow-y: visible;
+    }
+
+    .healthTableContainer table {
+        min-width: 120%;
+        margin: 0.9% auto;
+        font-size: 0.7em;
+        white-space: nowrap;
+        overflow-y: auto;
+    }
+
+    .healthTableContainer th,
+    .healthTableContainer td {
+        font-size: 0.85em;
+    }
+
+    .healthTableContainer th {
+        font-size: 1em;
+    }
+
+    .healthTableContainer .buttonContainer {
+        margin: 1% 0% 0.2% -0.7%;
+        width: 40%;
+        gap: 50%;
+    }
+
+    .healthTableContainer button {
+        margin: 1% 2% 1% 2%;
+        padding: 0.5% 1.5%;
+        font-size: 0.7em;
+    }
+}

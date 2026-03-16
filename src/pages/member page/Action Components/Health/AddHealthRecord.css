@@ -91,3 +91,133 @@
     padding: 0.3% 1.3%;
     font-size: 0.9em;
 }
+
+@media (max-width:480px) and (orientation:portrait) {
+    .addHealthRecord {
+        margin: -0.2% 0% 2.5% 0%;
+        height: 46vh;
+        width: 95%;
+    }
+
+    .addHealthRecordHeadSection {
+        width: 100%;
+        padding: 0.5% 1.5%;
+    }
+
+    .addHealthRecordHeadSection h1 {
+        font-size: 1.1em;
+        padding: 1% 2%;
+    }
+
+    .addHealthRecordHeadSection .xMark {
+        font-size: 0.85em;
+        padding: 1% 2%;
+    }
+
+    .addHealthRecord .formContainer {
+        width: 96%;
+        margin: 1% 2%;
+        font-size: 0.9em;
+    }
+
+    .addHealthRecord .formContainer input {
+        font-size: 1em;
+        margin: 0.5% 1.5%;
+        padding: 0.2% 1.3%;
+    }
+
+    .addHealthRecord .formContainer table {
+        width: 100%;
+        margin: 1.5% 0%;
+        border-collapse: collapse;
+        text-align: left;
+        font-size: 1em;
+    }
+
+    .addHealthRecord .formContainer table th,
+    .addHealthRecord .formContainer table td {
+        font-size: 0.9em;
+    }
+
+    .addHealthRecord .formContainer table th {
+        font-size: 1em;
+    }
+
+    .addHealthRecord .formContainer td input {
+        width: 96%;
+        font-size: 0.9em;
+        padding: 0.2% 1.3%;
+    }
+
+    .addHealthRecord .formContainer button {
+        margin: 0.5%;
+        padding: 0.3% 1.3%;
+        font-size: 0.9em;
+    }
+
+}
+
+@media (max-height:500px) and (orientation:landscape) {
+    .addHealthRecord {
+        margin: -0.2% 0% 2.5% 0%;
+        height: 121vh;
+        width: 95%;
+    }
+
+    .addHealthRecordHeadSection {
+        width: 100%;
+        padding: 0.5% 1.5%;
+    }
+
+    .addHealthRecordHeadSection h1 {
+        font-size: 1.1em;
+        padding: 0.5% 1.5%;
+    }
+
+    .addHealthRecordHeadSection .xMark {
+        font-size: 0.85em;
+        padding: 1% 2%;
+    }
+
+    .addHealthRecord .formContainer {
+        width: 96%;
+        margin: 1% 2%;
+        font-size: 0.9em;
+    }
+
+    .addHealthRecord .formContainer input {
+        font-size: 1em;
+        margin: 0.5% 1.5%;
+        padding: 0.2% 1.3%;
+    }
+
+    .addHealthRecord .formContainer table {
+        width: 100%;
+        margin: 1.5% 0%;
+        border-collapse: collapse;
+        text-align: left;
+        font-size: 1em;
+    }
+
+    .addHealthRecord .formContainer table th,
+    .addHealthRecord .formContainer table td {
+        font-size: 0.9em;
+    }
+
+    .addHealthRecord .formContainer table th {
+        font-size: 1em;
+    }
+
+    .addHealthRecord .formContainer td input {
+        width: 96%;
+        font-size: 0.9em;
+        padding: 0.2% 1.3%;
+    }
+
+    .addHealthRecord .formContainer button {
+        margin: 0.5%;
+        padding: 0.3% 1.3%;
+        font-size: 0.9em;
+    }
+
+}
