@@ -53,7 +53,6 @@
 }
 
 .workoutPlanRecord .historySection {
-    /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -149,4 +148,175 @@
 
 .historySection .title .buttonContainer button {
     padding: 1% 2.5%;
+}
+
+@media (max-width:480px) and (orientation: portrait) {
+    .workoutPlanRecord {
+        width: 96%;
+        height: auto;
+        margin: -0.2% 2% 2% 2%;
+    }
+
+    .workoutPlanRecordHeadSection h1 {
+        margin-left: 1%;
+        font-size: 1.2em;
+    }
+
+    .workoutPlanRecord .workoutPlanRecordHeadSection .buttonsContainer {
+        margin-right: 1%;
+    }
+
+    .workoutPlanRecord .workoutPlanRecordHeadSection button {
+        padding: 1% 3.5%;
+        font-size: 0.8em;
+    }
+
+    .workoutPlanRecord .workoutPlanRecordHeadSection .xMark {
+        font-size: 0.8em;
+    }
+
+
+    .historySection .data {
+        width: 80%;
+    }
+
+    .historySection .title p {
+        font-size: 0.7em;
+    }
+
+    .historySection .title span {
+        width: 50%;
+    }
+
+    .historySection .title b {
+        margin-left: 5%;
+        font-size: 1.2em;
+    }
+
+    .weekDate button {
+        padding: 0.1% 0.5%;
+        font-size: 0.7em;
+        margin-right: 2%;
+    }
+
+    .historySection .historyItem {
+        margin: 1% 0%;
+        display: block;
+        overflow-x: auto;
+        overflow-y: visible;
+    }
+
+    .historySection .title table {
+        min-width: 130%;
+        margin: 0.9% auto;
+        font-size: 0.7em;
+        white-space: nowrap;
+        overflow-y: auto;
+    }
+
+    .historySection .title th,
+    .historySection .title td {
+        font-size: 0.95em;
+    }
+
+    .historySection .title th {
+        font-size: 1em;
+    }
+
+    .historySection .title .buttonContainer {
+        margin: 1% 0% 1.5% 1%;
+        width: 40%;
+        gap: 10%;
+    }
+
+    .historySection .title .buttonContainer button {
+        padding: 0.5% 1.5%;
+        font-size: 0.67em;
+    }
+}
+
+@media (max-height:500px) and (orientation: landscape) {
+    .workoutPlanRecord {
+        width: 96%;
+        height: auto;
+        margin: -0.2% 2% 2% 2%;
+    }
+
+    .workoutPlanRecordHeadSection h1 {
+        margin-left: 1%;
+        font-size: 1.2em;
+    }
+
+    .workoutPlanRecord .workoutPlanRecordHeadSection .buttonsContainer {
+        margin-right: 1%;
+    }
+
+    .workoutPlanRecord .workoutPlanRecordHeadSection button {
+        padding: 1% 3.5%;
+        font-size: 0.8em;
+    }
+
+    .workoutPlanRecord .workoutPlanRecordHeadSection .xMark {
+        font-size: 0.8em;
+    }
+
+
+    .historySection .data {
+        width: 80%;
+    }
+
+    .historySection .title p {
+        border: 1;
+        font-size: 0.85em;
+    }
+
+    .historySection .title span {
+        width: 50%;
+    }
+
+    .historySection .title b {
+        margin-left: 5%;
+        font-size: 1.2em;
+    }
+
+    .weekDate button {
+        padding: 0.2% 0.5%;
+        font-size: 0.75em;
+        margin-right: 2%;
+    }
+
+    .historySection .historyItem {
+        margin: 1% 0%;
+        display: block;
+        overflow-x: auto;
+        overflow-y: visible;
+    }
+
+    .historySection .title table {
+        min-width: 110%;
+        margin: 0.9% auto;
+        font-size: 0.8em;
+        white-space: nowrap;
+        overflow-y: auto;
+    }
+
+    .historySection .title th,
+    .historySection .title td {
+        font-size: 0.95em;
+    }
+
+    .historySection .title th {
+        font-size: 1em;
+    }
+
+    .historySection .title .buttonContainer {
+        margin: 0.5% 0% 1% 1%;
+        width: 40%;
+        gap: 5%;
+    }
+
+    .historySection .title .buttonContainer button {
+        padding: 0.5% 1.5%;
+        font-size: 0.67em;
+    }
 }

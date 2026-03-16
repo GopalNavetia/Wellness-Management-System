@@ -34,7 +34,7 @@ export default function ManageUsersConatiner({ onEditUser }) {
             alert("User deleted successfully.");
         } catch (error) {
             console.log(error.response);
-            alert("Failed to delete user. Please try again.");
+            alert(error.response.data);
         }
     };
 

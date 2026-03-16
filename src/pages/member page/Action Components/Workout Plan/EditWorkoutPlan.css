@@ -97,3 +97,141 @@
     padding: 0.3% 1.3%;
     font-size: 0.9em;
 }
+
+@media (max-width:480px) and (orientation: portrait) {
+    .editWorkout {
+        width: 96%;
+        height: auto;
+        margin: -0.2% 2% 2% 2%;
+    }
+
+    .editWorkoutHeadSection h1 {
+        margin-left: 1%;
+        font-size: 1.2em;
+    }
+
+    .editWorkoutHeadSection .xMark {
+        font-size: 0.8em;
+    }
+
+    .editWorkout .formContainer {
+        width: 96%;
+        margin: 1% 2%;
+        font-size: 0.9em;
+    }
+
+    .editWorkout .formContainer .dateContainer {
+        margin-left: 5.6%;
+        gap: 1%;
+    }
+
+    .editWorkout .formContainer .dateContainer label {
+        width: 100%;
+        padding: 0.2% 1.3%;
+        font-size: 1em;
+    }
+
+    .editWorkout .formContainer .dateContainer input {
+        width: 60%;
+        font-size: 0.9em;
+        margin: 0.5% 1%;
+        padding: 0.2% 2.3%;
+    }
+
+    .editWorkout .formContainer table {
+        min-width: 100%;
+        margin: 0.9% auto;
+        font-size: 0.8em;
+        white-space: nowrap;
+    }
+
+    .editWorkout .formContainer table th,
+    .editWorkout .formContainer table td {
+        font-size: 0.95em;
+    }
+
+    .editWorkout .formContainer th {
+        font-size: 1em;
+    }
+
+    .editWorkout .formContainer td input {
+        padding: 0.2% 1.3%;
+        margin-left: 2%;
+        width: 96%;
+        font-size: 1em;
+    }
+
+    .editWorkout .formContainer button {
+        padding: 0.5% 1.5%;
+        font-size: 0.67em;
+    }
+}
+
+@media (max-height:500px) and (orientation: landscape) {
+    .editWorkout {
+        width: 96%;
+        height: auto;
+        margin: -0.2% 2% 2% 2%;
+    }
+
+    .editWorkoutHeadSection h1 {
+        margin-left: 1%;
+        font-size: 1.2em;
+    }
+
+    .editWorkoutHeadSection .xMark {
+        font-size: 0.8em;
+    }
+
+    .editWorkout .formContainer {
+        width: 96%;
+        margin: 1% 2%;
+        font-size: 0.9em;
+    }
+
+    .editWorkout .formContainer .dateContainer {
+        margin-left: 5.6%;
+        gap: 1%;
+    }
+
+    .editWorkout .formContainer .dateContainer label {
+        width: 100%;
+        padding: 0.2% 1.3%;
+        font-size: 1em;
+    }
+
+    .editWorkout .formContainer .dateContainer input {
+        width: 60%;
+        font-size: 0.9em;
+        margin: 0.5% 1%;
+        padding: 0.2% 2.3%;
+    }
+
+    .editWorkout .formContainer table {
+        min-width: 100%;
+        margin: 0.9% auto;
+        font-size: 0.8em;
+        white-space: nowrap;
+    }
+
+    .editWorkout .formContainer table th,
+    .editWorkout .formContainer table td {
+        font-size: 1em;
+    }
+
+    .editWorkout .formContainer th {
+        font-size: 1em;
+    }
+
+    .editWorkout .formContainer td input {
+        padding: 0.2% 1.3%;
+        margin-left: 2%;
+        width: 96%;
+        font-size: 1em;
+    }
+
+    .editWorkout .formContainer button {
+        padding: 0.5% 1.5%;
+        font-size: 0.67em;
+    }
+}
