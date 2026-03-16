@@ -56,10 +56,10 @@ export default function FormContainer({ storeLoginPerson }) {
         }
         catch (error) {
             console.log(error.response);
-            if (error.response && error.response.data && error.response.data.message) {
-                alert(error.response.data.message);
+            if (error.response && (error.response.data)) {
+                alert(error.response.data.error);
             } else {
-                alert("Login failed. Please check your username and password.");
+                alert("SERVER NOT ACTIVE !");
             }
         }
     };
