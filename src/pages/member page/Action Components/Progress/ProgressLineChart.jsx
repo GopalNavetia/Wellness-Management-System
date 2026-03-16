@@ -156,8 +156,10 @@ export default function ProgressLineChart({ data }) {
                     <input type="date" name="to_date" value={formData.to_date} id="to_date" onChange={handleInputChange} />
                 </div>
 
-                <button onClick={handleSubmit}>Apply</button>
-                <button onClick={handleReset}>Reset</button>
+                <div>
+                    <button onClick={handleSubmit}>Apply</button>
+                    <button onClick={handleReset}>Reset</button>
+                </div>
             </div>
 
             <div className="lineChartContainer">

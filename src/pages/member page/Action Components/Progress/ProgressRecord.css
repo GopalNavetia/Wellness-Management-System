@@ -84,3 +84,115 @@
     padding: 1.5% 2.5%;
     cursor: pointer;
 }
+
+@media (max-width:480px) and (orientation: portrait) {
+    .progressRecordContainer {
+        width: 96%;
+        height: auto;
+        margin: -0.2% 2% 2% 2%;
+    }
+
+    .progressRecordContainer .progressRecordHeadSection h1 {
+        margin-left: 1%;
+        font-size: 1.2em;
+    }
+
+    .progressRecordContainer .progressRecordHeadSection .buttonsContainer {
+        margin-right: 1%;
+    }
+
+    .progressRecordContainer .progressRecordHeadSection button {
+        padding: 1% 3.5%;
+        font-size: 0.8em;
+    }
+
+    .progressRecordContainer .progressRecordHeadSection .xMark {
+        font-size: 0.8em;
+    }
+
+    .progressListContainer {
+        margin: 1% 2%;
+        display: block;
+        overflow-x: auto;
+        overflow-y: visible;
+    }
+
+    .progressListContainer table {
+        min-width: 200%;
+        margin: 0.9% auto;
+        font-size: 0.7em;
+        white-space: nowrap;
+        overflow-y: auto;
+    }
+
+    .progressListContainer th,
+    .progressListContainer td {
+        font-size: 0.85em;
+    }
+
+    .progressListContainer th {
+        font-size: 1em;
+    }
+
+    .progressListContainer table button {
+        margin: 0.5% 1.5%;
+        padding: 1%;
+        font-size: 0.8em;
+    }
+}
+
+@media (max-height:500px) and (orientation: landscape) {
+    .progressRecordContainer {
+        width: 96%;
+        height: auto;
+        margin: -0.2% 2% 2% 2%;
+    }
+
+    .progressRecordContainer .progressRecordHeadSection h1 {
+        margin-left: 1%;
+        font-size: 1.2em;
+    }
+
+    .progressRecordContainer .progressRecordHeadSection .buttonsContainer {
+        margin-right: 1%;
+    }
+
+    .progressRecordContainer .progressRecordHeadSection button {
+        padding: 1% 3.5%;
+        font-size: 0.8em;
+    }
+
+    .progressRecordContainer .progressRecordHeadSection .xMark {
+        font-size: 0.8em;
+    }
+
+    .progressListContainer {
+        margin: 1% 2%;
+        display: block;
+        overflow-x: auto;
+        overflow-y: visible;
+    }
+
+    .progressListContainer table {
+        min-width: 150%;
+        margin: 0.9% auto;
+        font-size: 0.7em;
+        white-space: nowrap;
+        overflow-y: auto;
+    }
+
+    .progressListContainer th,
+    .progressListContainer td {
+        font-size: 1em;
+    }
+
+    .progressListContainer th {
+        font-size: 1em;
+    }
+
+    .progressListContainer table button {
+        margin: 0.5% 1.5%;
+        padding: 1%;
+        font-size: 0.8em;
+    }
+}
