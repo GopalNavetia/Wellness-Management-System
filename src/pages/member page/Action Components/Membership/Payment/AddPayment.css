@@ -99,3 +99,111 @@
     padding: 2.5% 3.5%;
     cursor: pointer;
 }
+
+@media (max-width: 480px) and (orientation: portrait) {
+    .addPayment {
+        margin: -0.2% 2% 3% 2%;
+        height: 53vw;
+        width: 95%;
+    }
+
+    .addPaymentHeadSection {
+        width: 100%;
+        padding: 0.5% 1.5%;
+    }
+
+    .addPaymentHeadSection h1 {
+        font-size: 1em;
+        padding: 1% 2%;
+    }
+
+    .addPaymentHeadSection .xMark {
+        font-size: 0.9em;
+        padding: 1% 2%;
+    }
+
+    .addPayment .formContainer {
+        margin: 2.5% 1.5%;
+        width: 100%;
+        grid-gap: 5%;
+    }
+
+    .addPayment input {
+        padding: 0.2% 0.4%;
+        margin-bottom: 0.4%;
+        width: 95%;
+        font-size: 0.9em;
+    }
+
+    .addPayment label {
+        font-size: 0.85em;
+        font-weight: 500;
+    }
+
+    .addPayment select {
+        width: 70%;
+        margin-left: 0%;
+        font-size: 1em;
+    }
+
+    .addPayment option {
+        font-size: 1em;
+        font-weight: 400;
+    }
+
+    .addPayment .buttonContainer {
+        gap: 30%;
+    }
+
+    .addPayment .formContainer .buttonContainer button {
+        padding: 2.5% 3.5%;
+    }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .addPayment {
+        margin: -0.2% 2% 1.5% 2%;
+        height: 30vw;
+        width: 95%;
+    }
+
+    .addPaymentHeadSection h1 {
+        font-size: 1em;
+        padding: 0.5% 1%;
+    }
+
+    .addPaymentHeadSection .xMark {
+        font-size: 0.9em;
+        padding: 1% 2%;
+    }
+
+    .addPayment .formContainer {
+        margin: 1.5% 1%;
+        width: 100%;
+        grid-gap: 5%;
+    }
+
+    .addPayment label {
+        font-size: 0.95em;
+        font-weight: 500;
+    }
+
+    .addPayment select {
+        width: 40%;
+        margin-left: 0%;
+        font-size: 1em;
+    }
+
+    .addPayment option {
+        font-size: 1em;
+        font-weight: 400;
+    }
+
+    .addPayment .buttonContainer {
+        gap: 30%;
+    }
+
+    .addPayment .formContainer .buttonContainer button {
+        padding: 2.5% 3.5%;
+    }
+}

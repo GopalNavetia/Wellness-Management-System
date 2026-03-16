@@ -84,3 +84,85 @@
     color: #f57c00;
     font-weight: 600;
 }
+
+@media (max-width:480px) and (orientation: portrait) {
+    .paymentDetails {
+        margin: -0.2% 2% 2% 2%;
+        height: auto;
+        width: 96%;
+    }
+
+    .paymentDetailsHeadSection h1 {
+        margin-left: 3%;
+        font-size: 1.2em;
+    }
+
+    .paymentDetailsHeadSection .buttonsContainer {
+        margin-right: 1%;
+    }
+
+    .paymentDetailsHeadSection button {
+        padding: 1% 3.5%;
+        font-size: 0.8em;
+    }
+
+    .paymentDetailsHeadSection .xMark {
+        font-size: 0.8em;
+    }
+
+    .paymentDetails .infoContainer {
+        width: 100%;
+        padding: 1.5% 4% 6% 4%;
+        gap: 4%;
+    }
+
+    .paymentDetails .infoContainer .title {
+        font-size: 1em;
+        font-weight: 500;
+    }
+
+    .paymentDetails .infoContainer .data {
+        font-size: 0.8em;
+    }
+}
+
+@media (max-height:500px) and (orientation: landscape) {
+    .paymentDetails {
+        margin: -0.2% 2% 2% 2%;
+        height: auto;
+        width: 96%;
+    }
+
+    .paymentDetailsHeadSection h1 {
+        margin-left: 1%;
+        font-size: 1.2em;
+    }
+
+    .paymentDetailsHeadSection .buttonsContainer {
+        margin-right: 1%;
+    }
+
+    .paymentDetailsHeadSection button {
+        padding: 1% 3.5%;
+        font-size: 0.8em;
+    }
+
+    .paymentDetailsHeadSection .xMark {
+        font-size: 0.8em;
+    }
+
+    .paymentDetails .infoContainer {
+        width: 100%;
+        padding: 1% 2% 3% 2%;
+        gap: 4%;
+    }
+
+    .paymentDetails .infoContainer .title {
+        font-size: 1em;
+        font-weight: 500;
+    }
+
+    .paymentDetails .infoContainer .data {
+        font-size: 0.8em;
+    }
+}

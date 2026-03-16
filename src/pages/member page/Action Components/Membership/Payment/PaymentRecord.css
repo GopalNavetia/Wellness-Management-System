@@ -64,3 +64,81 @@
     padding: 1% 2%;
     cursor: pointer;
 }
+
+@media (max-width:480px) and (orientation: portrait) {
+    .paymentRecord {
+        width: 96%;
+        height: auto;
+        margin: -0.2% 2% 2% 2%;
+    }
+
+    .paymentRecordHeadSection h1 {
+        margin-left: 1%;
+        font-size: 1.2em;
+    }
+
+    .paymentRecordContainer {
+        margin: 1% 2%;
+        display: block;
+        overflow-x: auto;
+        overflow-y: visible;
+    }
+
+    .paymentRecordContainer table {
+        min-width: 200%;
+        margin: 0.9% auto;
+        font-size: 0.7em;
+        white-space: nowrap;
+        overflow-y: auto;
+    }
+
+    .paymentRecordContainer th,
+    .paymentRecordContainer td {
+        font-size: 0.85em;
+    }
+
+    .paymentRecordContainer th {
+        font-size: 1em;
+    }
+
+    .paymentRecordContainer table button {
+        margin: 0.5% 1.5%;
+        padding: 1%;
+        font-size: 0.8em;
+    }
+}
+
+@media (max-height:500px) and (orientation: landscape) {
+    .paymentRecord {
+        width: 96%;
+        height: auto;
+        margin: -0.2% 2% 2% 2%;
+    }
+
+    .paymentRecordHeadSection h1 {
+        margin-left: 1%;
+        font-size: 1.2em;
+    }
+
+    .paymentRecordContainer table {
+        width: 96%;
+        margin: 0.9% auto;
+        font-size: 0.85em;
+        white-space: nowrap;
+    }
+
+    .paymentRecordContainer th,
+    .paymentRecordContainer td {
+        font-size: 0.85em;
+    }
+
+    .paymentRecordContainer th {
+        font-size: 0.9em;
+    }
+
+    .paymentRecordContainer table button {
+        margin: 0.5% 1.5%;
+        padding: 1%;
+        font-size: 0.8em;
+    }
+}

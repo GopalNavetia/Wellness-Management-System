@@ -99,3 +99,111 @@
     padding: 2.5% 3.5%;
     cursor: pointer;
 }
+
+@media (max-width: 480px) and (orientation: portrait) {
+    .editPayment {
+        margin: -0.2% 2% 3% 2%;
+        height: 53vw;
+        width: 95%;
+    }
+
+    .editPaymentHeadSection {
+        width: 100%;
+        padding: 0.5% 1.5%;
+    }
+
+    .editPaymentHeadSection h1 {
+        font-size: 1em;
+        padding: 1% 2%;
+    }
+
+    .editPaymentHeadSection .xMark {
+        font-size: 0.9em;
+        padding: 1% 2%;
+    }
+
+    .editPayment .formContainer {
+        margin: 2.5% 1.5%;
+        width: 100%;
+        grid-gap: 5%;
+    }
+
+    .editPayment input {
+        padding: 0.2% 0.4%;
+        margin-bottom: 0.4%;
+        width: 95%;
+        font-size: 0.9em;
+    }
+
+    .editPayment label {
+        font-size: 0.85em;
+        font-weight: 500;
+    }
+
+    .editPayment select {
+        width: 70%;
+        margin-left: 0%;
+        font-size: 1em;
+    }
+
+    .editPayment option {
+        font-size: 1em;
+        font-weight: 400;
+    }
+
+    .editPayment .buttonContainer {
+        gap: 30%;
+    }
+
+    .editPayment .formContainer .buttonContainer button {
+        padding: 2.5% 3.5%;
+    }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .editPayment {
+        margin: -0.2% 2% 1.5% 2%;
+        height: 30vw;
+        width: 95%;
+    }
+
+    .editPaymentHeadSection h1 {
+        font-size: 1em;
+        padding: 0.5% 1%;
+    }
+
+    .editPaymentHeadSection .xMark {
+        font-size: 0.9em;
+        padding: 1% 2%;
+    }
+
+    .editPayment .formContainer {
+        margin: 1.5% 1%;
+        width: 100%;
+        grid-gap: 5%;
+    }
+
+    .editPayment label {
+        font-size: 0.95em;
+        font-weight: 500;
+    }
+
+    .editPayment select {
+        width: 40%;
+        margin-left: 0%;
+        font-size: 1em;
+    }
+
+    .editPayment option {
+        font-size: 1em;
+        font-weight: 400;
+    }
+
+    .editPayment .buttonContainer {
+        gap: 30%;
+    }
+
+    .editPayment .formContainer .buttonContainer button {
+        padding: 2.5% 3.5%;
+    }
+}
