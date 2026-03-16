@@ -101,7 +101,7 @@
 @media (max-width:480px) and (orientation: portrait) {
     .addMemberContainer {
         width: 97%;
-        height: 36%;
+        height: auto;
         margin: 1.5% 1.5% 1.5% 1.5%;
     }
 
@@ -116,7 +116,7 @@
     }
 
     .addMemberContainer .formContainer {
-        margin: 2.5% 1.5%;
+        margin: 2.5% 1.5% 5% 1.5%;
         width: 100%;
         padding-bottom: 1.4%;
         grid-gap: 2%;
@@ -142,7 +142,7 @@
     }
 
     .addMemberContainer .buttonContainer {
-        width:50%;
+        width: 50%;
         margin-top: 1.5%;
         font-size: 0.1em;
     }
@@ -198,7 +198,7 @@
     }
 
     .addMemberContainer .buttonContainer {
-        width:50%;
+        width: 50%;
         margin-top: 1.5%;
         font-size: 0.1em;
     }

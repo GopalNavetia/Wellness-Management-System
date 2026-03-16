@@ -89,3 +89,76 @@
     object-fit: cover;
     object-position: center;
 }
+
+@media (max-width:480px) and (orientation: portrait) {
+    .memberProfileHeadSection {
+        width: 100%;
+        padding: 0.5% 1.5%;
+    }
+
+    .memberProfileHeadSection h1 {
+        font-size: 1.3em;
+        padding-left: 2%;
+    }
+
+    .memberProfileHeadSection .xMark {
+        padding: 0.4% 2%;
+        font-size: 0.9em;
+    }
+
+    .memberProfileContainer .profile {
+        margin: 0.35% auto 0.5% auto;
+        width: 95%;
+        /* border: 1px solid red; */
+        padding-bottom: 1%;
+        flex-wrap: wrap;
+    }
+
+    .memberProfileContainer .profile .data {
+        font-size: 0.9em;
+        width: 98%;
+        /* border: 1px solid blue; */
+    }
+
+    .memberProfileContainer .profile .buttons {
+        margin-top: 2%;
+        display: flex;
+        gap: 3%;
+    }
+
+    .memberProfileContainer .imgSection {
+        width: 55%;
+        height: 10.5em;
+        margin: 1.7% 0% 1% 0%;
+    }
+}
+
+@media (max-height:500px) and (orientation: landscape) {
+    .memberProfileHeadSection {
+        width: 100%;
+        padding: 0.5% 1.5%;
+    }
+
+    .memberProfileHeadSection h1 {
+        font-size: 1.3em;
+        padding-left: 2%;
+    }
+
+    .memberProfileHeadSection .xMark {
+        padding: 0.4% 2%;
+        font-size: 0.9em;
+    }
+
+    .memberProfileContainer .profile .data {
+        font-size: 0.9em;
+        width: 98%;
+        margin-bottom: 5%;
+        /* border: 1px solid blue; */
+    }
+
+    .memberProfileContainer .imgSection {
+        width: 29%;
+        height: 10.5em;
+        margin: 1.7% 0% 1% 0%;
+    }
+}

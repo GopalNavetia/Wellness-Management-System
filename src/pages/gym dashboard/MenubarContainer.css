@@ -70,7 +70,7 @@ hr {
 
 @media (max-width:480px) and (orientation: portrait) {
     .menubar {
-        width: 15% !important;
+        width: 13% !important;
         /* Collapsed mobile default */
     }
 

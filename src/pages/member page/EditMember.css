@@ -96,3 +96,115 @@
     padding: 2.5% 3.5%;
     cursor: pointer;
 }
+
+@media (max-width:480px) and (orientation: portrait) {
+    .editMemberContainer {
+        width: 97%;
+        height: auto;
+        margin: 1.5% 1.5% 1.5% 1.5%;
+    }
+
+    .editMemberHeadSection h1 {
+        margin-left: 1.5%;
+        font-size: 1.1em;
+    }
+
+    .editMemberHeadSection .xMark {
+        font-size: 0.85em;
+        padding: 1% 2%;
+    }
+
+    .editMemberContainer .formContainer {
+        margin: 2.5% 1.5% 5% 1.5%;
+        width: 100%;
+        padding-bottom: 1.4%;
+        grid-gap: 2%;
+    }
+
+    .editMemberContainer input {
+        font-size: 0.85em;
+        padding: 0.2% 0.4%;
+        margin-bottom: 0.4%;
+        width: 95%;
+        font-size: 0.9em;
+    }
+
+    .editMemberContainer label {
+        font-size: 0.9em;
+        font-weight: 500;
+    }
+
+    .editMemberContainer select {
+        margin-left: 1%;
+        font-size: 0.9em;
+        font-weight: 400;
+    }
+
+    .editMemberContainer .buttonContainer {
+        width:50%;
+        margin-top: 1.5%;
+        font-size: 0.1em;
+    }
+
+    .editMemberContainer .formContainer .buttonContainer button {
+        padding: 1.5% 3.5%;
+        cursor: pointer;
+    }
+
+}
+
+@media (max-height:500px) and (orientation: landscape) {
+    .editMemberContainer {
+        width: 90%;
+        height: 94%;
+        margin: 1.5% 3% 1.5% 5%;
+    }
+
+    .editMemberHeadSection h1 {
+        margin-left: 1.5%;
+        font-size: 1.1em;
+    }
+
+    .editMemberHeadSection .xMark {
+        font-size: 0.85em;
+        padding: 1% 2%;
+    }
+
+    .editMemberContainer .formContainer {
+        margin: 2.5% 1.5%;
+        width: 100%;
+        padding-bottom: 1.4%;
+        grid-gap: 2%;
+    }
+
+    .editMemberContainer input {
+        font-size: 0.85em;
+        padding: 0.2% 0.4%;
+        margin-bottom: 0.4%;
+        width: 95%;
+        font-size: 0.9em;
+    }
+
+    .editMemberContainer label {
+        font-size: 0.9em;
+        font-weight: 500;
+    }
+
+    .editMemberContainer select {
+        margin-left: 1%;
+        font-size: 0.9em;
+        font-weight: 400;
+    }
+
+    .editMemberContainer .buttonContainer {
+        width: 50%;
+        margin-top: 1.5%;
+        font-size: 0.1em;
+    }
+
+    .editMemberContainer .formContainer .buttonContainer button {
+        padding: 1.5% 3.5%;
+        cursor: pointer;
+    }
+
+}
