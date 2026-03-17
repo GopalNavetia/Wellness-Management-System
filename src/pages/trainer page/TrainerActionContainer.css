@@ -29,3 +29,29 @@
     height: 100%;
     border: 1px solid red;
 }
+
+@media (max-width:480px) and (orientation: portrait) {
+    .trainerNavigationButtons {
+        width: 95%;
+        margin: 1% auto 1.9% auto;
+        gap: 1%;
+    }
+
+    .trainerNavigationButtons button {
+        padding: 2% 1%;
+        font-size: 0.65em;
+    }
+}
+
+@media (max-height:500px) and (orientation: landscape) {
+    .trainerNavigationButtons {
+        width: 95%;
+        margin: 0.5% auto 1.2% auto;
+        gap: 1%;
+    }
+
+    .trainerNavigationButtons button {
+        padding: 0.9% 1%;
+        font-size: 0.8em;
+    }
+}

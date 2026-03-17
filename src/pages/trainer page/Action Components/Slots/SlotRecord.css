@@ -84,3 +84,125 @@
     padding: 1% 2%;
     cursor: pointer;
 }
+
+@media (max-width:480px) and (orientation: portrait) {
+    .slotRecordContainer {
+        width: 96%;
+        height: auto;
+        margin: -0.2% 2% 2% 2%;
+    }
+
+    .slotRecordContainer .slotRecordHeadSection h1 {
+        margin-left: 1%;
+        font-size: 1.2em;
+    }
+
+    .slotRecordContainer .slotRecordHeadSection .buttonsContainer {
+        margin-right: 1%;
+    }
+
+    .slotRecordContainer .slotRecordHeadSection button {
+        padding: 1% 3.5%;
+        font-size: 0.8em;
+    }
+
+
+    .slotRecordContainer .slotRecordHeadSection .xMark {
+        font-size: 0.8em;
+    }
+
+    .slotListContainer {
+        margin: 1% 2%;
+        display: block;
+        overflow-x: auto;
+        overflow-y: visible;
+    }
+
+    .slotListContainer table {
+        min-width: 130%;
+        margin: 0.9% auto;
+        font-size: 0.7em;
+        white-space: nowrap;
+        overflow-y: auto;
+    }
+
+    .slotListContainer th,
+    .slotListContainer td {
+        border: 1px solid #ccc;
+        padding: 0.5% 0.5%;
+    }
+
+    .slotListContainer th {
+        background-color: #222;
+        color: #fff;
+        font-weight: 600;
+    }
+
+    .slotListContainer td {
+        font-size: 0.9em;
+    }
+
+    .slotListContainer table button {
+        margin: 0% 1.5%;
+        padding: 1% 2%;
+        cursor: pointer;
+    }
+}
+
+@media (max-height:500px) and (orientation: landscape) {
+    .slotRecordContainer {
+        width: 96%;
+        height: auto;
+        margin: -0.2% 2% 2% 2%;
+    }
+
+    .slotRecordContainer .slotRecordHeadSection h1 {
+        margin-left: 1%;
+        font-size: 1.2em;
+    }
+
+    .slotRecordContainer .slotRecordHeadSection .buttonsContainer {
+        margin-right: 1%;
+    }
+
+    .slotRecordContainer .slotRecordHeadSection button {
+        padding: 1% 3.5%;
+        font-size: 0.8em;
+    }
+
+
+    .slotRecordContainer .slotRecordHeadSection .xMark {
+        font-size: 0.8em;
+    }
+
+    .slotListContainer {
+        margin: 1% 2%;
+        display: block;
+        overflow-x: auto;
+        overflow-y: visible;
+    }
+
+    .slotListContainer table {
+        min-width: 120%;
+        margin: 0.9% auto;
+        font-size: 0.7em;
+        white-space: nowrap;
+        overflow-y: auto;
+    }
+
+    .slotListContainer th,
+    .slotListContainer td {
+         font-size: 0.9em;
+    }
+
+    .slotListContainer th {
+          font-size: 1em;
+    }
+
+    .slotListContainer table button {
+        margin: 0% 1.5%;
+        font-size: 0.9em;
+        padding: 1% 2%;
+        cursor: pointer;
+    }
+}

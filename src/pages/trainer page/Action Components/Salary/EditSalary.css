@@ -95,3 +95,115 @@
     padding: 2.5% 3.5%;
     cursor: pointer;
 }
+
+@media (max-width:480px) and (orientation: portrait) {
+    .editSalaryRecord {
+        margin: -0.2% 1% 2.5% 1%;
+        height: 26vh;
+        width: 90%;
+    }
+
+    .editSalaryRecordHeadSection {
+        width: 100%;
+        padding: 0.5% 1.5%;
+    }
+
+    .editSalaryRecordHeadSection h1 {
+        font-size: 1.1em;
+        padding: 1% 2%;
+    }
+
+    .editSalaryRecordHeadSection .xMark {
+        font-size: 0.85em;
+        padding: 1% 2%;
+    }
+
+    .editSalaryRecord .formContainer {
+        margin: 2.5% 1.5%;
+        width: 100%;
+        grid-gap: 5%;
+    }
+
+    .editSalaryRecord input {
+        padding: 0.2% 0.4%;
+        margin-bottom: 0.4%;
+        width: 95%;
+        font-size: 0.9em;
+    }
+
+    .editSalaryRecord label {
+        font-size: 0.85em;
+        font-weight: 500;
+    }
+
+    .editSalaryRecord select {
+        width: 40%;
+        margin-left: 5%;
+        font-size: 0.9em;
+        font-weight: 400;
+    }
+
+    .editSalaryRecord .buttonContainer {
+        gap: 30%;
+    }
+
+    .editSalaryRecord .formContainer .buttonContainer button {
+        padding: 1.5% 3.5%;
+    }
+}
+
+@media (max-height:500px) and (orientation: landscape) {
+    .editSalaryRecord {
+        margin: -0.2% 1% 1.5% 1%;
+        height: 30vw;
+        width: 95%;
+    }
+
+    .editSalaryRecordHeadSection {
+        width: 100%;
+        padding: 0.5% 1.5%;
+    }
+
+    .editSalaryRecordHeadSection h1 {
+        font-size: 1em;
+        padding: 1% 2%;
+    }
+
+    .editSalaryRecordHeadSection .xMark {
+        font-size: 0.9em;
+        padding: 1% 2%;
+    }
+
+    .editSalaryRecord .formContainer {
+        margin: 2.5% 1.5%;
+        width: 100%;
+        grid-gap: 5%;
+    }
+
+    .editSalaryRecord input {
+        padding: 0.2% 0.4%;
+        margin-bottom: 0.4%;
+        width: 95%;
+        font-size: 0.9em;
+    }
+
+    .editSalaryRecord label {
+        font-size: 1em;
+        font-weight: 500;
+    }
+
+    .editSalaryRecord select {
+        width: 40%;
+        margin-left: 5%;
+        font-size: 1em;
+        font-weight: 400;
+    }
+
+    .editSalaryRecord .buttonContainer {
+        gap: 30%;
+    }
+
+    .editSalaryRecord .formContainer .buttonContainer button {
+        padding: 2.5% 3.5%;
+    }
+}

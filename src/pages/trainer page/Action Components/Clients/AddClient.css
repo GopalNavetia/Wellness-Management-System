@@ -95,3 +95,113 @@
     padding: 2.5% 3.5%;
     cursor: pointer;
 }
+
+@media (max-width:480px) and (orientation: portrait) {
+    .addClientRecord {
+        margin: -0.2% 0% 2.5% 0%;
+        height: 16.5vh;
+        width: 95%;
+    }
+
+    .addClientRecordHeadSection h1 {
+        font-size: 1.1em;
+        padding: 1% 2%;
+    }
+
+    .addClientRecordHeadSection .xMark {
+        font-size: 0.85em;
+        padding: 1% 2%;
+    }
+
+    .addClientRecord .formContainer {
+        width: 96%;
+        margin: 1% 2%;
+        font-size: 0.9em;
+    }
+
+    .addClientRecord input {
+        font-size: 1em;
+        margin: 0.5% 1.5%;
+        padding: 0.2% 1.3%;
+    }
+
+    .addClientRecord label {
+        font-size: 1em;
+        font-weight: 500;
+    }
+
+    .addClientRecord .buttonContainer {
+        width: 15%;
+        margin-top: 1%;
+        font-size: 0.5em;
+        font-weight: 500;
+        display: flex;
+        /* To keep buttons side by side */
+        grid-row: 4;
+        grid-column: 1/3;
+        justify-content: center;
+        gap: 12%;
+        justify-self: center;
+        align-self: end;
+    }
+
+    .addClientRecord .formContainer .buttonContainer button {
+        padding: 2.5% 3.5%;
+        font-size: 1.4em;
+    }
+}
+
+@media (max-height:500px) and (orientation: landscape) {
+    .addClientRecord {
+        margin: -0.2% 0% 2.5% 0%;
+        height: 45vh;
+        width: 95%;
+    }
+
+    .addClientRecordHeadSection h1 {
+        font-size: 1.1em;
+        padding: 1% 2%;
+    }
+
+    .addClientRecordHeadSection .xMark {
+        font-size: 0.85em;
+        padding: 1% 2%;
+    }
+
+    .addClientRecord .formContainer {
+        width: 96%;
+        margin: 1% 2%;
+        font-size: 0.9em;
+    }
+
+    .addClientRecord input {
+        font-size: 1em;
+        margin: 0.5% 1.5%;
+        padding: 0.2% 1.3%;
+    }
+
+    .addClientRecord label {
+        font-size: 1em;
+        font-weight: 500;
+    }
+
+    .addClientRecord .buttonContainer {
+        width: 15%;
+        margin-top: 1%;
+        font-size: 0.5em;
+        font-weight: 500;
+        display: flex;
+        /* To keep buttons side by side */
+        grid-row: 4;
+        grid-column: 1/3;
+        justify-content: center;
+        gap: 12%;
+        justify-self: center;
+        align-self: end;
+    }
+
+    .addClientRecord .formContainer .buttonContainer button {
+        padding: 2.5% 3.5%;
+        font-size: 1.4em;
+    }
+}

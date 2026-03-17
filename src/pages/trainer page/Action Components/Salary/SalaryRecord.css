@@ -84,3 +84,115 @@
     padding: 1% 2%;
     cursor: pointer;
 }
+
+@media (max-width:480px) and (orientation: portrait) {
+    .salaryRecordContainer {
+        width: 96%;
+        height: auto;
+        margin: -0.2% 2% 2% 2%;
+    }
+
+    .salaryRecordContainer .salaryRecordHeadSection h1 {
+        margin-left: 1%;
+        font-size: 1.2em;
+    }
+
+    .salaryRecordContainer .salaryRecordHeadSection .buttonsContainer {
+        margin-right: 1%;
+    }
+
+    .salaryRecordContainer .salaryRecordHeadSection button {
+        padding: 1% 3.5%;
+        font-size: 0.8em;
+    }
+
+    .salaryRecordContainer .salaryRecordHeadSection .xMark {
+        font-size: 0.8em;
+    }
+
+    .salaryListContainer {
+        margin: 1% 2%;
+        display: block;
+        overflow-x: auto;
+        overflow-y: visible;
+    }
+
+    .salaryListContainer table {
+        min-width: 130%;
+        margin: 0.9% auto;
+        font-size: 0.7em;
+        white-space: nowrap;
+        overflow-y: auto;
+    }
+
+    .salaryListContainer th,
+    .salaryListContainer td {
+        font-size: 0.85em;
+    }
+
+    .salaryListContainer th {
+        font-size: 1em;
+    }
+
+    .salaryListContainer table button {
+        margin: 0.5% 1.5%;
+        padding: 1%;
+        font-size: 0.8em;
+    }
+}
+
+@media (max-height:500px) and (orientation: landscape) {
+    .salaryRecordContainer {
+        width: 96%;
+        height: auto;
+        margin: -0.2% 2% 2% 2%;
+    }
+
+    .salaryRecordContainer .salaryRecordHeadSection h1 {
+        margin-left: 1%;
+        font-size: 1.2em;
+    }
+
+    .salaryRecordContainer .salaryRecordHeadSection .buttonsContainer {
+        margin-right: 1%;
+    }
+
+    .salaryRecordContainer .salaryRecordHeadSection button {
+        padding: 1% 3.5%;
+        font-size: 0.8em;
+    }
+
+    .salaryRecordContainer .salaryRecordHeadSection .xMark {
+        font-size: 0.8em;
+    }
+
+    .salaryListContainer {
+        margin: 1% 2%;
+        display: block;
+        overflow-x: auto;
+        overflow-y: visible;
+    }
+
+    .salaryListContainer table {
+        min-width: 120%;
+        margin: 0.9% auto;
+        font-size: 0.7em;
+        white-space: nowrap;
+        overflow-y: auto;
+    }
+
+    .salaryListContainer th,
+    .salaryListContainer td {
+        font-size: 0.85em;
+    }
+
+    .salaryListContainer th {
+        font-size: 1em;
+    }
+
+    .salaryListContainer table button {
+        margin: 0.5% 1.5%;
+        padding: 1%;
+        font-size: 0.8em;
+    }
+}

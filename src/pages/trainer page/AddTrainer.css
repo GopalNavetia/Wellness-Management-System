@@ -98,3 +98,115 @@
     padding: 2.5% 3.5%;
     cursor: pointer;
 }
+
+@media (max-width:480px) and (orientation: portrait) {
+    .addTrainerContainer {
+        width: 97%;
+        height: auto;
+        margin: 1.5% 1.5% 1.5% 1.5%;
+    }
+
+    .addTrainerHeadSection h1 {
+        margin-left: 1.5%;
+        font-size: 1.1em;
+    }
+
+    .addTrainerHeadSection .xMark {
+        font-size: 0.85em;
+        padding: 1% 2%;
+    }
+
+    .addTrainerContainer .formContainer {
+        margin: 2.5% 1.5% 9% 1.5%;
+        width: 100%;
+        padding-bottom: 1.4%;
+        grid-gap: 2%;
+    }
+
+    .addTrainerContainer input {
+        font-size: 0.85em;
+        padding: 0.2% 0.4%;
+        margin-bottom: 0.4%;
+        width: 95%;
+        font-size: 0.9em;
+    }
+
+    .addTrainerContainer label {
+        font-size: 0.9em;
+        font-weight: 500;
+    }
+
+    .addTrainerContainer select {
+        margin-left: 1%;
+        font-size: 0.9em;
+        font-weight: 400;
+    }
+
+    .addTrainerContainer .buttonContainer {
+        width: 50%;
+        margin-top: 1.5%;
+        font-size: 0.1em;
+    }
+
+    .addTrainerContainer .formContainer .buttonContainer button {
+        padding: 1.5% 3.5%;
+        cursor: pointer;
+    }
+
+}
+
+@media (max-height:500px) and (orientation: landscape) {
+    .addTrainerContainer {
+        width: 90%;
+        height: auto;
+        margin: 1.5% 3% 1.5% 5%;
+    }
+
+    .addTrainerHeadSection h1 {
+        margin-left: 1.5%;
+        font-size: 1.1em;
+    }
+
+    .addTrainerHeadSection .xMark {
+        font-size: 0.85em;
+        padding: 1% 2%;
+    }
+
+    .addTrainerContainer .formContainer {
+        margin: 2.5% 1.5% 5% 1.5%;
+        width: 100%;
+        padding-bottom: 1.4%;
+        grid-gap: 2%;
+    }
+
+    .addTrainerContainer input {
+        font-size: 0.85em;
+        padding: 0.2% 0.4%;
+        margin-bottom: 0.4%;
+        width: 95%;
+        font-size: 0.9em;
+    }
+
+    .addTrainerContainer label {
+        font-size: 0.9em;
+        font-weight: 500;
+    }
+
+    .addTrainerContainer select {
+        margin-left: 1%;
+        font-size: 0.9em;
+        font-weight: 400;
+    }
+
+    .addTrainerContainer .buttonContainer {
+        width: 50%;
+        margin-top: 1.5%;
+        font-size: 0.1em;
+    }
+
+    .addTrainerContainer .formContainer .buttonContainer button {
+        padding: 1.5% 3.5%;
+        cursor: pointer;
+    }
+
+}

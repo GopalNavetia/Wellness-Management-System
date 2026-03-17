@@ -95,3 +95,115 @@
     padding: 2.5% 3.5%;
     cursor: pointer;
 }
+
+@media (max-width:480px) and (orientation: portrait) {
+    .editSlotRecord {
+        margin: -0.2% 1% 2.5% 1%;
+        height: 26vh;
+        width: 90%;
+    }
+
+    .editSlotRecordHeadSection {
+        width: 100%;
+        padding: 0.5% 1.5%;
+    }
+
+    .editSlotRecordHeadSection h1 {
+        font-size: 1.1em;
+        padding: 1% 2%;
+    }
+
+    .editSlotRecordHeadSection .xMark {
+        font-size: 0.85em;
+        padding: 1% 2%;
+    }
+
+    .editSlotRecord .formContainer {
+        margin: 2.5% 1.5%;
+        width: 100%;
+        grid-gap: 5%;
+    }
+
+    .editSlotRecord input {
+        padding: 0.2% 0.4%;
+        margin-bottom: 0.4%;
+        width: 95%;
+        font-size: 0.9em;
+    }
+
+    .editSlotRecord label {
+        font-size: 0.85em;
+        font-weight: 500;
+    }
+
+    .editSlotRecord select {
+        width: 40%;
+        margin-left: 5%;
+        font-size: 0.9em;
+        font-weight: 400;
+    }
+
+    .editSlotRecord .buttonContainer {
+        gap: 30%;
+    }
+
+    .editSlotRecord .formContainer .buttonContainer button {
+        padding: 1.5% 3.5%;
+    }
+}
+
+@media (max-height:500px) and (orientation: landscape) {
+    .editSlotRecord {
+        margin: -0.2% 1% 1.5% 1%;
+        height: 30vw;
+        width: 95%;
+    }
+
+    .editSlotRecordHeadSection {
+        width: 100%;
+        padding: 0.5% 1.5%;
+    }
+
+    .editSlotRecordHeadSection h1 {
+        font-size: 1em;
+        padding: 1% 2%;
+    }
+
+    .editSlotRecordHeadSection .xMark {
+        font-size: 0.9em;
+        padding: 1% 2%;
+    }
+
+    .editSlotRecord .formContainer {
+        margin: 2.5% 1.5%;
+        width: 100%;
+        grid-gap: 5%;
+    }
+
+    .editSlotRecord input {
+        padding: 0.2% 0.4%;
+        margin-bottom: 0.4%;
+        width: 95%;
+        font-size: 0.9em;
+    }
+
+    .editSlotRecord label {
+        font-size: 1em;
+        font-weight: 500;
+    }
+
+    .editSlotRecord select {
+        width: 40%;
+        margin-left: 5%;
+        font-size: 1em;
+        font-weight: 400;
+    }
+
+    .editSlotRecord .buttonContainer {
+        gap: 30%;
+    }
+
+    .editSlotRecord .formContainer .buttonContainer button {
+        padding: 2.5% 3.5%;
+    }
+}
