@@ -56,6 +56,10 @@
     cursor: pointer;
 }
 
+.trainerTableContainer .trainerListContainer {
+    width: 96%;
+}
+
 .trainerTableContainer table {
     width: 96%;
     margin: 1.5% auto 0.5% auto;
@@ -108,4 +112,132 @@
 .trainer-status-Inactive {
     color: #dc3545;
     font-weight: 600;
+}
+
+@media (max-width:480px) and (orientation: portrait) {
+    .trainerTableContainer {
+        width: 96%;
+        /* overflow-x: auto; */
+        /* overflow-y: visible; */
+    }
+
+    .trainerTableContainer .headContainer h1 {
+        margin-left: 1%;
+        font-size: 1.2em;
+    }
+
+    .trainerTableContainer .searchContainer {
+        width: 50%;
+    }
+
+    .trainerTableContainer .searchContainer input {
+        width: 50%;
+        padding: 0.8% 3%;
+        font-size: 0.9em;
+    }
+
+    .trainerTableContainer .searchContainer button {
+        margin-right: 1%;
+        padding: 1% 3.5%;
+    }
+
+    .trainerTableContainer .trainerListContainer {
+        overflow-x: auto;
+        overflow-y: visible;
+    }
+
+    .trainerTableContainer table {
+        min-width: 200%;
+        margin: 0.9% auto;
+        border-collapse: collapse;
+        font-size: 0.85em;
+        white-space: nowrap;
+        overflow-y: auto;
+    }
+
+    .trainerTableContainer th,
+    .trainerTableContainer td {
+        border: 1px solid #ccc;
+        padding: 0.5% 1%;
+        font-size: 0.85em;
+    }
+
+    .trainerTableContainer th {
+        background-color: #222;
+        color: #fff;
+        font-size: 1em;
+        font-weight: 600;
+    }
+
+    .trainerTableContainer table button {
+        padding: 0.5%;
+        font-size: 0.8em;
+    }
+
+    .trainerTableContainer .pagination p {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-height:500px) and (orientation: landscape) {
+    .trainerTableContainer {
+        width: 96%;
+    }
+
+    .trainerTableContainer .headContainer h1 {
+        margin-left: 1%;
+        font-size: 1.2em;
+    }
+
+    .trainerTableContainer .searchContainer {
+        width: 50%;
+    }
+
+    .trainerTableContainer .searchContainer input {
+        width: 50%;
+        padding: 0.8% 3%;
+        font-size: 0.9em;
+    }
+
+    .trainerTableContainer .searchContainer button {
+        margin-right: 1%;
+        padding: 1% 3.5%;
+    }
+
+    .trainerTableContainer .trainerListContainer {
+        overflow-x: auto;
+        overflow-y: visible;
+    }
+
+    .trainerTableContainer table {
+        min-width: 200%;
+        margin: 0.9% auto;
+        border-collapse: collapse;
+        font-size: 0.9em;
+        white-space: nowrap;
+        overflow-y: auto;
+    }
+
+    .trainerTableContainer th,
+    .trainerTableContainer td {
+        border: 1px solid #ccc;
+        padding: 0.5% 1%;
+        font-size: 0.9em;
+    }
+
+    .trainerTableContainer th {
+        background-color: #222;
+        color: #fff;
+        font-size: 1em;
+        font-weight: 600;
+    }
+
+    .trainerTableContainer table button {
+        padding: 1%;
+        font-size: 0.9em;
+    }
+
+    .trainerTableContainer .pagination p {
+        font-size: 0.9em;
+    }
 }

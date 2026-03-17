@@ -123,28 +123,31 @@ export default function TrainerTable() {
                 </div>
             </div>
 
-            {loading ? (
-                <div>Loading Trainers...</div> // Loading indicator/message
-            ) : (
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Assigned Members</th>
-                            <th>Status</th>
-                            <th>Contact</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
+            <div className="trainerListContainer">
 
-                    <tbody>
-                        {generateTrainersData()}
-                    </tbody>
-                </table>
-            )}
+                {loading ? (
+                    <div>Loading Trainers...</div> // Loading indicator/message
+                ) : (
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Assigned Members</th>
+                                <th>Status</th>
+                                <th>Contact</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
 
-            <div className="pagination">
-                <p><span className='leftIcon' onClick={handleLeftButton}><FontAwesomeIcon icon={faAngleLeft} /></span> Showing Page {pageNo} out of {totalPages} <span className='rightIcon' onClick={handleRightButton}><FontAwesomeIcon icon={faAngleRight} /></span></p>
+                        <tbody>
+                            {generateTrainersData()}
+                        </tbody>
+                    </table>
+                )}
+
+                <div className="pagination">
+                    <p><span className='leftIcon' onClick={handleLeftButton}><FontAwesomeIcon icon={faAngleLeft} /></span> Showing Page {pageNo} out of {totalPages} <span className='rightIcon' onClick={handleRightButton}><FontAwesomeIcon icon={faAngleRight} /></span></p>
+                </div>
             </div>
         </div>
     );
