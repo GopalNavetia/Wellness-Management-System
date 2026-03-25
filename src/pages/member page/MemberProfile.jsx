@@ -47,7 +47,7 @@ export default function MemberProfile() {
     const handleClose = () => navigate('/gymdashboard');
     const handleEditButton = () => navigate(`/gymdashboard/memberprofile/${memberID}/editmember/${memberID}`);
     function handleWhatsappLink(number) {
-        window.open(`https://wa.me/${number}`, "_blank");
+        window.open(`https://wa.me/91${number}`, "_blank");
     }
     let handleDeleteButton = async (memberID, name) => {
         // Ask for confirmation
