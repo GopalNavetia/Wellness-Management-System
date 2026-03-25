@@ -50,6 +50,12 @@
     transition: background 0.3s;
 }
 
+.noNotification p {
+    width: 100%;
+    font-size: 1.15em;
+    text-align: center;
+}
+
 .notificationContainer span {
     font-size: 1.3em;
     margin-right: 5%;

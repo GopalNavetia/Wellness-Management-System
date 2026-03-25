@@ -56,6 +56,10 @@
     cursor: default;
 }
 
+.whatsappIcon {
+    font-size: 1.1em;
+}
+
 .memberProfileContainer .profile .data {
     font-size: 1.1em;
     width: 86%;
@@ -91,9 +95,9 @@
 }
 
 @media (max-width:480px) and (orientation: portrait) {
-.memberProfileContainer {
-    width: 96%;
-}
+    .memberProfileContainer {
+        width: 96%;
+    }
 
     .memberProfileHeadSection {
         width: 100%;

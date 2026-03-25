@@ -2,6 +2,7 @@ import './MemberProfile.css';
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faSquareWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { useNavigate, useRoutes, useParams } from 'react-router-dom';
 import EditMember from './EditMember';
 import MemberActionContainer from './MemberActionContainer';
@@ -45,6 +46,9 @@ export default function MemberProfile() {
 
     const handleClose = () => navigate('/gymdashboard');
     const handleEditButton = () => navigate(`/gymdashboard/memberprofile/${memberID}/editmember/${memberID}`);
+    function handleWhatsappLink(number) {
+        window.open(`https://wa.me/${number}`, "_blank");
+    }
     let handleDeleteButton = async (memberID, name) => {
         // Ask for confirmation
         const ok = window.confirm(`Are you sure you want to delete member: "${name}"?`);
@@ -79,7 +83,7 @@ export default function MemberProfile() {
                     <h2>{fetchData.name}</h2>
                     <p><b>Gender:</b> {fetchData.gender}</p>
                     <p><b>Date of Birth:</b> {fetchData.dob}</p>
-                    <p><b>Phone No:</b> {fetchData.phone}</p>
+                    <p><b>Phone No:</b> {fetchData.phone} <span className="whatsappIcon" onClick={() => handleWhatsappLink(fetchData.phone)}><FontAwesomeIcon icon={faSquareWhatsapp} /></span></p>
                     <p><b>Address:</b> {fetchData.address}</p>
                     <div className="buttons">
                         <button onClick={handleEditButton}>Edit</button>
