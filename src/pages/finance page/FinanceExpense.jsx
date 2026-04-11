@@ -1,306 +1,360 @@
 import React, { useState, useEffect } from "react";
-import { PieChart, Pie, Cell, Legend, ResponsiveContainer } from "recharts";
-import mockExpenseData from "../../mocks/ExpenseMockData";
+import axiosInstance from "../../utils/AxiosInstance.jsx";
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+  ResponsiveContainer,
+} from "recharts";
+
 import "./FinanceExpense.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
-const COLORS = ["#ff99aa", "#87cefa", "#ffe59a", "#9de0d4", "#c7a4ff"];
-
 export default function FinanceExpense() {
-  const [expenses, setExpenses] = useState(mockExpenseData);
-  const [filteredExpenses, setFilteredExpenses] = useState(expenses);
+  const [expenses, setExpenses] = useState([]);
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
-  const [editId, setEditId] = useState(null);
-  const [inactiveCategories, setInactiveCategories] = useState([]);
+  const [selectedExpense, setSelectedExpense] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [saveLoading, setSaveLoading] = useState(false);
+
+  const [categoryFilter, setCategoryFilter] = useState("All");
+
+  // Get Financial Year Start
+  const getFinancialYearStart = () => {
+    const today = new Date();
+    const year =
+      today.getMonth() >= 3 ? today.getFullYear() : today.getFullYear() - 1;
+    return `${year}-04-01`;
+  };
+
+  // Get Financial Year End
+  const getFinancialYearEnd = () => {
+    const today = new Date();
+    const year =
+      today.getMonth() >= 3 ? today.getFullYear() : today.getFullYear() - 1;
+    return `${year + 1}-03-31`;
+  };
+
+  // Temporary date inputs (apply on button click)
+  const [fromDate, setFromDate] = useState(getFinancialYearStart());
+  const [toDate, setToDate] = useState(getFinancialYearEnd());
 
   const [formData, setFormData] = useState({
     date: "",
     category: "",
     amount: "",
-    notes: "",
+    remarks: "",
   });
 
-  const [fromDate, setFromDate] = useState("");
-  const [toDate, setToDate] = useState("");
+  const expenseCategories = [
+    { value: "rent", label: "Rent" },
+    { value: "salary", label: "Salary" },
+    { value: "machinery", label: "Machinery" },
+    { value: "maintenance", label: "Maintenance" },
+    { value: "repair", label: "Repair" },
+    { value: "utility_bill", label: "Utility Bill" },
+    { value: "miscellaneous", label: "Miscellaneous" },
+  ];
 
   useEffect(() => {
-    setFilteredExpenses(expenses);
-  }, [expenses]);
+    fetchExpenseData();
+  }, []);
 
+  const fetchExpenseData = async (
+    from = getFinancialYearStart(),
+    to = getFinancialYearEnd()
+  ) => {
+    try {
+      setLoading(true);
+
+      // Update endpoint if your backend route is different
+      const result = await axiosInstance.get(`/MyProject/FinanceExpenseAPI`, {
+        params: {
+          from_date: from,
+          to_date: to,
+        },
+        headers: {
+          "ngrok-skip-browser-warning": "true",
+        },
+      });
+
+      setExpenses(Array.isArray(result?.data?.data) ? result.data.data : []);
+    } catch (error) {
+      console.log(error);
+      setExpenses([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  /* ================= ADD ================= */
   const handleAddClick = () => {
-    setFormData({ date: "", category: "", amount: "", notes: "" });
-    setIsEditing(false);
+    setSelectedExpense(null);
+    setFormData({ date: "", category: "", amount: "", remarks: "" });
     setIsFormOpen(true);
   };
 
-  const handleEdit = (exp) => {
-    setFormData(exp);
-    setEditId(exp.id);
-    setIsEditing(true);
+  /* ================= VIEW ================= */
+  const handleView = (exp) => {
+    setSelectedExpense(exp);
     setIsFormOpen(true);
   };
 
+  /* ================= FORM CHANGE ================= */
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const handleSave = (e) => {
+  /* ================= SAVE (POST API) ================= */
+  const handleSave = async (e) => {
     e.preventDefault();
-    if (!formData.date || !formData.category || !formData.amount) {
+
+    if (!formData.date || !formData.amount) {
       alert("Please fill all required fields!");
       return;
     }
 
-    if (isEditing) {
-      setExpenses((prev) =>
-        prev.map((item) =>
-          item.id === editId ? { ...formData, id: editId } : item
-        )
-      );
-    } else {
-      const newExpense = {
-        id: Date.now(),
-        ...formData,
-        amount: parseFloat(formData.amount),
-      };
-      setExpenses([newExpense, ...expenses]);
-    }
+    try {
+      setSaveLoading(true);
 
-    setIsFormOpen(false);
-    setFormData({ date: "", category: "", amount: "", notes: "" });
-    setIsEditing(false);
-    setEditId(null);
+      const response = await axiosInstance.post(
+        `/MyProject/AddExpenseAPI`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "ngrok-skip-browser-warning": "true",
+          },
+        }
+      );
+
+      // Close modal on successful API status
+      if (response?.status === 200 || response?.status === 201) {
+        alert(response?.data?.message || "Expense added successfully");
+        setIsFormOpen(false);
+        setSelectedExpense(null);
+        setFormData({ date: "", category: "", amount: "", remarks: "" });
+        fetchExpenseData(fromDate, toDate);
+      } else {
+        alert(response?.data?.message || "Failed to add expense");
+      }
+    } catch (error) {
+      console.error("Add expense error:", error);
+      alert(error?.response?.data?.message || "Failed to add expense");
+    } finally {
+      setSaveLoading(false);
+    }
   };
 
-  const handleDelete = (id) =>
-    setExpenses(expenses.filter((exp) => exp.id !== id));
-
-  // ✅ Date range filter logic
+  /* ================= DATE FILTER ================= */
   const handleApplyFilter = () => {
-    const filtered = expenses.filter((exp) => {
-      const expDate = new Date(exp.date);
-      const from = fromDate ? new Date(fromDate) : null;
-      const to = toDate ? new Date(toDate) : null;
-      return (!from || expDate >= from) && (!to || expDate <= to);
-    });
-    setFilteredExpenses(filtered);
+    if (fromDate && toDate) {
+      fetchExpenseData(fromDate, toDate);
+    } else {
+      alert("Please select both From and To dates");
+    }
   };
 
   const handleClearFilter = () => {
-    setFromDate("");
-    setToDate("");
-    setFilteredExpenses(expenses);
+    const defaultFrom = getFinancialYearStart();
+    const defaultTo = getFinancialYearEnd();
+    setCategoryFilter("All");
+    setFromDate(defaultFrom);
+    setToDate(defaultTo);
+    fetchExpenseData(defaultFrom, defaultTo);
   };
 
-  const chartData = Object.values(
-    filteredExpenses.reduce((acc, exp) => {
-      acc[exp.category] = acc[exp.category] || { name: exp.category, value: 0 };
-      acc[exp.category].value += exp.amount;
-      return acc;
-    }, {})
-  );
+  /* ================= GRAPH DATA ================= */
+  const categoryKeys = expenseCategories.map((cat) => cat.value);
 
-  const toggleCategory = (name) => {
-    setInactiveCategories((prev) =>
-      prev.includes(name)
-        ? prev.filter((cat) => cat !== name)
-        : [...prev, name]
-    );
-  };
+  const chartData = Array.isArray(expenses)
+    ? expenses.map((item) => {
+      const month = item?.month || "";
 
-  const visibleData = chartData.filter(
-    (d) => !inactiveCategories.includes(d.name)
-  );
+      const amount =
+        categoryFilter === "All"
+          ? Number(item?.total ?? 0)
+          : Number(item?.[categoryFilter] ?? 0);
+
+      return {
+        month,
+        amount,
+      };
+    })
+    : [];
 
   return (
     <div className="expense-container">
-      {/* Header Section */}
+      {/* ================= HEADER ================= */}
       <div className="expenseHeadSection">
         <h1>Expenses</h1>
 
-        <div className="date-filters">
-          <label>
-            From:
+        <div className="expense-header">
+          <div className="date-filters">
+            <select
+              className="expense-select"
+              value={categoryFilter}
+              onChange={(e) => setCategoryFilter(e.target.value)}
+            >
+              <option value="All">All</option>
+              {expenseCategories.map((cat) => (
+                <option key={cat.value} value={cat.value}>
+                  {cat.label}
+                </option>
+              ))}
+            </select>
+
+            <label>From:</label>
             <input
               type="date"
               value={fromDate}
               onChange={(e) => setFromDate(e.target.value)}
             />
-          </label>
 
-          <label>
-            To:
+            <label>To:</label>
             <input
               type="date"
               value={toDate}
               onChange={(e) => setToDate(e.target.value)}
             />
-          </label>
 
-          <button className="apply-btn" onClick={handleApplyFilter}>
-            Apply
-          </button>
-          <button className="clear-btn" onClick={handleClearFilter}>
-            Clear
-          </button>
+            <button onClick={handleApplyFilter}>Apply</button>
+            <button onClick={handleClearFilter}>Clear</button>
+            <button className="add-expense-btn" onClick={handleAddClick}>
+              Add
+            </button>
+          </div>
         </div>
       </div>
 
-      <div className="expense-header">
-        <button className="add-expense-btn" onClick={handleAddClick}>
-          + Add Expense
-        </button>
+      {/* ================= GRAPH ================= */}
+      <div className="expense-graph">
+        {loading ? (
+          <p>Loading data...</p>
+        ) : (
+          <ResponsiveContainer width="90%" height={350}>
+            <AreaChart data={chartData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="month" />
+              <YAxis />
+              <Tooltip />
+              <Area
+                type="monotone"
+                dataKey="amount"
+                stroke="#33ccff"
+                fill="#33ccff"
+                fillOpacity={0.2}
+              />
+            </AreaChart>
+          </ResponsiveContainer>
+        )}
       </div>
 
-      {/* Pie Chart */}
-      <div className="chart-container">
-        <ResponsiveContainer width="100%" height={350}>
-          <PieChart>
-            <Legend
-              verticalAlign="top"
-              align="center"
-              payload={chartData.map((item, index) => ({
-                id: item.name,
-                type: "square",
-                value: item.name,
-                color: COLORS[index % COLORS.length],
-              }))}
-              formatter={(value) => (
-                <span
-                  onClick={() => toggleCategory(value)}
-                  style={{
-                    cursor: "pointer",
-                    textDecoration: inactiveCategories.includes(value)
-                      ? "line-through"
-                      : "none",
-                    color: inactiveCategories.includes(value)
-                      ? "gray"
-                      : "black",
-                    fontWeight: "bold",
-                  }}
-                >
-                  {value}
-                </span>
-              )}
-            />
-
-            <Pie
-              data={visibleData}
-              dataKey="value"
-              nameKey="name"
-              cx="50%"
-              cy="50%"
-              outerRadius={100}
-              label
-            >
-              {visibleData.map((entry, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={COLORS[index % COLORS.length]}
-                  fillOpacity={inactiveCategories.includes(entry.name) ? 0.3 : 1}
-                />
-              ))}
-            </Pie>
-          </PieChart>
-        </ResponsiveContainer>
-      </div>
-
-      {/* Expense Table */}
+      {/* ================= TABLE ================= */}
       <table className="expense-table">
         <thead>
           <tr>
-            <th>Date</th>
-            <th>Expense Category</th>
+            <th>Month</th>
             <th>Amount</th>
-            <th>Notes</th>
-            <th>Actions</th>
+            <th>Action</th>
           </tr>
         </thead>
+
         <tbody>
-          {filteredExpenses.map((exp) => (
-            <tr key={exp.id}>
-              <td>{exp.date}</td>
-              <td>{exp.category}</td>
-              <td>₹{exp.amount.toLocaleString()}</td>
-              <td>{exp.notes}</td>
-              <td>
-                <button className="edit-btn" onClick={() => handleEdit(exp)}>
-                  Edit
-                </button>
-                <button
-                  className="delete-btn"
-                  onClick={() => handleDelete(exp.id)}
-                >
-                  Delete
-                </button>
-              </td>
+          {loading ? (
+            <tr>
+              <td colSpan="3">Loading data...</td>
             </tr>
-          ))}
+          ) : chartData.length > 0 ? (
+            chartData.map((exp, index) => (
+              <tr key={index}>
+                <td>{exp.month}</td>
+                <td>₹ {exp.amount}</td>
+                <td>
+                  <button onClick={() => handleView(exp)}>View</button>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="3">No records found</td>
+            </tr>
+          )}
         </tbody>
       </table>
 
-      {/* Modal */}
+      {/* ================= MODAL ================= */}
       {isFormOpen && (
         <div className="modal">
           <div className="modal-content">
             <div className="modal-header">
-              <h3>{isEditing ? "Edit Expense" : "Add Expense"}</h3>
-              <span className="xMark" onClick={() => setIsFormOpen(false)}>
+              <h3>{selectedExpense ? "Expense Details" : "Add Expense"}</h3>
+              <span onClick={() => setIsFormOpen(false)}>
                 <FontAwesomeIcon icon={faXmark} />
               </span>
             </div>
-            <form onSubmit={handleSave}>
-              <label><b>Date:</b></label>
-              <input
-                type="date"
-                name="date"
-                value={formData.date}
-                onChange={handleChange}
-              />
 
-              <label><b>Category:</b></label>
-              <select
-                name="category"
-                value={formData.category}
-                onChange={handleChange}
-              >
-                <option value="">-- Select --</option>
-                <option value="Rent">Rent</option>
-                <option value="Salaries">Salaries</option>
-                <option value="Equipment">Equipment</option>
-                <option value="Utilities">Utilities</option>
-                <option value="Marketing">Marketing</option>
-              </select>
-
-              <label><b>Amount (₹):</b></label>
-              <input
-                type="number"
-                name="amount"
-                value={formData.amount}
-                onChange={handleChange}
-              />
-
-              <label><b>Notes:</b></label>
-              <textarea
-                name="notes"
-                value={formData.notes}
-                onChange={handleChange}
-              ></textarea>
-
-              <div className="form-buttons">
-                <button type="submit" className="save-btn">
-                  {isEditing ? "Update" : "Save"}
-                </button>
-                <button
-                  type="button"
-                  className="cancel-btn"
-                  onClick={() => setIsFormOpen(false)}
-                >
-                  Cancel
-                </button>
+            {selectedExpense ? (
+              <div className="view-box">
+                <p>
+                  <strong>Month:</strong> {selectedExpense.month}
+                </p>
+                <p>
+                  <strong>Amount:</strong> ₹{selectedExpense.amount}
+                </p>
               </div>
-            </form>
+            ) : (
+              <form onSubmit={handleSave}>
+                <label>Date</label>
+                <input
+                  type="date"
+                  name="date"
+                  value={formData.date}
+                  onChange={handleChange}
+                />
+
+                <label>Category</label>
+                <select
+                  name="category"
+                  value={formData.category}
+                  onChange={handleChange}
+                >
+                  <option value="">Choose category</option>
+                  {expenseCategories.map((cat) => (
+                    <option key={cat.value} value={cat.value}>
+                      {cat.label}
+                    </option>
+                  ))}
+                </select>
+
+                <label>Amount</label>
+                <input
+                  type="number"
+                  name="amount"
+                  value={formData.amount}
+                  onChange={handleChange}
+                />
+
+                <label>Remarks</label>
+                <textarea
+                  name="remarks"
+                  value={formData.remarks}
+                  onChange={handleChange}
+                />
+
+                <div className="form-buttons">
+                  <button type="submit" disabled={saveLoading}>
+                    {saveLoading ? "Saving..." : "Save"}
+                  </button>
+                  <button type="button" onClick={() => setIsFormOpen(false)}>
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            )}
           </div>
         </div>
       )}

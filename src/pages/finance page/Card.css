@@ -9,7 +9,7 @@
   padding: 1.5% 2%;
   transition: all 0.3s ease;
   cursor: pointer;
-  width:75%;
+  width: 75%;
 }
 
 .summary-card:hover {
@@ -22,14 +22,82 @@
   color: #007bff;
 }
 
-.summary-details { text-align: right; }
+.summary-details {
+  text-align: right;
+}
 
-.summary-title { font-size: 0.95rem; color: #555; margin: 0; }
-.summary-value { font-size: 1.4rem; font-weight: bold; margin: 0.2em 0 0 0; }
+.summary-title {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0;
+}
 
-.summary-card.income .summary-icon { color: #28a745; }
-.summary-card.expense .summary-icon { color: #dc3545; }
-.summary-card.profit .summary-icon { color: #ffc107; }
-.summary-card.pending .summary-icon { color: #17a2b8; }
+.summary-value {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin: 0.2em 0 0 0;
+}
 
-@media (max-width: 768px) { .summary-card { flex: 1 1 48%; margin-bottom: 10px; } }
+.summary-card.income .summary-icon {
+  color: #28a745;
+}
+
+.summary-card.expense .summary-icon {
+  color: #dc3545;
+}
+
+.summary-card.profit .summary-icon {
+  color: #ffc107;
+}
+
+.summary-card.pending .summary-icon {
+  color: #17a2b8;
+}
+
+@media (max-width: 480px) and (orientation: portrait) {
+  .summary-card {
+    flex: 0 0 48%;
+    width: 48%;
+    margin: 0;
+    height: auto;
+  }
+
+  .summary-icon {
+    font-size: 1.5em;
+  }
+  
+  .summary-title {
+    font-size: 0.75rem;
+    text-wrap: nowrap;
+  }
+
+  .summary-value {
+    font-size: 1em;
+    font-weight: bold;
+    margin: 0.2em 0 0 0;
+  }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .summary-card {
+    flex: 0 0 24%;
+    width: 24%;
+    margin: 0;
+    height: auto;
+  }
+
+  .summary-icon {
+    font-size: 1.5em;
+  }
+  
+  .summary-title {
+    font-size: 0.75rem;
+    text-wrap: nowrap;
+  }
+
+  .summary-value {
+    font-size: 1em;
+    font-weight: bold;
+    margin: 0.2em 0 0 0;
+  }
+}

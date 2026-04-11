@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import incomeMockData from "../../mocks/IncomeMockData";
+import React, { useState, useEffect } from "react";
+import axiosInstance from '../../utils/AxiosInstance.jsx'
 import {
   AreaChart,
-  Line,
   XAxis,
   YAxis,
   Tooltip,
@@ -14,89 +13,128 @@ import "./FinanceIncome.css";
 
 export default function FinanceIncome() {
   const [filter, setFilter] = useState("All");
-  const [fromDate, setFromDate] = useState("");
-  const [toDate, setToDate] = useState("");
-  const [tempFromDate, setTempFromDate] = useState("");
-  const [tempToDate, setTempToDate] = useState("");
+
+  // Get Financial Year Start 
+  const getFinancialYearStart = () => {
+    const today = new Date();
+    const year = today.getMonth() >= 3 ? today.getFullYear() : today.getFullYear() - 1;
+    return `${year}-04-01`;
+  };
+
+  // Get Financial Year End
+  const getFinancialYearFrom = () => {
+    const today = new Date();
+    const year = today.getMonth() >= 3 ? today.getFullYear() : today.getFullYear() - 1;
+    return `${year + 1}-03-31`;
+  };
+
+  // Temporary inputs
+  const [tempFromDate, setTempFromDate] = useState(getFinancialYearStart());
+  const [tempToDate, setTempToDate] = useState(getFinancialYearFrom());
+
   const [selectedItem, setSelectedItem] = useState(null);
 
-  //  Local states for chart and table data
-  const [chartData, setChartData] = useState(incomeMockData.chartData);
-  const [tableData, setTableData] = useState(incomeMockData.tableData);
+  const [tableData, setTableData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  // ✅ Apply custom date filter
-  const handleApplyFilter = () => {
-    if (!tempFromDate || !tempToDate) {
-      alert("Please select both From and To dates.");
-      return;
+  useEffect(() => {
+    fetchIncomeTableData();
+  }, []);
+
+  const fetchIncomeTableData = async (fromDate = tempFromDate, toDate = tempToDate) => {
+    try {
+      setLoading(true);
+      const result = await axiosInstance.get(`/MyProject/FinanceIncomeAPI`, {
+        params: {
+          from_date: fromDate,
+          to_date: toDate,
+        },
+        headers: {
+          "ngrok-skip-browser-warning": "true",
+        },
+      });
+
+      setTableData(Array.isArray(result?.data?.data) ? result.data.data : []);
+    } catch (error) {
+      console.log(error);
+      setTableData([]);
+    } finally {
+      setLoading(false);
     }
-
-    setFromDate(tempFromDate);
-    setToDate(tempToDate);
-
-    const filteredTable = incomeMockData.tableData.filter((item) => {
-      const itemDate = new Date(item.dueDate);
-      const start = new Date(tempFromDate);
-      const end = new Date(tempToDate);
-      return itemDate >= start && itemDate <= end;
-    });
-
-    const filteredChart = incomeMockData.chartData.filter((item) => {
-      const itemDate = new Date(item.date);
-      const start = new Date(tempFromDate);
-      const end = new Date(tempToDate);
-      return itemDate >= start && itemDate <= end;
-    });
-
-    setTableData(filteredTable);
-    setChartData(filteredChart);
   };
 
-  // ✅ Clear filters
+  // ================= Apply Filter ================= // API CALL
+  const handleApplyFilter = () => {
+    if (tempFromDate && tempToDate) {
+      fetchIncomeTableData(tempFromDate, tempToDate);
+    } else {
+      alert("Please select both From and To dates");
+    }
+  };
+
+  // ================= Clear Filter =================
   const handleClearFilter = () => {
     setFilter("All");
-    setFromDate("");
-    setToDate("");
-    setTempFromDate("");
-    setTempToDate("");
-    setChartData(incomeMockData.chartData);
-    setTableData(incomeMockData.tableData);
+    const defaultFrom = getFinancialYearStart();
+    const defaultTo = getFinancialYearFrom();
+    setTempFromDate(defaultFrom);
+    setTempToDate(defaultTo);
+    fetchIncomeTableData(defaultFrom, defaultTo);
   };
 
-  // ✅ Filter table data by status
-  const filteredTableData = tableData.filter((item) =>
-    filter === "All" ? true : item.status.toLowerCase() === filter.toLowerCase()
-  );
+  // ================= Status Filter =================
+  const filteredTableData = Array.isArray(tableData)
+    ? tableData.filter((item) => {
+      if (filter === "All") return true;
 
-  //  Update chart based on filtered table
-  const filteredChartData = chartData.map((monthData) => {
-    const total = filteredTableData
-      .filter((item) => item.month === monthData.month)
-      .reduce((sum, curr) => sum + curr.amount, 0);
-    return { ...monthData, income: total };
-  });
+      const pending = Number(item?.pending ?? 0);
+      const paid = Number(item?.paid ?? 0);
+
+      if (filter === "Pending") return pending > 0;
+      if (filter === "Paid") return paid > 0;
+
+      return true;
+    })
+    : [];
+
+  // ================= Chart Derived =================
+  // Build chart directly from API table data (filtered)
+  const filteredChartData = Array.isArray(filteredTableData)
+    ? filteredTableData.reduce((acc, item) => {
+      const month = item?.month ?? "";
+      const total = Number(item?.total ?? 0);
+
+      const existing = acc.find((row) => row.month === month);
+      if (existing) {
+        existing.income += total;
+      } else {
+        acc.push({ month, income: total });
+      }
+
+      return acc;
+    }, [])
+    : [];
 
   return (
     <div className="income-section">
-      {/* Header */}
+
+      {/* ================= HEADER ================= */}
       <div className="income-main-header">
         <h1>Income (Payments)</h1>
-      </div>
 
-      <div className="income-container">
-        {/* Filters */}
-        <div className="income-filters">
-          {["All", "Paid", "Pending", "Overdue"].map((btn) => (
-            <button
-              key={btn}
-              className={filter === btn ? "active" : ""}
-              onClick={() => setFilter(btn)}
-            >
-              {btn}
-            </button>
-          ))}
-          
-          {/* ✅ Date Filters */}
+        {/* ===== Header Controls (Status Filter + Dates) ===== */}
+        {/* Status Dropdown */}
+        <div className="filterContainer">
+          <select
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
+            className="income-status-dropdown"
+          >
+            <option value="All">All</option>
+            <option value="Paid">Paid</option>
+            <option value="Pending">Pending</option>
+          </select>
+          {/* ================= DATE FILTERS ================= */}
           <div className="date-Filters">
             <label>From:</label>
             <input
@@ -110,79 +148,52 @@ export default function FinanceIncome() {
               value={tempToDate}
               onChange={(e) => setTempToDate(e.target.value)}
             />
-             
-            {/*  Apply Button */}
-            <div className="button-Container">
-            <button  onClick={handleApplyFilter}>
-              Apply
-            </button>
-
-            {/* ✅ Clear Button */}
-            <button  onClick={handleClearFilter}>
-              Clear
-            </button>
-           </div> 
+            <button onClick={handleApplyFilter}>Apply</button>
+            <button onClick={handleClearFilter}>Clear</button>
           </div>
         </div>
+      </div>
 
-        {/* Graph Label */}
-        <div className="income-graph-label">
-          <span>Monthly Income</span>
-        </div>
+      {/* ================= CHART ================= */}
+      <div className="income-graph">
+        <ResponsiveContainer width="90%" height={350}>
+          <AreaChart data={filteredChartData}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="month" />
+            <YAxis />
+            <Tooltip />
+            <Area
+              type="monotone"
+              dataKey="income"
+              stroke="#33ccff"
+              fill="#33ccff"
+              fillOpacity={0.2}
+            />
 
-        {/* ✅ Line Chart */}
-        <div className="income-graph">
-          <ResponsiveContainer width="90%" height={350}>
-            <AreaChart data={filteredChartData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="month" />
-              <YAxis />
-              <Tooltip />
-              <Area
-                type="monotone"
-                dataKey="income"
-                stroke="#33ccff"
-                fill="#33ccff"
-                fillOpacity={0.2}
-              />
-              <Line
-                type="monotone"
-                dataKey="income"
-                stroke="#33ccff"
-                strokeWidth={3}
-              />
-            </AreaChart>
-          </ResponsiveContainer>
-        </div>
+          </AreaChart>
+        </ResponsiveContainer>
+      </div>
 
-        {/* ✅ Table Section */}
-        <div className="income-table-container">
+      {/* ================= TABLE ================= */}
+      <div className="income-table-container">
+        {loading ? (
+          <p>Loading data...</p>
+        ) : (
           <table className="income-table">
             <thead>
               <tr>
                 <th>Month</th>
-                <th>Member</th>
                 <th>Amount</th>
-                <th>Paid</th>
-                <th>Pending</th>
-                <th>Due Date</th>
-                <th>Status</th>
                 <th>Actions</th>
               </tr>
             </thead>
+
             <tbody>
               {filteredTableData.length > 0 ? (
                 filteredTableData.map((item) => (
                   <tr key={item.id}>
                     <td>{item.month}</td>
-                    <td>{item.memberName}</td>
-                    <td>₹{item.amount}</td>
-                    <td>₹{item.paid}</td>
-                    <td>₹{item.pending}</td>
-                    <td>{item.dueDate}</td>
-                    <td className={`status-${item.status.toLowerCase()}`}>
-                      {item.status}
-                    </td>
+                    <td>₹ {item.total}</td>
                     <td>
                       <button
                         className="view-btn"
@@ -195,38 +206,37 @@ export default function FinanceIncome() {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="8">No records found for selected filters</td>
+                  <td colSpan="8">No records found</td>
                 </tr>
               )}
             </tbody>
           </table>
+        )}
+      </div>
+
+      {/* ================= MODAL ================= */}
+      {selectedItem && (
+        <div className="income-modal-overlay">
+          <div className="income-modal">
+            <div className="income-modal-header">
+              <h3>Payment Details</h3>
+              <span
+                className="income-modal-close"
+                onClick={() => setSelectedItem(null)}
+              >
+                ×
+              </span>
+            </div>
+
+            <div className="income-modal-body">
+
+              <p><strong>Month:</strong> {selectedItem.month}</p>
+              <p><strong>Amount:</strong> ₹{selectedItem.amount}</p>
+              <p><strong>Status:</strong> {selectedItem.status}</p>
+            </div>
+          </div>
         </div>
-      </div>
-
-     {/* ✅ Modal Section */}
-{selectedItem && (
-  <div className="income-modal-overlay">
-    <div className="income-modal">
-      <div className="income-modal-header">
-        <h3>Payment Details</h3>
-        <span className="income-modal-close" onClick={() => setSelectedItem(null)}>
-          ×
-        </span>
-      </div>
-
-      <div className="income-modal-body">
-        <p><strong>Member:</strong> {selectedItem.memberName}</p>
-        <p><strong>Month:</strong> {selectedItem.month}</p>
-        <p><strong>Amount:</strong> ₹{selectedItem.amount}</p>
-        <p><strong>Paid:</strong> ₹{selectedItem.paid}</p>
-        <p><strong>Pending:</strong> ₹{selectedItem.pending}</p>
-        <p><strong>Due Date:</strong> {selectedItem.dueDate}</p>
-        <p><strong>Status:</strong> {selectedItem.status}</p>
-      </div>
-    </div>
-  </div>
-)}
-
+      )}
     </div>
   );
 }

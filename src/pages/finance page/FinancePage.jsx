@@ -7,7 +7,6 @@ import FinanceRevenue from "./FinanceRevenue";
 
 
 export default function FinancePage() {
-  // return <div>Work in Progress...</div>
 
   return (
     <div className="finance-page">

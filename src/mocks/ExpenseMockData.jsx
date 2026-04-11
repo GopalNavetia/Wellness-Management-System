@@ -1,34 +1,17 @@
 // src/mocks/ExpenseMockData.js
 
 const expenseMockData = [
-  {
-    id: 1,
-    date: "2025-09-01",
-    category: "Salaries",
-    amount: 50000,
-    notes: "Monthly payment for all trainers.",
-  },
-  {
-    id: 2,
-    date: "2025-09-05",
-    category: "Rent",
-    amount: 15000,
-    notes: "Monthly facility rent.",
-  },
-  {
-    id: 3,
-    date: "2025-09-08",
-    category: "Utilities",
-    amount: 2500,
-    notes: "Electricity and water bill.",
-  },
-  {
-    id: 4,
-    date: "2025-09-10",
-    category: "Equipment",
-    amount: 10000,
-    notes: "Purchased new dumbbells and mats.",
-  },
+  { id: 1, month: "Jan", amount: 30000 },
+  { id: 2, month: "Feb", amount: 25000 },
+  { id: 3, month: "Mar", amount: 42000 },
+  { id: 4, month: "Apr", amount: 38000 },
+  { id: 5, month: "May", amount: 47000 },
+  { id: 6, month: "Jun", amount: 41000 },
+  { id: 7, month: "Jul", amount: 52000 },
+  { id: 8, month: "Aug", amount: 46000 },
+
 ];
 
 export default expenseMockData;
+
+

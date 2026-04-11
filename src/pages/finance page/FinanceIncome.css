@@ -1,4 +1,6 @@
+/* ================= Income Section Container ================= */
 .income-section {
+  position: relative;
   margin: 0 1.5% 1.5% 1.5%;
   width: 97%;
   border: 1px solid #00000026;
@@ -7,37 +9,41 @@
   box-shadow: 0 4px 12px #0000000f;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 
-/* Header */
+/* ================= Header ================= */
 .income-main-header {
   width: 100%;
   padding: 0.5% 1.5%;
   background-color: #111;
+  color: #fff;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
   display: flex;
   align-items: center;
+  display: flex;
   justify-content: space-between;
 }
 
 .income-main-header h1 {
+  margin-left: 0%;
+  background-color: #111;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
   color: #fff;
-  margin: 0;
   font-size: 1.5em;
   cursor: default;
-  
 }
-/* Filters */
-.income-filters {
+
+/* ================= Status Filters ================= */
+
+.filterContainer {
+  /* border: 1px solid red; */
+  width: 70%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: end;
   align-items: center;
-  flex-wrap: wrap;
-  gap:10px;
-  margin: 4px 10px;
 }
 
 .income-filters button {
@@ -47,75 +53,54 @@
   padding: 6px 16px;
   cursor: pointer;
   font-weight: 500;
-  color: #333;
   transition: all 0.2s ease;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
-.income-filters button:hover {
-  background-color: #eaeaea;
-}
-
-.income-filters button.active {
-  background-color: #33ccff;
-  color: #fff;
-  border-color: #33ccff;
-}
-
-/* Date Filters */
+/* ================= Date Filters ================= */
 .date-Filters {
+  /* border: 1px solid pink; */
+  width: 64%;
   display: flex;
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
-  margin-left: 2%;
-  
- 
-  
-  
+  margin: 10px 0%;
+}
+
+.income-status-dropdown {
+  height: 50%;
+  padding: 0.5% 0;
+  margin-right: 2%;
 }
 
 .date-Filters label {
   font-weight: 500;
-  color: #333;
-  
+  color: #fff;
 }
 
-
-.date-filters input[type="date"] {
-  padding: 3px 6px;
+.date-Filters input[type="date"] {
+  padding: 4px 8px;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 0.9rem;
   outline: none;
-  transition: all 0.2s ease;
-  
-}
-.button-Container{
-  margin:2%;
 }
 
-
-
- 
-
-/* Unified container for Graph + Table */
-.income-container {
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  width: 100%;
-  margin-top: 0.7%;
+.date-Filters button {
+  padding: 5px 12px;
+  border-radius: 6px;
+  border: 1px solid #999;
+  background-color: #f4f4f4;
+  cursor: pointer;
 }
 
-/* Graph label */
+/* ================= Graph Label ================= */
 .income-graph-label {
   display: flex;
   justify-content: center;
   margin-bottom: 10px;
+
 }
 
 .income-graph-label span {
@@ -129,22 +114,17 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Graph Section */
+/* ================= Graph Section ================= */
 .income-graph {
+  border: 1px solid rgba(17, 17, 17, 0.4);
+  border-radius: 10px;
+  margin: 1% auto 1%;
+  padding: 1% 3% 0% 0%;
   width: 95%;
-  max-width: 1000px;
-  height: 350px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 10px auto 20px auto;
-  background: #ffffff;
-  border-radius: 8px;
-  padding: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  aspect-ratio: 3.5;
 }
 
-/* Table Section */
+/* ================= Table Section ================= */
 .income-table-container {
   width: 100%;
   overflow-x: auto;
@@ -173,63 +153,30 @@
   color: #ffffff;
 }
 
-/* Status colors */
-.status-paid {
-  color: #2e7d32;
-  font-weight: 600;
-}
 
-.status-pending {
-  color: #f57c00;
-  font-weight: 600;
-}
 
-.status-overdue {
-  color: #d32f2f;
-  font-weight: 600;
-}
-
-/* Action buttons */
+/* ================= Action Buttons ================= */
 .view-btn {
-  padding: 2%;
+  padding: 4px 10px;
   cursor: pointer;
-  margin: 1%;
+  border-radius: 4px;
+  border: 1px solid #aaa;
+  background-color: #f9f9f9;
 }
 
-/* Responsive tweaks */
-@media (max-width: 768px) {
-  .income-section {
-    padding: 0 3%;
-  }
-
-  .income-filters {
-    gap: 6px;
-    justify-content: center;
-  }
-
-  .date-filters {
-    margin-left: 0;
-    justify-content: center;
-  }
-
-  .income-graph {
-    height: 250px;
-    width: 100%;
-  }
-
-  .income-table th,
-  .income-table td {
-    font-size: 0.8rem;
-  }
+.view-btn:hover {
+  background-color: #e6e6e6;
 }
-/* ===== Modal Overlay (inside income section only) ===== */
+
+
+/* ================= Modal Overlay ================= */
 .income-modal-overlay {
-  position: absolute; /* ✅ relative to parent container */
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); /* ✅ dim background but visible */
+  background-color: rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -237,7 +184,7 @@
   border-radius: 12px;
 }
 
-/* ===== Modal Box ===== */
+/* ================= Modal Box ================= */
 .income-modal {
   background-color: #fff;
   color: #000;
@@ -249,14 +196,14 @@
   overflow: hidden;
 }
 
-/* ===== Header ===== */
+
+/* ================= Modal Header ================= */
 .income-modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: #000;
   padding: 12px 20px;
-  border-bottom: 2px solid #000;
 }
 
 .income-modal-header h3 {
@@ -266,7 +213,7 @@
   font-weight: 600;
 }
 
-/* ===== Close Button ===== */
+/* ================= Close Button ================= */
 .income-modal-close {
   color: #fff;
   font-size: 1.6rem;
@@ -280,29 +227,269 @@
   transform: scale(1.15);
 }
 
-/* ===== Modal Body ===== */
+/* ================= Modal Body ================= */
 .income-modal-body {
   padding: 20px;
   line-height: 1.7;
   background-color: #fff;
   color: #000;
-  border-top: none;
 }
 
 .income-modal-body p {
-  margin: 0.6%;
+  margin: 6px 0;
   font-size: 0.95rem;
   color: #222;
 }
 
-/* ===== Pop Animation ===== */
+/* ================= Animation ================= */
 @keyframes popIn {
   from {
     transform: scale(0.85);
     opacity: 0;
   }
+
   to {
     transform: scale(1);
     opacity: 1;
+  }
+}
+
+/* ================= Responsive ================= */
+@media (max-width: 480px) and (orientation: portrait) {
+
+  .income-section {
+    width: 86.5%;
+  }
+
+  .income-main-header {
+    padding: 1.5% 2%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .income-main-header h1 {
+    font-size: 1.2em;
+  }
+
+  .filterContainer {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .income-filters button {
+    padding: 4px 10px;
+    font-size: 0.8em;
+  }
+
+  .date-Filters {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 4px 0;
+    gap: 6px;
+  }
+
+  .date-Filters label {
+    font-size: 0.8em;
+  }
+
+  .date-Filters input[type="date"] {
+    font-size: 0.8em;
+    padding: 3px 6px;
+    flex: 1;
+    min-width: 100px;
+  }
+
+  .date-Filters button {
+    font-size: 0.75em;
+    padding: 4px 8px;
+    width: 48%;
+    margin-top: 4px;
+  }
+
+  .income-status-dropdown {
+    margin-right: 0;
+    font-size: 0.8em;
+    flex: 1;
+    min-width: 100px;
+  }
+
+  .income-graph-label span {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+  }
+
+  .income-graph {
+    border: 1px solid rgba(17, 17, 17, 0.4);
+    border-radius: 10px;
+    margin: 2% auto 1%;
+    padding: 1% 3% 0% 0%;
+    width: 95%;
+    aspect-ratio: 3.5;
+     font-size: 0.75em;
+  }
+
+  .income-table-container {
+    width: 96%;
+    display: block;
+    overflow-x: auto;
+    overflow-y: visible;
+    margin: 1% 2%;
+  }
+
+  .income-table {
+    min-width: 180%;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    margin-bottom: 2%;
+  }
+
+  .income-table th,
+  .income-table td {
+    padding: 1% 1.2%;
+  }
+
+  .view-btn {
+    font-size: 0.75em;
+    padding: 3px 8px;
+  }
+
+  .income-modal {
+    width: 92%;
+    max-width: 360px;
+  }
+
+  .income-modal-header h3 {
+    font-size: 1rem;
+  }
+
+  .income-modal-body {
+    padding: 14px;
+  }
+
+  .income-modal-body p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+
+  .income-section {
+    width: 96%;
+    margin: 0 auto;
+  }
+
+  .income-main-header {
+    padding: 1% 2%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px;
+    width: 100%;
+  }
+
+  .income-main-header h1 {
+    font-size: 1em;
+    margin: 0;
+  }
+
+  .filterContainer {
+    width: auto;
+    gap: 4px;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+  }
+
+  .income-filters button {
+    padding: 3px 8px;
+    font-size: 0.7em;
+  }
+
+  .date-Filters {
+    width: auto;
+    margin: 0;
+    gap: 4px;
+    flex-wrap: nowrap;
+  }
+
+  .date-Filters label {
+    font-size: 0.8em;
+  }
+
+  .date-Filters input[type="date"] {
+    font-size: 0.7em;
+    padding: 2px 4px;
+    flex: none;
+    min-width: 80px;
+  }
+
+  .date-Filters button {
+    font-size: 0.65em;
+    padding: 2px 6px;
+    width: auto;
+    margin: 0;
+  }
+
+  .income-status-dropdown {
+    margin: 0;
+    font-size: 0.7em;
+    flex: none;
+    min-width: auto;
+  }
+
+  .income-graph-label span {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    display: none;
+  }
+
+  .income-graph {
+    border: 1px solid rgba(17, 17, 17, 0.4);
+    border-radius: 10px;
+    margin: 2% auto 1%;
+    padding: 1% 3% 0% 0%;
+    width: 95%;
+    aspect-ratio: 3.5;
+    font-size: 0.8em;
+  }
+
+  .income-table-container {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .income-table {
+    font-size: 0.65rem;
+    min-width: auto;
+  }
+
+  .income-table th,
+  .income-table td {
+    padding: 0.5% 0.8%;
+  }
+
+  .view-btn {
+    font-size: 0.9em;
+    padding: 3px 8px;
+  }
+
+  .income-modal {
+    width: 92%;
+    max-width: 360px;
+  }
+
+  .income-modal-header h3 {
+    font-size: 1rem;
+  }
+
+  .income-modal-body {
+    padding: 14px;
+  }
+
+  .income-modal-body p {
+    font-size: 0.85rem;
   }
 }
