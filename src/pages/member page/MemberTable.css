@@ -29,14 +29,81 @@
     cursor: default;
 }
 
-.searchContainer {
-    width: 40%;
+.memberFilterContainer {
+    width: auto;
     display: flex;
-    gap: 0.5em;
+    gap: 0.7em;
+    justify-content: end;
+    align-items: center;
+    position: relative;
+}
+
+.filterDropdown {
+    position: relative;
+    display: flex;
     align-items: center;
 }
 
-.searchContainer input {
+.filterIcon {
+    color: #fff;
+    font-size: 1.3em;
+    cursor: pointer;
+}
+
+.filterItems {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    z-index: 1000;
+    display: none;
+    /* hidden by default */
+    flex-direction: column;
+    gap: 10px;
+    width: 340px;
+    white-space: normal;
+    padding: 10px 12px;
+    background: #1b1b1b;
+    border: 1px solid #333;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.filterItems.open {
+    display: flex;
+
+}
+
+.filterItems .searchRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.filterItems .searchRow input[type="text"] {
+    width: 100%;
+    padding: 6px 10px;
+}
+
+.filterItems .radioGroup {
+    display: grid;
+    /* 3 separate rows (one group per row) */
+    grid-template-columns: 95px 1fr 1fr;
+    align-items: center;
+    gap: 8px;
+}
+
+.filterItems .radioGroup span,
+.filterItems .radioGroup label {
+    color: #fff;
+    white-space: nowrap;
+}
+
+.filterItems input[type="text"] {
+    width: 170px;
+    padding: 6px 10px;
+}
+
+.memberFilterContainer input {
     width: 45%;
     padding: 0.8% 3%;
     font-size: 1em;
@@ -45,13 +112,13 @@
     box-sizing: border-box;
 }
 
-.searchContainer input::placeholder {
+.memberFilterContainer input::placeholder {
     font-weight: 100;
     color: rgba(0, 0, 0, 0.5);
 }
 
 
-.searchContainer button {
+.memberFilterContainer button {
     padding: 0.5% 1.3%;
     cursor: pointer;
 }
@@ -127,8 +194,6 @@
 @media (max-width:480px) and (orientation: portrait) {
     .memberTableContainer {
         width: 87.5%;
-        /* overflow-x: auto; */
-        /* overflow-y: visible; */
     }
 
     .memberTableContainer .headContainer h1 {
@@ -136,17 +201,25 @@
         font-size: 1.2em;
     }
 
-    .memberTableContainer .searchContainer {
+    .memberTableContainer .memberFilterContainer {
         width: 50%;
     }
 
-    .memberTableContainer .searchContainer input {
-        width: 50%;
+    .filterItems {
+        top: calc(100% + 6px);
+        right: -45px;
+        gap: 5px;
+        width: 280px;
+        padding: 10px 12px;
+    }
+
+    .memberTableContainer .memberFilterContainer input {
+        width: 10%;
         padding: 0.8% 3%;
-        font-size: 0.9em;
+        font-size: 0.85em;
     }
 
-    .memberTableContainer .searchContainer button {
+    .memberTableContainer .memberFilterContainer button {
         margin-right: 1%;
         padding: 1% 3.5%;
     }
@@ -199,17 +272,17 @@
         font-size: 1.2em;
     }
 
-    .memberTableContainer .searchContainer {
+    .memberTableContainer .memberFilterContainer {
         width: 50%;
     }
 
-    .memberTableContainer .searchContainer input {
+    .memberTableContainer .memberFilterContainer input {
         width: 50%;
         padding: 0.8% 3%;
         font-size: 0.9em;
     }
 
-    .memberTableContainer .searchContainer button {
+    .memberTableContainer .memberFilterContainer button {
         margin-right: 1%;
         padding: 1% 3.5%;
     }

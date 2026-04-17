@@ -1,11 +1,10 @@
 import './MemberTable.css'
-import MembersData from '../../mocks/MembersData'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { useState, useEffect } from 'react';
+import MembersData from '../../mocks/MembersData'
+import { faAngleLeft, faAngleRight, faFilter } from '@fortawesome/free-solid-svg-icons';
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../utils/AxiosInstance.jsx'
-
 
 export default function MemberTable() {
     // Members Table Data Fetch
@@ -41,7 +40,13 @@ export default function MemberTable() {
     let membersPerPage = 8;
 
     // Search form state
-    let [formData, setFormData] = useState({ membername: "", phone: "" });
+    let [formData, setFormData] = useState({
+        membername: "",
+        phone: "",
+        type: "",
+        membership: "",
+        payment: ""
+    });
 
     // Common Input Change
     let handleInputChange = (e) => {
@@ -59,9 +64,33 @@ export default function MemberTable() {
 
     // Filter members based on search inputs
     let filteredMembers = storedMembers.filter(member => {
-        const nameMatch = formData.membername.trim() === '' || member.name.toLowerCase().includes(formData.membername.toLowerCase());
-        const phoneMatch = formData.phone.trim() === '' || member.phone.toLowerCase().includes(formData.phone.toLowerCase());
-        return nameMatch && phoneMatch;
+        const membershipStatus = member.end_date === ''
+            ? '-'
+            : new Date(member.end_date) >= new Date()
+                ? 'Active'
+                : 'Expired';
+
+        const nameMatch =
+            formData.membername.trim() === '' ||
+            (member.name || '').toLowerCase().includes(formData.membername.toLowerCase());
+
+        const phoneMatch =
+            formData.phone.trim() === '' ||
+            String(member.phone || '').includes(formData.phone);
+
+        const typeMatch =
+            formData.type === '' ||
+            (member.type || '').toLowerCase() === formData.type.toLowerCase();
+
+        const membershipMatch =
+            formData.membership === '' ||
+            membershipStatus.toLowerCase() === formData.membership.toLowerCase();
+
+        const paymentMatch =
+            formData.payment === '' ||
+            (member.payment_status || '').toLowerCase() === formData.payment.toLowerCase();
+
+        return nameMatch && phoneMatch && typeMatch && membershipMatch && paymentMatch;
     });
 
     // Pagination Calculation
@@ -124,14 +153,88 @@ export default function MemberTable() {
         });
     }
 
+    const [isFilterOpen, setIsFilterOpen] = useState(false);
+    const filterDropdownRef = useRef(null);
+
+    const toggleFilter = () => setIsFilterOpen((prev) => !prev);
+
+    useEffect(() => {
+        const handleOutsideClick = (e) => {
+            if (
+                filterDropdownRef.current &&
+                !filterDropdownRef.current.contains(e.target)
+            ) {
+                setIsFilterOpen(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleOutsideClick);
+        return () => document.removeEventListener("mousedown", handleOutsideClick);
+    }, []);
+
+    const handleResetFilters = () => {
+        setFormData({
+            membername: "",
+            phone: "",
+            type: "",
+            membership: "",
+            payment: ""
+        });
+        setPageNo(1);
+    };
+
     return (
         <div className='memberTableContainer'>
             <div className="headContainer">
                 <h1>Member List</h1>
                 {/*  Search Container  */}
-                <div className="searchContainer">
-                    <input type="text" name="membername" value={formData.name} id="name" placeholder="Search by Name" onChange={handleInputChange} />
-                    <input type="text" name="phone" value={formData.phone} id="phone" placeholder="Search by Phone " onChange={handleInputChange} />
+                <div className="memberFilterContainer">
+                    <div className="filterDropdown" ref={filterDropdownRef}>
+                        <span
+                            className="filterIcon"
+                            onClick={toggleFilter}
+                            role="button"
+                            tabIndex={0}
+                            onKeyDown={(e) => {
+                                if (e.key === "Enter" || e.key === " ") {
+                                    e.preventDefault();
+                                    toggleFilter();
+                                }
+                            }}
+                        >
+                            <FontAwesomeIcon icon={faFilter} />
+                        </span>
+
+                        <div className={`filterItems ${isFilterOpen ? "open" : ""}`}>
+                            <div className="searchRow">
+                                <input type="text" name="membername" value={formData.membername} id="name" placeholder="Search by Name" onChange={handleInputChange} />
+                                <input type="text" name="phone" value={formData.phone} id="phone" placeholder="Search by Phone" onChange={handleInputChange} />
+                            </div>
+
+                            <div className="radioGroup">
+                                <span>Type:</span>
+                                <label><input type="radio" name="type" value="General" checked={formData.type === 'General'} onChange={handleInputChange} /> General</label>
+                                <label><input type="radio" name="type" value="PT" checked={formData.type === 'PT'} onChange={handleInputChange} /> PT</label>
+                            </div>
+
+                            <div className="radioGroup">
+                                <span>Membership:</span>
+                                <label><input type="radio" name="membership" value="Active" checked={formData.membership === 'Active'} onChange={handleInputChange} /> Active</label>
+                                <label><input type="radio" name="membership" value="Expired" checked={formData.membership === 'Expired'} onChange={handleInputChange} /> Expired</label>
+                            </div>
+
+                            <div className="radioGroup">
+                                <span>Payment:</span>
+                                <label><input type="radio" name="payment" value="Paid" checked={formData.payment === 'Paid'} onChange={handleInputChange} /> Paid</label>
+                                <label><input type="radio" name="payment" value="Pending" checked={formData.payment === 'Pending'} onChange={handleInputChange} /> Pending</label>
+                            </div>
+
+                            <button type="button" className="resetFilterBtn" onClick={handleResetFilters}>
+                                Reset
+                            </button>
+                        </div>
+                    </div>
+
                     <button onClick={handelAddMemberButton}>Add</button>
                 </div>
             </div>
