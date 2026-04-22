@@ -3,6 +3,7 @@ import MembershipRecord from './Action Components/Membership/MembershipRecord'
 import WorkoutRecord from './Action Components/Workout Plan/WorkoutRecord'
 import HealthRecord from './Action Components/Health/HealthRecord'
 import ProgressRecord from './Action Components/Progress/ProgressRecord'
+import DietPlan from './Action Components/Diet/DietPlan'
 import { useNavigate, useRoutes, useParams } from 'react-router-dom';
 
 
@@ -15,6 +16,7 @@ export default function MemberActionContainer() {
     let handleHealthRecordButton = () => navigate(`/gymdashboard/memberprofile/${memberID}/healthrecord/${memberID}`)
     let handleWorkoutButton = () => navigate(`/gymdashboard/memberprofile/${memberID}/workoutplan/${memberID}`)
     let handleProgressButton = () => navigate(`/gymdashboard/memberprofile/${memberID}/progress/${memberID}`)
+    let handleDietButton = () => navigate(`/gymdashboard/memberprofile/${memberID}/diet/${memberID}`)
 
     // Render Page Content
     const renderPageContent = () => (
@@ -23,6 +25,7 @@ export default function MemberActionContainer() {
             <button onClick={handleHealthRecordButton}>Health Record</button>
             <button onClick={handleWorkoutButton}>Workout Plan</button>
             <button onClick={handleProgressButton}>Progress</button>
+            <button onClick={handleDietButton}>Diet Plan</button>
         </div>
     )
 
@@ -33,7 +36,8 @@ export default function MemberActionContainer() {
             { path: 'membershiprecord/*', element: <>{renderPageContent()} < MembershipRecord /></> },
             { path: 'workoutplan/*', element: <>{renderPageContent()} <WorkoutRecord /></> },
             { path: 'healthrecord/*', element: <>{renderPageContent()} <HealthRecord /></> },
-            { path: 'progress/*', element: <>{renderPageContent()} <ProgressRecord /></> }
+            { path: 'progress/*', element: <>{renderPageContent()} <ProgressRecord /></> },
+            { path: 'diet/*', element: <>{renderPageContent()} <DietPlan/></> }
         ]);
     }
 
