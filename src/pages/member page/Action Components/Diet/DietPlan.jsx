@@ -1,41 +1,115 @@
 import './DietPlan.css'
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react'
+import axiosInstance from '../../../../utils/AxiosInstance'
 
-export default function DietPlan() {
+export default function DietPlan({ phone }) {
     const { memberID } = useParams();
     const [dietText, setDietText] = useState('');
     const [loading, setLoading] = useState(true);
 
-    const [mode, setMode] = useState('view'); // view | edit
+    const [mode, setMode] = useState('view'); // view | add | edit
     const [draftText, setDraftText] = useState('');
 
+    // Extract phone from props
+    const phoneNumber = phone;
+
     useEffect(() => {
-        const sampleGymMealPlanText = `Meal 1 - Breakfast (7:00 AM)
-Oats (60g), 4 egg whites + 1 whole egg, 1 banana
+        async function fetchDietPlanData() {
+            try {
+                const response = await axiosInstance.get(
+                    `/MyProject/DietPlanFetch?member_id=${memberID}`,
+                    {
+                        headers: { "ngrok-skip-browser-warning": "true" }
+                    }
+                );
 
-Meal 2 - Lunch (12:30 PM)
-Grilled chicken breast (150g), brown rice (1 cup), mixed vegetables
+                // API response example: { diet_text: "dsdsdsad", status: "success" }
+                setDietText(response?.data?.diet_text || '');
+            } catch (error) {
+                console.error('Error fetching diet data:', error);
+            } finally {
+                setLoading(false);
+            }
+        }
 
-Meal 3 - Pre/Post Workout (5:00 PM)
-Whey protein shake (1 scoop), 1 apple, 10 almonds
+        fetchDietPlanData();
+    }, []);
 
-Meal 4 - Dinner (8:30 PM)
-Fish or paneer (150g), sweet potato (150g), salad`;
-
-        setDietText(sampleGymMealPlanText);
-        setLoading(false);
-    }, [memberID]);
+    const handleAdd = () => {
+        setDraftText('');
+        setMode('add');
+    };
 
     const handleEdit = () => {
         setDraftText(dietText);
         setMode('edit');
     };
 
-    const handleSave = () => {
-        setDietText(draftText.trim());
-        setMode('view');
-        setDraftText('');
+    const handleInsert = async () => {
+        const trimmedText = draftText.trim();
+        if (!trimmedText) return;
+
+        try {
+            const response = await axiosInstance.post(
+                `/MyProject/DietPlanAPI?member_id=${memberID}`,
+                { diet_text: trimmedText },
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'ngrok-skip-browser-warning': 'true'
+                    }
+                }
+            );
+
+            const isSuccess =
+                response?.data?.success === true ||
+                response?.data?.status === 'success';
+
+            if (isSuccess) {
+                setDietText(trimmedText);
+                setMode('view');
+                setDraftText('');
+                alert(response?.data?.message || 'Diet plan inserted successfully.');
+            } else {
+                alert('Failed to insert diet plan: ' + (response?.data?.message || 'Unknown error'));
+            }
+        } catch (error) {
+            alert(error?.response?.data?.message || 'Failed to insert diet plan.');
+        }
+    };
+
+    const handleSave = async () => {
+        const trimmedText = draftText.trim();
+        if (!trimmedText) return;
+
+        try {
+            const response = await axiosInstance.post(
+                `/MyProject/EditDietPlanAPI?member_id=${memberID}`,
+                { diet_text: trimmedText },
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'ngrok-skip-browser-warning': 'true'
+                    }
+                }
+            );
+
+            const isSuccess =
+                response?.data?.success === true ||
+                response?.data?.status === 'success';
+
+            if (isSuccess) {
+                setDietText(trimmedText);
+                setMode('view');
+                setDraftText('');
+                alert(response?.data?.message || 'Diet plan saved successfully.');
+            } else {
+                alert('Failed to save diet plan: ' + (response?.data?.message || 'Unknown error'));
+            }
+        } catch (error) {
+            alert(error?.response?.data?.message || 'Failed to save diet plan.');
+        }
     };
 
     const handleCancel = () => {
@@ -43,15 +117,19 @@ Fish or paneer (150g), sweet potato (150g), salad`;
         setDraftText('');
     };
 
-    const handleClear = () => {
-        setDietText('');
-        setMode('view');
+    const handleClearDraft = () => {
         setDraftText('');
     };
 
     const handleSend = () => {
-        // Replace with API call later
-        console.log('Sending diet plan:', dietText);
+        if (!phoneNumber || !dietText) {
+            alert('Phone number or diet text is missing.');
+            return;
+        }
+
+        const encodedMessage = encodeURIComponent(dietText);
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+        window.open(whatsappUrl, "_blank");
     };
 
     const renderPageContent = () => (
@@ -59,8 +137,8 @@ Fish or paneer (150g), sweet potato (150g), salad`;
             <div className="dietRecordHeadSection">
                 <h1>Diet Plan</h1>
                 <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                    <button onClick={handleAdd} disabled={mode !== 'view'}>Add</button>
                     <button onClick={handleEdit} disabled={mode !== 'view'}>Edit</button>
-                    <button onClick={handleClear} disabled={mode !== 'view' || !dietText}>Clear</button>
                     <button onClick={handleSend} disabled={mode !== 'view' || !dietText}>Send</button>
                 </div>
             </div>
@@ -82,8 +160,13 @@ Fish or paneer (150g), sweet potato (150g), salad`;
                                     placeholder="Edit meal plan..."
                                 />
                                 <div style={{ marginTop: '10px', display: 'flex', gap: '10px' }}>
-                                    <button onClick={handleSave}>Save</button>
+                                    {mode === 'add' ? (
+                                        <button onClick={handleInsert}>Insert</button>
+                                    ) : (
+                                        <button onClick={handleSave}>Save</button>
+                                    )}
                                     <button onClick={handleCancel}>Cancel</button>
+                                    <button onClick={handleClearDraft} disabled={!draftText}>Clear</button>
                                 </div>
                             </div>
                         )}

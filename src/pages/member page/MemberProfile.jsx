@@ -94,7 +94,7 @@ export default function MemberProfile() {
 
             </div>
 
-            <MemberActionContainer />
+            <MemberActionContainer phone={fetchData.phone}/>
         </div>
     );
 

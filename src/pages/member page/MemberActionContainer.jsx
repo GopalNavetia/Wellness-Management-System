@@ -7,7 +7,7 @@ import DietPlan from './Action Components/Diet/DietPlan'
 import { useNavigate, useRoutes, useParams } from 'react-router-dom';
 
 
-export default function MemberActionContainer() {
+export default function MemberActionContainer({phone}) {
     // Navigation
     const { memberID } = useParams();
     const navigate = useNavigate();
@@ -37,7 +37,7 @@ export default function MemberActionContainer() {
             { path: 'workoutplan/*', element: <>{renderPageContent()} <WorkoutRecord /></> },
             { path: 'healthrecord/*', element: <>{renderPageContent()} <HealthRecord /></> },
             { path: 'progress/*', element: <>{renderPageContent()} <ProgressRecord /></> },
-            { path: 'diet/*', element: <>{renderPageContent()} <DietPlan/></> }
+            { path: 'diet/*', element: <>{renderPageContent()} <DietPlan phone={phone}/></> }
         ]);
     }
 
